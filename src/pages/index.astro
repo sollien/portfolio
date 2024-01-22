@@ -8,8 +8,11 @@ const items = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19
 <Layout title="Welcome to Astro.">
 	<header>Martin Sollien</header>
 	<main>
-		<section class="grid grid-cols-20">
-			{items.map((item) => <div class="grid-item">{item}</div>)}
+		<section>
+			<h2>Projects</h2>
+			<div class="items-container">
+				{items.map((item) => <div class="grid-item">{item}</div>)}
+			</div>
 		</section>
 	</main>
 	<footer>
@@ -24,6 +27,7 @@ const items = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19
 		border-left: var(--default-border);
 		border-right: var(--default-border);
 		border-bottom: var(--default-border);
+		font-weight: bold;
 	}
 
 	footer {
@@ -39,8 +43,24 @@ const items = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19
 		margin: 0 6%;
 	}
 
+	section {
+		h2 {
+			padding: 10px 30px;
+			border-left: var(--default-border);
+			border-right: var(--default-border);
+		}
+
+		.items-container {
+			display: grid;
+			grid-template-columns: repeat(20, minmax(0, 1fr));
+			border-top: var(--default-border);
+			border-bottom: var(--default-border);
+			border-left: var(--default-border);
+		}
+	}
+
 	.grid-item {
 		aspect-ratio: 1;
-		border: var(--default-border);
+		border-right: var(--default-border);
 	}
 </style>

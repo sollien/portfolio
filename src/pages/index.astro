@@ -1,8 +1,21 @@
 ---
-import Layout from '../layouts/Layout.astro';
-import Card from '../components/Card.astro';
+import Layout from "../layouts/Layout.astro";
+import Card from "../components/Card.astro";
 
-const items = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20];
+const projects = [
+	{
+		title: "Cortex",
+	},
+	{
+		title: "Plannr",
+	},
+	{
+		title: "Wedding website",
+	},
+	{
+		title: "Lift"
+	}
+];
 ---
 
 <Layout title="Welcome to Astro.">
@@ -11,7 +24,7 @@ const items = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19
 		<section>
 			<h2>Projects</h2>
 			<div class="items-container">
-				{items.map((item) => <div class="grid-item">{item}</div>)}
+				{projects.map((project) => <div class="grid-item">{project.title}</div>)}
 			</div>
 		</section>
 	</main>
@@ -21,6 +34,23 @@ const items = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19
 </Layout>
 
 <style lang="scss">
+	@keyframes glow {
+		0% {
+			box-shadow: inset 0px 0px 20px rgba(211, 255, 252, 0.03),
+			0px 0px 20px rgba(211, 255, 252, 0.03);
+		}
+		50% {
+			box-shadow: inset 0px 0px 20px rgba(211, 255, 252, 0.08),
+			0px 0px 20px rgba(211, 255, 252, 0.08);
+		}
+		100% {
+			box-shadow: inset 0px 0px 20px rgba(211, 255, 252, 0.03),
+			0px 0px 20px rgba(211, 255, 252, 0.03);
+		}
+	}
+	* {
+		animation: glow 10s infinite;
+	}
 	header {
 		margin: 0 6%;
 		padding: 20px 30px;
@@ -45,7 +75,7 @@ const items = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19
 
 	section {
 		h2 {
-			padding: 10px 30px;
+			padding: 100px 30px 10px 30px;
 			border-left: var(--default-border);
 			border-right: var(--default-border);
 		}
@@ -53,14 +83,21 @@ const items = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19
 		.items-container {
 			display: grid;
 			grid-template-columns: repeat(20, minmax(0, 1fr));
-			border-top: var(--default-border);
-			border-bottom: var(--default-border);
-			border-left: var(--default-border);
+			border: var(--default-border);
 		}
 	}
 
 	.grid-item {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		text-align: center;
 		aspect-ratio: 1;
 		border-right: var(--default-border);
+
+		&:hover {
+			cursor: pointer;
+			background-color: var(--main-color-85);
+		}
 	}
 </style>

@@ -1,19 +1,46 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import Card from '../components/Card.astro';
+
+const items = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20];
 ---
 
 <Layout title="Welcome to Astro.">
 	<header>Martin Sollien</header>
 	<main>
+		<section class="grid grid-cols-20">
+			{items.map((item) => <div class="grid-item">{item}</div>)}
+		</section>
 	</main>
+	<footer>
+		Made by me
+	</footer>
 </Layout>
 
 <style lang="scss">
 	header {
-		margin: 0 100px;
+		margin: 0 6%;
 		padding: 20px 30px;
 		border-left: var(--default-border);
 		border-right: var(--default-border);
+		border-bottom: var(--default-border);
+	}
+
+	footer {
+		display: flex;
+		justify-content: center;
+		margin: 0 6%;
+		padding: 20px 30px;
+		border-left: var(--default-border);
+		border-right: var(--default-border);
+	}
+
+	main {
+		margin: 0 6%;
+	}
+
+	.grid-item {
+		aspect-ratio: 1;
+		border: var(--default-border);
 	}
 </style>

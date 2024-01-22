@@ -15,12 +15,15 @@ const { title } = Astro.props;
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<meta name="generator" content={Astro.generator} />
 		<title>{title}</title>
+		<link rel="preconnect" href="https://fonts.googleapis.com">
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+		<link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
 	</head>
 	<body>
 		<slot />
 	</body>
 </html>
-<style is:global>
+<style is:global lang="scss">
 	:root {
 		--accent: 136, 58, 234;
 		--accent-light: 224, 204, 250;
@@ -31,11 +34,18 @@ const { title } = Astro.props;
 			rgb(var(--accent-light)) 30%,
 			white 60%
 		);
+		--main-color-default: #defcfa;
+		--default-border: 1px solid var(--main-color-default);
 	}
 	html {
-		font-family: system-ui, sans-serif;
+		font-family: "Space Mono", monospace;
+		font-size: 14px;
+		letter-spacing: 1px;
+		color: var(--main-color-default);
 		background: #13151a;
 		background-size: 224px;
+		border-top: var(--default-border);
+		border-bottom: var(--default-border);
 	}
 	code {
 		font-family:

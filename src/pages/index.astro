@@ -4,26 +4,16 @@ import Card from '../components/Card.astro';
 ---
 
 <Layout title="Welcome to Astro.">
+	<header>Martin Sollien</header>
 	<main>
-		<header>Martin Sollien</header>
 	</main>
 </Layout>
 
 <style lang="scss">
-	$red: red;
-
-	main {
-		font-family: monospace;
-		color: #defcfa;
-		letter-spacing: 1.5px;
-		border-top: 1px solid #defcfa;
-		border-bottom: 1px solid #defcfa;
-	}
-
 	header {
 		margin: 0 100px;
 		padding: 20px 30px;
-		border-left: 1px solid #defcfa;
-		border-right: 1px solid #defcfa;
+		border-left: var(--default-border);
+		border-right: var(--default-border);
 	}
 </style>

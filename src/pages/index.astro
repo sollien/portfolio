@@ -1,10 +1,15 @@
 ---
 import Layout from "@/layouts/Layout.astro"
+import { supabase } from "@/lib/supabase"
 
 interface Project {
 	title: string;
 	params: string;
 }
+
+let { data: books } = await supabase
+	.from('books')
+	.select('*')
 
 const projects: Project[] = [
 	{
@@ -23,7 +28,7 @@ const projects: Project[] = [
 		title: "Lift",
 		params: "/projects/lift",
 	}
-];
+]
 ---
 
 <Layout title="Martin Sollien">
@@ -39,6 +44,21 @@ const projects: Project[] = [
 					>
 						{project.title}
 					</a>)
+				}
+			</div>
+		</section>
+		<section>
+			<h2>Books I've read</h2>
+			<div class="books-container">
+				{
+					books && books.map((book) => (
+						<a
+							class="grid-item"
+							href={book.id}
+						>
+							{book.title}
+						</a>
+					))
 				}
 			</div>
 		</section>
@@ -63,7 +83,8 @@ const projects: Project[] = [
 			0px 0px 20px rgba(211, 255, 252, $opacity-1);
 		}
 	}
-	* {
+
+	.grid-item, header, footer, main, section {
 		animation: glow 10s infinite;
 	}
 
@@ -83,6 +104,12 @@ const projects: Project[] = [
 			grid-template-columns: repeat(20, minmax(0, 1fr));
 			border: var(--default-border);
 		}
+
+		.books-container {
+			display: grid;
+			grid-template-columns: repeat(12, minmax(0, 1fr));
+			border: var(--default-border);
+		}
 	}
 
 	.grid-item {
@@ -90,8 +117,12 @@ const projects: Project[] = [
 		justify-content: center;
 		align-items: center;
 		text-align: center;
+		text-overflow: ellipsis;
 		aspect-ratio: 1;
 		border-right: var(--default-border);
+		border-bottom: var(--default-border);
+		overflow: hidden;
+		font-size: 10px;
 
 		&:hover {
 			cursor: pointer;

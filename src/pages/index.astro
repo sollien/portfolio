@@ -4,6 +4,7 @@ import Layout from "../layouts/Layout.astro";
 const projects = [
 	{
 		title: "Cortex",
+		params: "/projects/cortex",
 	},
 	{
 		title: "Plannr",
@@ -22,7 +23,15 @@ const projects = [
 		<section>
 			<h2>Projects</h2>
 			<div class="items-container">
-				{projects.map((project) => <div class="grid-item">{project.title}</div>)}
+				{
+					projects.map((project) => 
+					<a
+						class="grid-item"
+						href={project.params}
+					>
+						{project.title}
+					</a>)
+				}
 			</div>
 		</section>
 	</main>

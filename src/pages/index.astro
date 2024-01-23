@@ -1,19 +1,27 @@
 ---
 import Layout from "../layouts/Layout.astro";
 
-const projects = [
+interface Project {
+	title: string;
+	params: string;
+}
+
+const projects: Project[] = [
 	{
 		title: "Cortex",
 		params: "/projects/cortex",
 	},
 	{
 		title: "Plannr",
+		params: "/projects/plannr",
 	},
 	{
 		title: "Wedding website",
+		params: "/projects/wedding",
 	},
 	{
-		title: "Lift"
+		title: "Lift",
+		params: "/projects/lift",
 	}
 ];
 ---

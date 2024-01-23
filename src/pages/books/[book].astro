@@ -1,0 +1,30 @@
+---
+import Layout from "@/layouts/Layout.astro"
+import { supabase } from "@/lib/supabase"
+
+export async function getStaticPaths() {
+    let { data: books } = await supabase
+        .from('books')
+        .select('*')
+    
+    return books.map((book) => ({
+        params: {
+            book: book.id
+        }
+    }))
+}
+
+const { book } = Astro.params
+
+let { data: bookObject } = await supabase
+    .from('books')
+    .select('*')
+    .eq('id', book)
+    .single()
+---
+
+<Layout>
+    <span>
+        {bookObject.id}
+    </span>
+</Layout>

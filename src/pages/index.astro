@@ -10,6 +10,7 @@ interface Project {
 let { data: books } = await supabase
 	.from('books')
 	.select('*')
+	.order('date_read', { ascending: true })
 
 const projects: Project[] = [
 	{
@@ -117,15 +118,13 @@ const projects: Project[] = [
 	.book-item {
 		@include grid-cell;
 
+		position: relative;
 		justify-content: flex-start;
+		padding: 10px 5px;
 		height: 200px;
 		border-right: var(--default-border);
 		border-top: var(--default-border);
 		text-align: left;
 		writing-mode: vertical-rl;
-		white-space: break-spaces;
-		
-		&:hover {
-		}
 	}
 </style>

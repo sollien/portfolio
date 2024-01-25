@@ -35,7 +35,7 @@ const projects: Project[] = [
 <Layout title="Martin Sollien">
 	<main>
 		<section>
-			<h2>Coding projects</h2>
+			<h2 class="content-header">Coding projects</h2>
 			<div class="items-container">
 				{
 					projects.map((project) => 
@@ -49,7 +49,35 @@ const projects: Project[] = [
 			</div>
 		</section>
 		<section>
-			<h2>Books I've read</h2>
+			<h2 class="content-header">Generative art</h2>
+			<div class="items-container">
+				{
+					projects.map((project) => 
+					<a
+						class="project-item"
+						href={project.params}
+					>
+						{project.title}
+					</a>)
+				}
+			</div>
+		</section>
+		<section>
+			<h2 class="content-header">Photography</h2>
+			<div class="items-container">
+				{
+					projects.map((project) => 
+					<a
+						class="project-item"
+						href={project.params}
+					>
+						{project.title}
+					</a>)
+				}
+			</div>
+		</section>
+		<section>
+			<h2 class="content-header">Books I've read</h2>
 			<div class="books-container">
 				{
 					books && books.map((book) => (
@@ -86,11 +114,6 @@ const projects: Project[] = [
 	}
 
 	section {
-		h2 {
-			padding: 100px 30px 10px 30px;
-			border: var(--default-border);
-		}
-
 		.items-container {
 			display: grid;
 			grid-template-columns: repeat(14, minmax(0, 1fr));

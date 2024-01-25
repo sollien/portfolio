@@ -29,7 +29,7 @@ let { data: bookObject } = await supabase
             <h1>{bookObject.title}</h1>
             <p>{bookObject.author}</p>
         </div>
-        <section>
+        <section class="base-section">
             <dl>
                 <div class="flex row gap-5">
                     <dt>My rating</dt>
@@ -57,17 +57,6 @@ let { data: bookObject } = await supabase
 </Layout>
 
 <style>
-    .content-header {
-        padding: 100px 30px 10px 30px;
-		border: var(--default-border);
-    }
-
-    section {
-        padding: 10px 30px;
-        border-left: var(--default-border);
-        border-right: var(--default-border);
-    }
-
     .rating::after {
         content: "/5";
     }

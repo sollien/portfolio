@@ -26,17 +26,32 @@ let { data: bookObject } = await supabase
 <Layout title={bookObject.title}>
     <main>
         <div class="content-header">
-            <h1>
-                {bookObject.title}
-            </h1>
+            <h1>{bookObject.title}</h1>
             <p>{bookObject.author}</p>
         </div>
         <section>
-            <p class="rating">My rating: {bookObject.my_rating}</p>
-            <p class="rating">Average rating: {bookObject.average_rating}</p>
-            <p>Pages: {bookObject.number_of_pages}</p>
-            <p>Publisher: {bookObject.publisher}</p>
-            <p>Published: {bookObject.publication_year}</p>
+            <dl>
+                <div class="flex row gap-5">
+                    <dt>My rating</dt>
+                    <dd class="rating">{bookObject.my_rating}</dd>
+                </div>
+                <div class="flex row gap-5">
+                    <dt>Average rating</dt>
+                    <dd class="rating">{bookObject.average_rating}</dd>
+                </div>
+                <div class="flex row gap-5">
+                    <dt>Pages</dt>
+                    <dd>{bookObject.number_of_pages}</dd>
+                </div>
+                <div class="flex row gap-5">
+                    <dt>Publisher</dt>
+                    <dd>{bookObject.publisher}</dd>
+                </div>
+                <div class="flex row gap-5">
+                    <dt>Published</dt>
+                    <dd>{bookObject.publication_year ?? "Unknown"}</dd>
+                </div>
+            </dl>
         </section>
     </main>
 </Layout>
@@ -55,5 +70,9 @@ let { data: bookObject } = await supabase
 
     .rating::after {
         content: "/5";
+    }
+
+    dt {
+        color: var(--main-color-40);
     }
 </style>

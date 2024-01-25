@@ -25,21 +25,24 @@ let { data: bookObject } = await supabase
 
 <Layout title={bookObject.title}>
     <main>
-        <h1>
-            {bookObject.title} by {bookObject.author}
-        </h1>
+        <div class="content-header">
+            <h1>
+                {bookObject.title}
+            </h1>
+            <p>{bookObject.author}</p>
+        </div>
         <section>
-            <p>{bookObject.my_rating}</p>
-            <p>{bookObject.publisher}</p>
-            <p>{bookObject.publication_year}</p>
-            <p>{bookObject.average_rating}</p>
-            <p>{bookObject.number_of_pages}</p>
+            <p class="rating">My rating: {bookObject.my_rating}</p>
+            <p class="rating">Average rating: {bookObject.average_rating}</p>
+            <p>Pages: {bookObject.number_of_pages}</p>
+            <p>Publisher: {bookObject.publisher}</p>
+            <p>Published: {bookObject.publication_year}</p>
         </section>
     </main>
 </Layout>
 
 <style>
-    h1 {
+    .content-header {
         padding: 100px 30px 10px 30px;
 		border: var(--default-border);
     }
@@ -48,5 +51,9 @@ let { data: bookObject } = await supabase
         padding: 10px 30px;
         border-left: var(--default-border);
         border-right: var(--default-border);
+    }
+
+    .rating::after {
+        content: "/5";
     }
 </style>

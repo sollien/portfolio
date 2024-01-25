@@ -2,7 +2,7 @@
 import Layout from "@/layouts/Layout.astro"
 import { supabase } from "@/lib/supabase"
 
-export async function getStaticPaths() {
+export async function getStaticPaths(): Promise<{ params: { book: string } }[]> {
     let { data: books } = await supabase
         .from('books')
         .select('*')

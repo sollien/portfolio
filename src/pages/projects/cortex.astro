@@ -1,7 +1,71 @@
 ---
 import Layout from "@/layouts/Layout.astro";
+
+function yearsAndMonths(): string {
+    const start = new Date('2021-01-01')
+	const end = new Date()
+	const yearDiff = end.getFullYear() - start.getFullYear()
+	const monthDiff = end.getMonth() - start.getMonth()
+	const totalMonths = yearDiff * 12 + monthDiff
+	const years = Math.floor(totalMonths / 12)
+	const months = totalMonths % 12
+
+	return `${years} year${years > 1 ? 's' : ''} and ${months} month${months === 1 ? '' : 's'}`
+}
 ---
 
 <Layout title="Cortex">
-
+    <main>
+        <h1 class="content-header">Cortex</h1>
+        <section class="base-section">
+            <p>
+                Cortex is a management tool built in-house for the media agency Starcom. It aims to solve the ever growing
+				complexity of digital marketing, and has grown to be an essential part of the day-to-day operations
+				for the agancy's clients and employees.
+            </p>
+            <br>
+            <h2>Back story</h2>
+            <p>
+                Cortex has been my continuous dev operation for the past {yearsAndMonths()}. The ecosystem for digital
+                marketing grows more and more complex, so the idea behind Cortex is to make it simple to manage campaigns.
+                As simple as possible. I was brought in on the team to create a direction for design, as well 
+                as building to front-end of the application from a ridiculous amount of data through an API layer.
+            </p>
+            <br>
+            <h2>Development</h2>
+			<p>The development process has involved building complex pages that present lots of data.
+                This includes complicated profiles for clients and users, big forms for adding and conveying user input,
+                as well as displaying intricate data across multiple large tables. I've been the desicion maker
+                for choosing the right front-end tech stack for this project.
+            </p>
+            <br>
+            <h2>Design</h2>
+			<p>When I started working on Cortex, there was only a basic design for the application. It more or less only 
+                consisted of an elaborate Java based back-end with some simple HTML and CSS through Thymeleaf templating.
+                My focus with Cortex have since then been to build and leading the design with a focus on presenting
+                and interacting with complex data as simple as possible. I've created a design library for Cortex
+                consisting of a branded color scheme, font types, UI components, both available in development and in Figma.
+			</p>
+            <br>
+            <h2>Tech stack</h2>
+			<div class="flex-wrap-row">
+				<code class="tag">Vue</code>
+				<code class="tag">SCSS</code>
+				<code class="tag">TypeScript</code>
+				<code class="tag">Chart.js</code>
+				<code class="tag">Oruga & Naive UI</code>
+				<code class="tag">GraphQL</code>
+				<code class="tag">Git</code>
+				<code class="tag">Azure DevOps</code>
+				<code class="tag">Sanity</code>
+				<code class="tag">Figma</code>
+			</div>
+        </section>
+    </main>
 </Layout>
+
+<style lang="scss">
+    code::after {
+        content: ',';
+    }
+</style>

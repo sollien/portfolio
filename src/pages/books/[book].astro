@@ -23,8 +23,30 @@ let { data: bookObject } = await supabase
     .single()
 ---
 
-<Layout>
-    <span>
-        {bookObject.id}
-    </span>
+<Layout title={bookObject.title}>
+    <main>
+        <h1>
+            {bookObject.title} by {bookObject.author}
+        </h1>
+        <section>
+            <p>{bookObject.my_rating}</p>
+            <p>{bookObject.publisher}</p>
+            <p>{bookObject.publication_year}</p>
+            <p>{bookObject.average_rating}</p>
+            <p>{bookObject.number_of_pages}</p>
+        </section>
+    </main>
 </Layout>
+
+<style>
+    h1 {
+        padding: 100px 30px 10px 30px;
+		border: var(--default-border);
+    }
+
+    section {
+        padding: 10px 30px;
+        border-left: var(--default-border);
+        border-right: var(--default-border);
+    }
+</style>

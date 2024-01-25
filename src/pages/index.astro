@@ -39,7 +39,7 @@ const projects: Project[] = [
 				{
 					projects.map((project) => 
 					<a
-						class="grid-item"
+						class="project-item"
 						href={project.params}
 					>
 						{project.title}
@@ -53,7 +53,7 @@ const projects: Project[] = [
 				{
 					books && books.map((book) => (
 						<a
-							class="grid-item"
+							class="book-item"
 							href={`/books/${book.id}`}
 						>
 							{book.title}
@@ -66,69 +66,66 @@ const projects: Project[] = [
 </Layout>
 
 <style lang="scss">
-	$opacity-1: 0;
-	$opacity-2: 0.07;
 	$text-glow: #121615;
 
-	@keyframes glow {
-		0% {
-			box-shadow: inset 0px 0px 20px rgba(211, 255, 252, $opacity-1),
-			0px 0px 20px rgba(211, 255, 252, $opacity-1);
-		}
-		50% {
-			box-shadow: inset 0px 0px 20px rgba(211, 255, 252, $opacity-2),
-			0px 0px 20px rgba(211, 255, 252, $opacity-2);
-		}
-		100% {
-			box-shadow: inset 0px 0px 20px rgba(211, 255, 252, $opacity-1),
-			0px 0px 20px rgba(211, 255, 252, $opacity-1);
-		}
-	}
-
-	.grid-item, header, footer, main, section {
-		animation: glow 10s infinite;
-	}
-
-	main {
-		margin: 0 6%;
-	}
-
-	section {
-		h2 {
-			padding: 100px 30px 10px 30px;
-			border-left: var(--default-border);
-			border-right: var(--default-border);
-		}
-
-		.items-container {
-			display: grid;
-			grid-template-columns: repeat(20, minmax(0, 1fr));
-			border: var(--default-border);
-		}
-
-		.books-container {
-			display: grid;
-			grid-template-columns: repeat(12, minmax(0, 1fr));
-			border: var(--default-border);
-		}
-	}
-
-	.grid-item {
+	@mixin grid-cell {
 		display: flex;
 		justify-content: center;
 		align-items: center;
 		text-align: center;
 		text-overflow: ellipsis;
-		aspect-ratio: 1;
-		border-right: var(--default-border);
-		border-bottom: var(--default-border);
 		overflow: hidden;
-		font-size: 10px;
+		font-size: 72%;
 
 		&:hover {
 			cursor: pointer;
 			background-color: var(--main-color-85);
 			text-shadow: 0 0 10px #fff, 0 0 20px #ffffff, 0 0 30px $text-glow, 0 0 40px $text-glow, 0 0 50px $text-glow, 0 0 60px $text-glow, 0 0 70px $text-glow;
+		}
+	}
+
+	section {
+		h2 {
+			padding: 100px 30px 10px 30px;
+			border: var(--default-border);
+		}
+
+		.items-container {
+			display: grid;
+			grid-template-columns: repeat(14, minmax(0, 1fr));
+			margin: 0 30px;
+			border-left: var(--default-border);
+		}
+
+		.books-container {
+			display: flex;
+			flex-direction: row;
+			flex-wrap: wrap-reverse;
+			margin: 0 30px;
+			border-left: var(--default-border);
+		}
+	}
+
+	.project-item {
+		@include grid-cell;
+
+		aspect-ratio: 1;
+		border-right: var(--default-border);
+		border-bottom: var(--default-border);
+	}
+
+	.book-item {
+		@include grid-cell;
+
+		justify-content: flex-start;
+		height: 200px;
+		border-right: var(--default-border);
+		border-top: var(--default-border);
+		text-align: left;
+		writing-mode: vertical-rl;
+		white-space: break-spaces;
+		
+		&:hover {
 		}
 	}
 </style>

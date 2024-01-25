@@ -7,11 +7,11 @@ export async function getStaticPaths() {
         .from('books')
         .select('*')
     
-    return books!.map((book) => ({
+    return books ? books.map((book) => ({
         params: {
             book: book.id
         }
-    })) ?? []
+    })) : []
 }
 
 const { book } = Astro.params

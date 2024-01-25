@@ -61,6 +61,7 @@ const { title } = Astro.props;
 		--main-color-85: #262d2d;
 		--main-color-90: #121615;
 		--default-border: 1px solid var(--main-color-default);
+		--highlight-color-default: #f06e6e;
 	}
 
 	html {
@@ -85,6 +86,18 @@ const { title } = Astro.props;
 		border-left: var(--default-border);
 		border-right: var(--default-border);
 		font-weight: bold;
+	}
+
+	h1, h2 {
+		&::before {
+			content: ">/";
+			color: var(--highlight-color-default);
+		}
+
+		&::after {
+			content: "_";
+			color: var(--highlight-color-default);
+		}
 	}
 
 	footer {

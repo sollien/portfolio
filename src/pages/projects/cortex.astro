@@ -47,25 +47,33 @@ function yearsAndMonths(): string {
                 consisting of a branded color scheme, font types, UI components, both available in development and in Figma.
 			</p>
             <br>
-            <h2>Tech stack</h2>
-			<div class="flex-wrap-row">
-				<code class="tag">Vue</code>
-				<code class="tag">SCSS</code>
-				<code class="tag">TypeScript</code>
-				<code class="tag">Chart.js</code>
-				<code class="tag">Oruga & Naive UI</code>
-				<code class="tag">GraphQL</code>
-				<code class="tag">Git</code>
-				<code class="tag">Azure DevOps</code>
-				<code class="tag">Sanity</code>
-				<code class="tag">Figma</code>
-			</div>
+        </section>
+        <h2 class="content-header">Tech stack</h2>
+        <section class="base-section">            
+            <div class="flex flex-wrap gap-x-10">
+                <code class="tag">Vue</code>
+                <code class="tag">SCSS</code>
+                <code class="tag">TypeScript</code>
+                <code class="tag">Chart.js</code>
+                <code class="tag">Oruga</code>
+                <code class="tag">Naive UI</code>
+                <code class="tag">GraphQL</code>
+                <code class="tag">Git</code>
+                <code class="tag">Azure DevOps</code>
+                <code class="tag">Sanity</code>
+                <code class="tag">Figma</code>
+            </div>
         </section>
     </main>
 </Layout>
 
 <style lang="scss">
-    code::after {
-        content: ',';
+    code {
+        font-size: 4rem;
+        font-family: "Istok Web";
+
+        &:nth-of-type(2n) {
+            color: var(--main-color-40);
+        }
     }
 </style>

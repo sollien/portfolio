@@ -1,7 +1,9 @@
 ---
 import Layout from "@/layouts/Layout.astro"
 import { Image } from "astro:assets"
-import CortexTimeline from '@/assets/images/projects/psm_campaign_timeline_shot.jpg'
+import CortexTimeline from "@/assets/images/projects/psm_campaign_timeline_shot.jpg"
+import CortexSpending from "@/assets/images/projects/cortex_spending.jpg"
+import CortexLogin from "@/assets/images/projects/cortex_login_v2.jpg"
 
 function yearsAndMonths(): string {
     const start = new Date('2021-01-01')
@@ -73,6 +75,11 @@ function yearsAndMonths(): string {
             </div>
         </section>
 		<h2 class="content-header">Gallery</h2>
+		<section class="gallery-section">
+			<Image src={CortexTimeline} alt="Campaign timeline shot of the Cortex application" />
+			<Image src={CortexSpending} alt="Campaign timeline shot of the Cortex application" />
+			<Image src={CortexLogin} alt="Campaign timeline shot of the Cortex application" />
+		</section>
     </main>
 </Layout>
 
@@ -90,5 +97,17 @@ function yearsAndMonths(): string {
 		padding: 20px;
 		max-width: 700px;
 		border: var(--default-border);
+	}
+
+	.gallery-section {
+		display: grid;
+		grid-template-columns: auto auto auto;
+		grid-auto-rows: 1fr;
+		border-left: var(--default-border);
+		border-right: var(--default-border);
+
+		img {
+			align-items: stretch;
+		}
 	}
 </style>

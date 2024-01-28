@@ -1,5 +1,7 @@
 ---
-import Layout from "@/layouts/Layout.astro";
+import Layout from "@/layouts/Layout.astro"
+import { Image } from "astro:assets"
+import CortexTimeline from '@/assets/images/projects/psm_campaign_timeline_shot.jpg'
 
 function yearsAndMonths(): string {
     const start = new Date('2021-01-01')
@@ -24,11 +26,17 @@ function yearsAndMonths(): string {
 				for the agancy's clients and employees.
             </p>
             <br>
+			<Image
+				class="content-image"
+				src={CortexTimeline}
+				alt="Campaign timeline shot of the Cortex application"
+			/>
+			<br>
             <h2>Back story</h2>
             <p>
                 Cortex has been my continuous dev operation for the past {yearsAndMonths()}. The ecosystem for digital
                 marketing grows more and more complex, so the idea behind Cortex is to make it simple to manage campaigns.
-                As simple as possible. I was brought in on the team to create a direction for design, as well 
+                As simple as possible. I was brought in on the team to create a direction for design, as well
                 as building to front-end of the application from a ridiculous amount of data through an API layer.
             </p>
             <br>
@@ -40,7 +48,7 @@ function yearsAndMonths(): string {
             </p>
             <br>
             <h2>Design</h2>
-			<p>When I started working on Cortex, there was only a basic design for the application. It more or less only 
+			<p>When I started working on Cortex, there was only a basic design for the application. It more or less only
                 consisted of an elaborate Java based back-end with some simple HTML and CSS through Thymeleaf templating.
                 My focus with Cortex have since then been to build and leading the design with a focus on presenting
                 and interacting with complex data as simple as possible. I've created a design library for Cortex
@@ -77,4 +85,10 @@ function yearsAndMonths(): string {
             color: var(--main-color-40);
         }
     }
+
+	.content-image {
+		padding: 20px;
+		max-width: 700px;
+		border: var(--default-border);
+	}
 </style>

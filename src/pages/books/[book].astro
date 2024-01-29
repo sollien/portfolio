@@ -6,7 +6,7 @@ export async function getStaticPaths(): Promise<{ params: { book: string } }[]> 
     let { data: books } = await supabase
         .from('books')
         .select('*')
-    
+
     return books ? books.map((book) => ({
         params: {
             book: book.id

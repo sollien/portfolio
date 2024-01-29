@@ -75,7 +75,7 @@ function yearsAndMonths(): string {
             </div>
         </section>
 		<h2 class="content-header">Gallery</h2>
-		<section class="gallery-section">
+		<section class="gallery-section grid-cols- md:grid-cols-3">
 			<Image
 				src={CortexTimeline}
 				alt="Campaign timeline shot of the Cortex application"
@@ -110,7 +110,6 @@ function yearsAndMonths(): string {
 
 	.gallery-section {
 		display: grid;
-		grid-template-columns: auto auto auto;
 		grid-auto-rows: minmax(200px, auto);
 
 		img {

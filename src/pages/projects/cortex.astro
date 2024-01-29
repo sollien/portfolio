@@ -76,9 +76,18 @@ function yearsAndMonths(): string {
         </section>
 		<h2 class="content-header">Gallery</h2>
 		<section class="gallery-section">
-			<Image src={CortexTimeline} alt="Campaign timeline shot of the Cortex application" />
-			<Image src={CortexSpending} alt="Campaign timeline shot of the Cortex application" />
-			<Image src={CortexLogin} alt="Campaign timeline shot of the Cortex application" />
+			<Image
+				src={CortexTimeline}
+				alt="Campaign timeline shot of the Cortex application"
+			/>
+			<Image
+				src={CortexSpending}
+				alt="Campaign timeline shot of the Cortex application"
+			/>
+			<Image
+				src={CortexLogin}
+				alt="Campaign timeline shot of the Cortex application"
+			/>
 		</section>
     </main>
 </Layout>
@@ -102,12 +111,22 @@ function yearsAndMonths(): string {
 	.gallery-section {
 		display: grid;
 		grid-template-columns: auto auto auto;
-		grid-auto-rows: 1fr;
-		border-left: var(--default-border);
-		border-right: var(--default-border);
+		grid-auto-rows: minmax(200px, auto);
 
 		img {
-			align-items: stretch;
+			padding: 20px;
+			height: 100%;
+			aspect-ratio: auto;
+			object-fit: cover;
+			border-right: var(--default-border);
+
+			&:first-of-type {
+				border-left: var(--default-border);
+			}
+
+			&:hover {
+				cursor: pointer;
+			}
 		}
 	}
 </style>

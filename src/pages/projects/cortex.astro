@@ -23,18 +23,21 @@ function yearsAndMonths(): string {
     <main>
         <h1 class="content-header">Cortex</h1>
         <section class="content-section grid grid-cols-1 md:grid-cols-2">
-			<div class="summary-col md:border-r border-r-0">
-				<p>
-					Cortex is a management tool built in-house for the media agency Starcom. It aims to solve the ever growing
-					complexity of digital marketing, and has grown to be an essential part of the day-to-day operations
-					for the agancy's clients and employees.
-				</p>
-				<br>
-				<Image
-					class="content-image"
-					src={CortexTimeline}
-					alt="Campaign timeline shot of the Cortex application"
-				/>
+			<div class="md:border-r border-r-0">
+				<div class="summary-col md:border-r border-r-0">
+					<p>
+						Cortex is a management tool built in-house for the media agency Starcom. It aims to solve the ever growing
+						complexity of digital marketing, and has grown to be an essential part of the day-to-day operations
+						for the agancy's clients and employees.
+					</p>
+					<br>
+				</div>
+				<div class="content-image-container">
+					<Image
+						src={CortexTimeline}
+						alt="Campaign timeline shot of the Cortex application"
+					/>
+				</div>
 			</div>
 			<div class="details-col">
 				<h2>Back story</h2>

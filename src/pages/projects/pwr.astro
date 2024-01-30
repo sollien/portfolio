@@ -1,0 +1,115 @@
+---
+import Layout from "@/layouts/Layout.astro"
+import { Image } from "astro:assets"
+import PwrMockup from "@/assets/images/projects/pwr_phone_mockup.jpg"
+---
+
+<Layout title="Cortex">
+    <main>
+        <h1 class="content-header">Pwr ⚡️</h1>
+        <section class="content-section grid grid-cols-1 md:grid-cols-2">
+			<div class="md:border-r border-r-0">
+				<div class="summary-col">
+					<p>
+						This app was created as a way for me to easily track and progress my powerlifting routine. It includes inputs for 1RM lifts for the routine
+					and then populates the monthly cycle with estimated progression. Data is then stored in a Postgres database.
+					</p>
+					<br>
+					<br>
+					<a
+						href="https://lift-routine.netlify.app/"
+						target="_blank"
+						class="link-button"
+					>
+						Live demo
+					</a>
+					<br>
+					<br>
+				</div>
+				<div class="content-image-container">
+					<Image
+						class="content-image"
+						src={PwrMockup}
+						alt="Campaign timeline shot of the Cortex application"
+					/>
+				</div>
+			</div>
+			<div class="details-col">
+				<h2>Back story</h2>
+				<p>
+					I want to have a simple, tailored tool to track and progress my workout routines. Since start I've tested multiple workout apps,
+				but haven't found any free apps that helps me with progress over time. And progress over time is crucial for powerlifting programming.
+				To solve this issue, I started building my own powerlifting app that fits my needs, which is a way for me to establish and calculate new
+				lifting goals over multiple cycles of training.
+				</p>
+				<br>
+				<h2>Development</h2>
+				<p>This app was developed with Vue as the front-end and Supabase for handling the backend. The app was then deployed via Netlify.
+					A crucial point was for this app to work smoothly on mobile, as I wanted to use it on the go during my workouts. It was therefore
+					crafted with mobile-first in mind with responsive components from Naive UI as building blocks.
+				</p>
+			</div>
+        </section>
+        <h2 class="content-header">Tech stack</h2>
+        <section class="base-section">
+            <div class="flex flex-wrap gap-x-10">
+				<code class="tag">Vue</code>
+				<code class="tag">SCSS</code>
+				<code class="tag">TypeScript</code>
+				<code class="tag">Supabase</code>
+				<code class="tag">Naive UI</code>
+				<code class="tag">Git</code>
+				<code class="tag">Netlify</code>
+            </div>
+        </section>
+    </main>
+</Layout>
+
+<style lang="scss">
+code {
+	font-size: 4rem;
+	font-family: "Istok Web";
+
+	&:nth-of-type(2n) {
+		color: var(--main-color-40);
+	}
+}
+
+.content-section {
+	border-left: var(--default-border);
+	border-right: var(--default-border);
+}
+
+.content-image {
+	width: 100%;
+	max-width: 700px;
+}
+
+.details-col, .summary-col {
+	padding: 10px 30px;
+}
+
+.gallery-section {
+	display: grid;
+	grid-auto-rows: minmax(200px, auto);
+	border-left: var(--default-border);
+	border-right: var(--default-border);
+
+	img {
+		padding: 20px;
+		height: 100%;
+		aspect-ratio: auto;
+		object-fit: cover;
+		border-right: var(--default-border);
+		border-bottom: var(--default-border);
+
+		&:nth-of-type(even) {
+			border-right: none;
+		}
+
+		&:hover {
+			cursor: pointer;
+		}
+	}
+}
+</style>

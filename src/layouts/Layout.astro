@@ -131,6 +131,16 @@ const { title } = Astro.props;
 		max-width: 600px;
 	}
 
+	.link-button {
+		padding: 10px 15px;
+		border: var(--default-border);
+
+		&:hover {
+			box-shadow: inset 0px 0px 20px rgba(211, 255, 252, 0.2),
+			0px 0px 20px rgba(211, 255, 252, 0.2);
+		}
+	}
+
 	footer {
 		display: flex;
 		justify-content: center;
@@ -153,13 +163,19 @@ const { title } = Astro.props;
 			monospace;
 	}
 
-	.book-item, .project-item, header, footer, .content-header {
+	.book-item, .project-item, header, footer, .content-header, .content-image-container, .base-section {
 		animation: glow 10s infinite;
 	}
 
 	.content-header {
 		padding: 100px 30px 10px 30px;
 		border: var(--default-border);
+	}
+
+	.content-image-container {
+		width: 100%;
+		border-top: var(--default-border);
+		border-bottom: var(--default-border);
 	}
 
 	.base-section {

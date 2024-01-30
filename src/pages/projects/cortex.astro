@@ -4,9 +4,10 @@ import { Image } from "astro:assets"
 import CortexTimeline from "@/assets/images/projects/psm_campaign_timeline_shot.jpg"
 import CortexSpending from "@/assets/images/projects/cortex_spending.jpg"
 import CortexLogin from "@/assets/images/projects/cortex_login_v2.jpg"
+import CortexTypefaceLogo from "@/assets/images/projects/cortex_typeface_logo.jpg"
 
 function yearsAndMonths(): string {
-    const start = new Date('2021-01-01')
+    const start = new Date('2020-01-01')
 	const end = new Date()
 	const yearDiff = end.getFullYear() - start.getFullYear()
 	const monthDiff = end.getMonth() - start.getMonth()
@@ -77,69 +78,80 @@ function yearsAndMonths(): string {
             </div>
         </section>
 		<h2 class="content-header">Gallery</h2>
-		<section class="gallery-section grid-cols- md:grid-cols-3">
+		<section class="gallery-section grid-cols- md:grid-cols-2">
 			<Image
+				class="gallery-img"
 				src={CortexTimeline}
 				alt="Campaign timeline shot of the Cortex application"
 			/>
 			<Image
+				class="gallery-img"
 				src={CortexSpending}
-				alt="Campaign timeline shot of the Cortex application"
+				alt="Shot of a spending feature for the Cortex application"
 			/>
 			<Image
+				class="gallery-img"
 				src={CortexLogin}
-				alt="Campaign timeline shot of the Cortex application"
+				alt="Shot of the current login screen in Cortex"
+			/>
+			<Image
+				class="gallery-img"
+				src={CortexTypefaceLogo}
+				alt="Design language shot of a typeface demonstration of Cortex"
 			/>
 		</section>
     </main>
 </Layout>
 
 <style lang="scss">
-    code {
-        font-size: 4rem;
-        font-family: "Istok Web";
+code {
+	font-size: 4rem;
+	font-family: "Istok Web";
 
-        &:nth-of-type(2n) {
-            color: var(--main-color-40);
-        }
-    }
+	&:nth-of-type(2n) {
+		color: var(--main-color-40);
+	}
+}
 
-	.content-section {
-		border-left: var(--default-border);
+.content-section {
+	border-left: var(--default-border);
+	border-right: var(--default-border);
+}
+
+.content-image {
+	width: 100%;
+	max-width: 700px;
+}
+
+.summary-col {
+	padding: 10px 30px;
+}
+
+.details-col {
+	padding: 10px 30px;
+}
+
+.gallery-section {
+	display: grid;
+	grid-auto-rows: minmax(200px, auto);
+	border-left: var(--default-border);
+	border-right: var(--default-border);
+
+	img {
+		padding: 20px;
+		height: 100%;
+		aspect-ratio: auto;
+		object-fit: cover;
 		border-right: var(--default-border);
-	}
+		border-bottom: var(--default-border);
 
-	.content-image {
-		width: 100%;
-		max-width: 700px;
-	}
+		&:nth-of-type(even) {
+			border-right: none;
+		}
 
-	.summary-col {
-		padding: 10px 30px;
-	}
-
-	.details-col {
-		padding: 10px 30px;
-	}
-
-	.gallery-section {
-		display: grid;
-		grid-auto-rows: minmax(200px, auto);
-
-		img {
-			padding: 20px;
-			height: 100%;
-			aspect-ratio: auto;
-			object-fit: cover;
-			border-right: var(--default-border);
-
-			&:first-of-type {
-				border-left: var(--default-border);
-			}
-
-			&:hover {
-				cursor: pointer;
-			}
+		&:hover {
+			cursor: pointer;
 		}
 	}
+}
 </style>

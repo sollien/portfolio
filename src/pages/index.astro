@@ -123,8 +123,9 @@ const projects: Project[] = [
 
 	section {
 		.items-container {
-			display: grid;
-			grid-template-columns: repeat(14, minmax(0, 1fr));
+			display: flex;
+			flex-direction: row;
+			flex-wrap: wrap;
 			margin: 0 30px;
 			border-left: var(--default-border);
 		}

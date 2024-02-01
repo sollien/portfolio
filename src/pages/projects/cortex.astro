@@ -66,7 +66,7 @@ function yearsAndMonths(): string {
         </section>
         <h2 class="content-header">Tech stack</h2>
         <section class="base-section">
-            <div class="flex flex-wrap gap-x-10">
+            <div class="flex flex-wrap gap-x-5 md:gap-x-10 text-[2rem] md:text-[4rem]">
                 <code class="tag">Vue</code>
                 <code class="tag">SCSS</code>
                 <code class="tag">TypeScript</code>
@@ -83,22 +83,18 @@ function yearsAndMonths(): string {
 		<h2 class="content-header">Gallery</h2>
 		<section class="gallery-section grid-cols- md:grid-cols-2">
 			<Image
-				class="gallery-img"
 				src={CortexTimeline}
 				alt="Campaign timeline shot of the Cortex application"
 			/>
 			<Image
-				class="gallery-img"
 				src={CortexSpending}
 				alt="Shot of a spending feature for the Cortex application"
 			/>
 			<Image
-				class="gallery-img"
 				src={CortexLogin}
 				alt="Shot of the current login screen in Cortex"
 			/>
 			<Image
-				class="gallery-img"
 				src={CortexTypefaceLogo}
 				alt="Design language shot of a typeface demonstration of Cortex"
 			/>
@@ -108,7 +104,6 @@ function yearsAndMonths(): string {
 
 <style lang="scss">
 code {
-	font-size: 4rem;
 	font-family: "Istok Web";
 
 	&:nth-of-type(2n) {
@@ -137,20 +132,15 @@ code {
 .gallery-section {
 	display: grid;
 	grid-auto-rows: minmax(200px, auto);
-	border-left: var(--default-border);
-	border-right: var(--default-border);
+	margin-top: -1px;
+	margin-bottom: -1px;
 
 	img {
 		padding: 20px;
 		height: 100%;
 		aspect-ratio: auto;
 		object-fit: cover;
-		border-right: var(--default-border);
-		border-bottom: var(--default-border);
-
-		&:nth-of-type(even) {
-			border-right: none;
-		}
+		border: var(--default-border);
 
 		&:hover {
 			cursor: pointer;

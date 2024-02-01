@@ -2,11 +2,14 @@
 import Layout from "@/layouts/Layout.astro"
 import { Image } from "astro:assets"
 import PwrMockup from "@/assets/images/projects/pwr_phone_mockup.jpg"
+import ContentHeader from "@/components/ContentHeader.astro"
 ---
 
 <Layout title="Cortex">
     <main>
-        <h1 class="content-header">Pwr ⚡️</h1>
+        <ContentHeader>
+			<h1>Pwr ⚡️</h1>
+		</ContentHeader>
         <section class="content-section grid grid-cols-1 md:grid-cols-2">
 			<div class="md:border-r border-r-0">
 				<div class="summary-col">
@@ -49,7 +52,9 @@ import PwrMockup from "@/assets/images/projects/pwr_phone_mockup.jpg"
 				</p>
 			</div>
         </section>
-        <h2 class="content-header">Tech stack</h2>
+		<ContentHeader>
+			<h2>Tech stack</h2>
+		</ContentHeader>
         <section class="base-section">
             <div class="flex flex-wrap gap-x-10">
 				<code class="tag">Vue</code>

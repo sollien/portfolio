@@ -1,0 +1,21 @@
+---
+const { subtitle } = Astro.props
+---
+
+<div class="content-header">
+	<slot/>
+	<span>{subtitle}</span>
+</div>
+
+<style lang="scss" scoped>
+.content-header {
+	display: flex;
+	justify-content: space-between;
+	padding: 100px 30px 10px 30px;
+	border: var(--default-border);
+
+	span {
+		color: var(--main-color-40);
+
+}
+</style>

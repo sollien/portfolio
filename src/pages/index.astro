@@ -1,6 +1,7 @@
 ---
 import Layout from "@/layouts/Layout.astro"
 import { supabase } from "@/lib/supabase"
+import ContentHeader from "@/components/ContentHeader.astro"
 
 interface Project {
 	title: string;
@@ -27,7 +28,9 @@ const projects: Project[] = [
 <Layout title="Martin Sollien">
 	<main>
 		<section>
-			<h2 class="content-header">Coding projects</h2>
+			<ContentHeader>
+				<h2>Coding projects</h2>
+			</ContentHeader>
 			<div class="items-container">
 				{
 					projects.map((project) => 
@@ -41,7 +44,9 @@ const projects: Project[] = [
 			</div>
 		</section>
 		<section>
-			<h2 class="content-header">Generative art</h2>
+			<ContentHeader>
+				<h2>Generative art</h2>
+			</ContentHeader>
 			<div class="items-container">
 				{
 					projects.map((project) => 
@@ -55,7 +60,9 @@ const projects: Project[] = [
 			</div>
 		</section>
 		<section>
-			<h2 class="content-header">Photography</h2>
+			<ContentHeader>
+				<h2>Photography</h2>
+			</ContentHeader>
 			<div class="items-container">
 				{
 					projects.map((project) => 
@@ -69,7 +76,9 @@ const projects: Project[] = [
 			</div>
 		</section>
 		<section>
-			<h2 class="content-header">Books I've read</h2>
+			<ContentHeader subtitle="order::last_read">
+				<h2>Books read</h2>
+			</ContentHeader>
 			<div class="books-container">
 				{
 					books && books.map((book) => (

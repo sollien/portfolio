@@ -1,0 +1,16 @@
+<div class="tabs-container">
+	<slot />
+</div>
+
+<style lang="scss" scoped>
+.tabs-container {
+	display: flex;
+	align-items: center;
+	border-bottom: var(--default-border);
+}
+
+:global(.tab-item) {
+	padding: 10px 30px;
+	border-right: var(--default-border);
+}
+</style>

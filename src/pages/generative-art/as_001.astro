@@ -3,6 +3,8 @@ import Layout from "@/layouts/Layout.astro"
 import ContentHeader from "@/components/ContentHeader.astro"
 import { Image } from "astro:assets"
 import as_001 from "@/assets/images/generative_art/as_001.png"
+import Tabs from "@/components/Tabs.astro"
+import TabItem from "@/components/TabItem.astro"
 
 const code = `
 function setup() {
@@ -75,10 +77,14 @@ function star() {
 					/>
 				</div>
 			</div>
-			<div class="details-col">
-				<h2>Code</h2>
+			<div>
+				<Tabs>
+					<TabItem
+						title="as_001.js"
+					/>
+				</Tabs>
 				<br>
-				<pre>{code}</pre>
+				<pre class="p5-code">{code}</pre>
 			</div>
         </section>
 	</main>
@@ -87,5 +93,9 @@ function star() {
 <style lang="scss" scoped>
 .content-section {
 	flex: 1;
+}
+
+.p5-code {
+	padding: 10px 30px;
 }
 </style>

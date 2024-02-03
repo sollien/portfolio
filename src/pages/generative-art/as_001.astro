@@ -5,6 +5,7 @@ import { Image } from "astro:assets"
 import as_001 from "@/assets/images/generative_art/as_001.png"
 import Tabs from "@/components/Tabs.astro"
 import TabItem from "@/components/TabItem.astro"
+import Code from "@/components/Code.astro"
 
 const code = `
 function setup() {
@@ -84,7 +85,7 @@ function star() {
 					/>
 				</Tabs>
 				<br>
-				<pre class="p5-code">{code}</pre>
+				<Code code={code} />
 			</div>
         </section>
 	</main>

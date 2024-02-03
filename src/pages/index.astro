@@ -3,7 +3,7 @@ import Layout from "@/layouts/Layout.astro"
 import { supabase } from "@/lib/supabase"
 import ContentHeader from "@/components/ContentHeader.astro"
 
-interface Project {
+interface Route {
 	title: string;
 	params: string;
 }
@@ -13,7 +13,7 @@ let { data: books } = await supabase
 	.select('*')
 	.order('date_read', { ascending: true })
 
-const projects: Project[] = [
+const projects: Route[] = [
 	{
 		title: "Cortex",
 		params: "/projects/cortex",
@@ -22,6 +22,13 @@ const projects: Project[] = [
 		title: "Pwr",
 		params: "/projects/pwr",
 	}
+]
+
+const generativeArt: Route[] = [
+	{
+		title: "as_001",
+		params: "/generative-art/as_001",
+	},
 ]
 ---
 
@@ -49,12 +56,12 @@ const projects: Project[] = [
 			</ContentHeader>
 			<div class="items-container">
 				{
-					projects.map((project) => 
+					generativeArt.map((art) => 
 					<a
 						class="project-item"
-						href={project.params}
+						href={art.params}
 					>
-						{project.title}
+						{art.title}
 					</a>)
 				}
 			</div>

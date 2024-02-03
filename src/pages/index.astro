@@ -2,11 +2,9 @@
 import Layout from "@/layouts/Layout.astro"
 import { supabase } from "@/lib/supabase"
 import ContentHeader from "@/components/ContentHeader.astro"
-
-interface Route {
-	title: string;
-	params: string;
-}
+import { Image } from "astro:assets"
+import as_001 from "@/assets/images/generative_art/as_001.png"
+import type { Route, ImageRoute } from "@/interfaces"
 
 let { data: books } = await supabase
 	.from('books')
@@ -24,10 +22,11 @@ const projects: Route[] = [
 	}
 ]
 
-const generativeArt: Route[] = [
+const generativeArt: ImageRoute[] = [
 	{
 		title: "as_001",
 		params: "/generative-art/as_001",
+		src: as_001
 	},
 ]
 ---
@@ -40,7 +39,7 @@ const generativeArt: Route[] = [
 			</ContentHeader>
 			<div class="items-container">
 				{
-					projects.map((project) => 
+					projects.map((project) =>
 					<a
 						class="project-item"
 						href={project.params}
@@ -56,12 +55,16 @@ const generativeArt: Route[] = [
 			</ContentHeader>
 			<div class="items-container">
 				{
-					generativeArt.map((art) => 
+					generativeArt.map((art) =>
 					<a
 						class="project-item"
 						href={art.params}
 					>
-						{art.title}
+						<Image
+							src={art.src}
+							alt="as_001"
+							width="100"
+						/>
 					</a>)
 				}
 			</div>
@@ -72,7 +75,7 @@ const generativeArt: Route[] = [
 			</ContentHeader>
 			<div class="items-container">
 				{
-					projects.map((project) => 
+					projects.map((project) =>
 					<a
 						class="project-item"
 						href={project.params}

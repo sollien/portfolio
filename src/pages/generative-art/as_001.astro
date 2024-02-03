@@ -1,0 +1,91 @@
+---
+import Layout from "@/layouts/Layout.astro"
+import ContentHeader from "@/components/ContentHeader.astro"
+import { Image } from "astro:assets"
+import as_001 from "@/assets/images/generative_art/as_001.png"
+
+const code = `
+function setup() {
+	createCanvas(1000, 1000);
+	noLoop()
+	background(222, 55, 55);
+}
+
+function draw() {
+	starSpawn()
+
+	fill(250, 130, 10);
+	strokeWeight(0)
+	ellipse(500, 500, 200, 200);
+
+	for (x = 0; x < 90; x++) {
+		strokeWeight(1)
+		stroke(0);
+		line(x * 50, 0, 999, x * 50);1
+	}
+	for (y = 0; y < 90; y++) {
+		strokeWeight(1)
+		line(0, y * 50, y * 50, 999);
+
+		strokeWeight(0)
+		fill(0);
+		ellipse(y * 50, y * 50, 15, 15);
+	}
+}
+
+function starSpawn() {
+	for (x = 0; x < 50; x++) {
+		star()
+	}
+}
+
+function star() {
+	let x1 = random(50, 950)
+	let y1 = random(50, 950)
+	let x2 = x1 - 2.5
+	let y2 = y1 - 5
+
+	strokeWeight(1)
+	stroke(240);
+	line(x1, y1, x1, y1 - 10);
+
+	strokeWeight(1)
+	stroke(240);
+	line(x2, y2, x2 + 5, y2);
+
+	strokeWeight(0);
+	fill(240);
+	ellipse(x1, y2, 3, 3);
+}
+`
+
+---
+
+<Layout title="as_001">
+	<main>
+		<ContentHeader>
+			<h1>as_001</h1>
+		</ContentHeader>
+		<section class="content-section grid grid-cols-1 md:grid-cols-2">
+			<div class="md:border-r border-r-0">
+				<div class="content-image-container">
+					<Image
+						src={as_001}
+						alt="Campaign timeline shot of the Cortex application"
+					/>
+				</div>
+			</div>
+			<div class="details-col">
+				<h2>Code</h2>
+				<br>
+				<pre>{code}</pre>
+			</div>
+        </section>
+	</main>
+</Layout>
+
+<style lang="scss" scoped>
+.content-section {
+	flex: 1;
+}
+</style>

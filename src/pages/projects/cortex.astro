@@ -5,6 +5,7 @@ import CortexTimeline from "@/assets/images/projects/psm_campaign_timeline_shot.
 import CortexSpending from "@/assets/images/projects/cortex_spending.jpg"
 import CortexLogin from "@/assets/images/projects/cortex_login_v2.jpg"
 import CortexTypefaceLogo from "@/assets/images/projects/cortex_typeface_logo.jpg"
+import ContentHeader from "@/components/ContentHeader.astro"
 
 function yearsAndMonths(): string {
     const start = new Date('2020-01-01')
@@ -21,7 +22,9 @@ function yearsAndMonths(): string {
 
 <Layout title="Cortex">
     <main>
-        <h1 class="content-header">Cortex</h1>
+		<ContentHeader>
+			<h1>Cortex</h1>
+		</ContentHeader>
         <section class="content-section grid grid-cols-1 md:grid-cols-2">
 			<div class="md:border-r border-r-0">
 				<div class="summary-col md:border-r border-r-0">
@@ -109,11 +112,6 @@ code {
 	&:nth-of-type(2n) {
 		color: var(--main-color-40);
 	}
-}
-
-.content-section {
-	border-left: var(--default-border);
-	border-right: var(--default-border);
 }
 
 .content-image {

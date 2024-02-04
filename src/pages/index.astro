@@ -4,6 +4,8 @@ import { supabase } from "@/lib/supabase"
 import ContentHeader from "@/components/ContentHeader.astro"
 import { Image } from "astro:assets"
 import as_001 from "@/assets/images/generative_art/as_001.png"
+import as_002 from "@/assets/images/generative_art/as_002.png"
+import as_003 from "@/assets/images/generative_art/as_003.png"
 import type { Route, ImageRoute } from "@/interfaces"
 
 let { data: books } = await supabase
@@ -26,8 +28,21 @@ const generativeArt: ImageRoute[] = [
 	{
 		title: "as_001",
 		params: "/generative-art/as_001",
-		src: as_001
+		src: as_001,
+		alt: "as_001"
 	},
+	{
+		title: "as_002",
+		params: "/generative-art/as_002",
+		src: as_002,
+		alt: "as_002"
+	},
+	{
+		title: "as_003",
+		params: "/generative-art/as_003",
+		src: as_003,
+		alt: "as_003"
+	}
 ]
 ---
 
@@ -62,7 +77,7 @@ const generativeArt: ImageRoute[] = [
 					>
 						<Image
 							src={art.src}
-							alt="as_001"
+							alt={art.alt}
 							width="100"
 						/>
 					</a>)

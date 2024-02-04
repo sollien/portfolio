@@ -1,0 +1,99 @@
+---
+import Layout from "@/layouts/Layout.astro"
+import ContentHeader from "@/components/ContentHeader.astro"
+import { Image } from "astro:assets"
+import as_002 from "@/assets/images/generative_art/as_002.png"
+import Tabs from "@/components/Tabs.astro"
+import TabItem from "@/components/TabItem.astro"
+import Code from "@/components/Code.astro"
+
+const code = `
+const resolution = 10;
+
+let velocities;
+
+function setup() {
+  createCanvas(1000, 1000);
+  noLoop();
+  background(255, 247, 209);
+
+  const numCols = width / resolution;
+  const numRows = height / resolution;
+
+  velocities = new Array(numCols);
+
+  for (let i = 0; i < numCols; i++) {
+    velocities[i] = new Array(numRows);
+    for (let j = 0; j < numRows; j++) {
+      velocities[i][j] = createVector(random(-1, 1), random(-1, 1));
+    }
+  }
+}
+
+function draw() {
+  for (let i = 4; i < 95; i++) {
+    for (let j = 5; j < 95; j++) {
+      const x = i * resolution + random(10);
+      const y = j * resolution + random(10);
+
+      const velocity = velocities[i][j];
+      const colorValue = map(velocity.mag(), 0, 1, 0, 255);
+      const coloring = color(colorValue + random(2, 100), colorValue + random(2, 100), 205);
+
+      stroke(0);
+      if (i > 49 && j > 49) {
+        fill(coloring);
+        rect(x, y, resolution + random(10), resolution + random(10));
+      } else if (i > 49 && j < 51) {
+        fill(colorValue + random(100, 200), colorValue + random(2, 100), 145);
+        rect(x, y, resolution + random(10), resolution + random(10));
+      } else if (i < 51 && j < 51) {
+        fill(colorValue + random(2, 100), 205, colorValue + random(2, 100));
+        rect(x, y, resolution + random(10), resolution + random(10));
+      } else if (i < 51 && j > 49) {
+        fill(205, colorValue + random(2, 100), colorValue + random(2, 100));
+        rect(x, y, resolution + random(10), resolution + random(10));
+      }
+    }
+  }
+}
+`
+
+---
+
+<Layout title="as_002">
+	<main>
+		<ContentHeader>
+			<h1>as_002</h1>
+		</ContentHeader>
+		<section class="content-section grid grid-cols-1 md:grid-cols-2">
+			<div class="md:border-r border-r-0">
+				<div class="content-image-container">
+					<Image
+						src={as_002}
+						alt="as_002"
+					/>
+				</div>
+			</div>
+			<div>
+				<Tabs>
+					<TabItem
+						title="as_002.js"
+					/>
+				</Tabs>
+				<br>
+				<Code code={code} />
+			</div>
+        </section>
+	</main>
+</Layout>
+
+<style lang="scss" scoped>
+.content-section {
+	flex: 1;
+}
+
+.p5-code {
+	padding: 10px 30px;
+}
+</style>

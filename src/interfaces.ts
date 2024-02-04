@@ -5,4 +5,5 @@ export interface Route {
 
 export interface ImageRoute extends Route {
 	src: ImageMetadata
+	alt: string
 }

@@ -6,7 +6,8 @@ import { Image } from "astro:assets"
 import as_001 from "@/assets/images/generative_art/as_001.png"
 import as_002 from "@/assets/images/generative_art/as_002.png"
 import as_003 from "@/assets/images/generative_art/as_003.png"
-import type { Route, ImageRoute } from "@/interfaces"
+import * as photo from "@/assets/images/photography/index"
+import type { Route, ImageRoute, ImageType } from "@/interfaces"
 
 let { data: books } = await supabase
 	.from('books')
@@ -46,6 +47,17 @@ const generativeArt: ImageRoute[] = [
 		params: "/generative-art/as_003",
 		src: as_003,
 		alt: "as_003"
+	}
+]
+
+const photography: ImageType[] = [
+	{
+		src: photo.deadTree,
+		alt: "A dead tree standing out amongst other trees"
+	},
+	{
+		src: photo.fjellhaugenSmall,
+		alt: "as_002"
 	}
 ]
 ---
@@ -94,13 +106,12 @@ const generativeArt: ImageRoute[] = [
 			</ContentHeader>
 			<div class="items-container">
 				{
-					projects.map((project) =>
-					<a
-						class="project-item"
-						href={project.params}
-					>
-						{project.title}
-					</a>)
+					photography.map((photo) =>
+					<Image
+						src={photo.src}
+						alt={photo.alt}
+						width="100"
+					/>)
 				}
 			</div>
 		</section>

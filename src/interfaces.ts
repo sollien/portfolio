@@ -3,7 +3,9 @@ export interface Route {
 	params: string
 }
 
-export interface ImageRoute extends Route {
+export interface ImageType {
 	src: ImageMetadata
 	alt: string
 }
+
+export interface ImageRoute extends Route, ImageType {}

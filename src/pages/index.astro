@@ -110,7 +110,7 @@ const photography: ImageType[] = [
 					<Image
 						src={photo.src}
 						alt={photo.alt}
-						width="100"
+						class="photography"
 					/>)
 				}
 			</div>
@@ -210,5 +210,14 @@ const photography: ImageType[] = [
 		border: var(--default-border);
 		text-align: left;
 		writing-mode: vertical-rl;
+	}
+
+	.photography {
+		padding: 10px;
+		height: 130px;
+		width: auto;
+		margin: -1px;
+		margin-right: 0;
+		border: var(--default-border);
 	}
 </style>

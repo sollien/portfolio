@@ -57,8 +57,76 @@ const photography: ImageType[] = [
 	},
 	{
 		src: photo.fjellhaugenSmall,
-		alt: "as_002"
-	}
+		alt: "Lake by Fjellhaugen"
+	},
+	{
+		src: photo.folgefonnaBaatSmall,
+		alt: "A boat in a lake by Folgefonna"
+	},
+	{
+		src: photo.laatefossen1Small,
+		alt: "Låtefossen and a bridge seen from a river"
+	},
+	{
+		src: photo.folgefonnaFjellSmall,
+		alt: "Mountains by Folgefonna"
+	},
+	{
+		src: photo.laatefossen2Small,
+		alt: "Låtefossen seen from the side"
+	},
+	{
+		src: photo.folgefonnaSteinerSmall,
+		alt: "A heap of stones in a lake by Folgefonna"
+	},
+	{
+		src: photo.oceanNeedles,
+		alt: "The rock needles by Cannon Beach"
+	},
+	{
+		src: photo.hotAirBalloonSmall,
+		alt: "Air balloon above Grünerløkka in Oslo"
+	},
+	{
+		src: photo.saltholmen1,
+		alt: "Cabins by Saltholmen in Råde"
+	},
+	{
+		src: photo.latourellFallsSmall,
+		alt: "Latourell falls in Oregon"
+	},
+	{
+		src: photo.latourellFallsDistanceSmall,
+		alt: "Latourell falls in Oregon from a distance"
+	},
+	{
+		src: photo.saltholmen2Small,
+		alt: "Cabins and sunset by Saltholmen in Råde"
+	},
+	{
+		src: photo.mbSmall,
+		alt: "Old Mercedes-Benz"
+	},
+	{
+		src: photo.osloEkeberg,
+		alt: "Oslo city center seen from Ekeberg"
+	},
+	{
+		src: photo.starSkyGCSmall,
+		alt: "Starry night sky"
+	},
+	{
+		src: photo.powerLinesSmall,
+		alt: "Power lines by Trilium lakes in Oregon"
+	},
+	{
+		src: photo.surveyorSmall,
+		alt: "Beat down Surveyor car in Seattle"
+	},
+	{
+		src: photo.spaceNeedle,
+		alt: "The Space Needle in Seattle seen from below"
+	},
 ]
 ---
 
@@ -133,7 +201,15 @@ const photography: ImageType[] = [
 			</div>
 		</section>
 	</main>
+	<script>
+		const photographies = document.querySelectorAll(".photography");
+
+		photographies.forEach((photography) => {
+			photography.addEventListener('click', () => {})
+		})
+	</script>
 </Layout>
+
 
 <style lang="scss">
 	$text-glow: #121615;
@@ -218,6 +294,7 @@ const photography: ImageType[] = [
 		width: auto;
 		margin: -1px;
 		margin-right: 0;
+		margin-bottom: 0;
 		border: var(--default-border);
 	}
 </style>

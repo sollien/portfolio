@@ -9,11 +9,6 @@ import as_003 from "@/assets/images/generative_art/as_003.png"
 import * as photo from "@/assets/images/photography/index"
 import type { Route, ImageRoute, ImageType } from "@/interfaces"
 
-let { data: books } = await supabase
-	.from('books')
-	.select('*')
-	.order('date_read', { ascending: true })
-
 const projects: Route[] = [
 	{
 		title: "Cortex",
@@ -128,6 +123,11 @@ const photography: ImageType[] = [
 		alt: "The Space Needle in Seattle seen from below"
 	},
 ]
+
+let { data: books } = await supabase
+	.from('books')
+	.select('*')
+	.order('date_read', { ascending: true })
 ---
 
 <Layout title="Martin Sollien">

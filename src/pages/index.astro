@@ -213,88 +213,94 @@ let { data: books } = await supabase
 
 
 <style lang="scss">
-	$text-glow: #121615;
+$text-glow: #121615;
 
-	@mixin grid-cell {
+@mixin grid-cell {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	text-align: center;
+	text-overflow: ellipsis;
+	overflow: hidden;
+	font-size: 72%;
+
+	&:hover {
+		cursor: pointer;
+		background-color: var(--main-color-85);
+		text-shadow:
+		0 0 10px #fff,
+		0 0 20px #ffffff,
+		0 0 30px $text-glow,
+		0 0 40px $text-glow,
+		0 0 50px $text-glow,
+		0 0 60px $text-glow,
+		0 0 70px $text-glow;
+	}
+}
+
+@mixin border-offset {
+	margin: -1px;
+}
+
+@mixin border-y-offset {
+	margin-bottom: -1px;
+	margin-top: -1px;
+}
+
+section {
+	.items-container {
 		display: flex;
-		justify-content: center;
-		align-items: center;
-		text-align: center;
-		text-overflow: ellipsis;
-		overflow: hidden;
-		font-size: 72%;
-
-		&:hover {
-			cursor: pointer;
-			background-color: var(--main-color-85);
-			text-shadow:
-			0 0 10px #fff,
-			0 0 20px #ffffff,
-			0 0 30px $text-glow,
-			0 0 40px $text-glow,
-			0 0 50px $text-glow,
-			0 0 60px $text-glow,
-			0 0 70px $text-glow;
-		}
+		flex-direction: row;
+		flex-wrap: wrap;
+		margin: 0 10px;
+		border-left: var(--default-border);
 	}
 
-	@mixin border-offset {
-		margin: -1px;
+	.books-container {
+		display: flex;
+		flex-direction: row;
+		flex-wrap: wrap-reverse;
+		gap: 1px;
+		margin: 0 10px;
+		border-left: var(--default-border);
 	}
+}
 
-	@mixin border-y-offset {
-		margin-bottom: -1px;
-		margin-top: -1px;
+.project-item {
+	@include grid-cell;
+
+	margin-top: -1px;
+	margin-bottom: -1px;
+	min-height: 100px;
+	width: 100px;
+	border: var(--default-border);
+}
+
+.book-item {
+	@include grid-cell;
+	@include border-offset;
+
+	position: relative;
+	justify-content: flex-start;
+	padding: 10px 5px;
+	height: 200px;
+	border: var(--default-border);
+	text-align: left;
+	writing-mode: vertical-rl;
+}
+
+.photography {
+	padding: 10px;
+	width: auto;
+	margin: -1px;
+	margin-right: 0;
+	margin-bottom: 0;
+	border: var(--default-border);
+}
+
+@media (min-width: 768px) {
+	.items-container, .books-container {
+		margin: 0 30px;
 	}
-
-	section {
-		.items-container {
-			display: flex;
-			flex-direction: row;
-			flex-wrap: wrap;
-			margin: 0 30px;
-			border-left: var(--default-border);
-		}
-
-		.books-container {
-			display: flex;
-			flex-direction: row;
-			flex-wrap: wrap-reverse;
-			gap: 1px;
-			margin: 0 30px;
-			border-left: var(--default-border);
-		}
-	}
-
-	.project-item {
-		@include grid-cell;
-
-		margin-top: -1px;
-		margin-bottom: -1px;
-		min-height: 100px;
-		width: 100px;
-		border: var(--default-border);
-	}
-
-	.book-item {
-		@include grid-cell;
-		@include border-offset;
-
-		position: relative;
-		justify-content: flex-start;
-		padding: 10px 5px;
-		height: 200px;
-		border: var(--default-border);
-		text-align: left;
-		writing-mode: vertical-rl;
-	}
-
-	.photography {
-		padding: 10px;
-		width: auto;
-		margin: -1px;
-		margin-right: 0;
-		margin-bottom: 0;
-		border: var(--default-border);
-	}
+}
 </style>

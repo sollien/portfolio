@@ -124,9 +124,9 @@ const photography: ImageType[] = [
 	},
 ]
 
-let { data: books } = await supabase
+const { data: books } = await supabase
 	.from('books')
-	.select('*')
+	.select('id,title')
 	.order('date_read', { ascending: true })
 ---
 

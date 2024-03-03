@@ -19,9 +19,10 @@ const { subtitle } = Astro.props
 		content: ">>>\00a0";
 	}
 }
+
 .content-header {
 	display: flex;
-	justify-content: space-between;
+	flex-direction: column;
 	padding: 100px 30px 10px 30px;
 	border: var(--default-border);
 
@@ -29,9 +30,16 @@ const { subtitle } = Astro.props
 		color: var(--main-color-40);
 
 		&::before {
-			content: "";
+			content: "\00a0\00a0\00a0\00a0";
 			animation: arrows 2s infinite;
 		}
+	}
+}
+
+@media (min-width: 768px) {
+	.content-header {
+		flex-direction: row;
+		justify-content: space-between;
 	}
 }
 </style>

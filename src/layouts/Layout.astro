@@ -25,11 +25,7 @@ const { title } = Astro.props;
 		<ViewTransitions />
 	</head>
 	<body transition:animate={fade({ duration: '0.4s' })}>
-		<header><a href="/">Martin Sollien</a></header>
 		<slot />
-		<footer>
-			Made by me
-		</footer>
 	</body>
 </html>
 
@@ -88,6 +84,10 @@ $opacity-2: 0.08;
 	--highlight-color-default: hsl(98, 100%, 68%);
 }
 
+.main-400 {
+	color: var(--main-color-40);
+}
+
 html {
 	display: flex;
 	justify-content: center;
@@ -112,18 +112,9 @@ main {
 	flex-direction: column;
 	flex: 1;
 	height: 100%;
-	margin: 0 2%;
 }
 
-header {
-	margin: 0 2%;
-	padding: 20px 30px;
-	border-left: var(--default-border);
-	border-right: var(--default-border);
-	font-weight: bold;
-}
-
-h1, h2 {
+h1:not(header h1), h2 {
 	&::before {
 		content: ">/";
 		color: var(--highlight-color-default);
@@ -144,7 +135,6 @@ p {
 	display: block;
 	width: 100%;
 	padding: 10px 15px;
-	border: var(--default-border);
 	background-color: var(--highlight-color-default);
 	color: var(--main-color-90);
 	font-weight: 600;
@@ -177,7 +167,7 @@ code {
 		monospace;
 }
 
-.book-item, .project-item, header, footer, .content-header, .content-image-container, .base-section {
+.book-item, .project-item, footer, .content-header, .content-image-container, .base-section {
 	animation: glow 10s infinite;
 }
 
@@ -210,11 +200,5 @@ code {
 	padding: 10px 30px;
 	border-left: var(--default-border);
 	border-right: var(--default-border);
-}
-
-@media (min-width: 768px) {
-	header, footer, main {
-		margin: 0 6%;
-	}
 }
 </style>

@@ -2,6 +2,7 @@
 import Layout from "@/layouts/Layout.astro"
 import { supabase } from "@/lib/supabase"
 import ContentHeader from "@/components/ContentHeader.astro"
+import CardLink from "@/components/CardLink.astro"
 import { Image } from "astro:assets"
 import as_001 from "@/assets/images/generative_art/as_001.png"
 import as_002 from "@/assets/images/generative_art/as_002.png"
@@ -64,13 +65,11 @@ const { data: books } = await supabase
 				</ContentHeader>
 				<div class="items-container mx-3 lg:mx-0 lg:mr-3">
 					<div class="grid lg:grid-cols-8 lg:gap-4">
-						<span class="text-xs py-5 main-400 lg:col-span-2 hidden lg:grid">2021 – Present</span>
-						<a
-							class="flex-col project-item col-span-6 !hidden lg:!block"
+						<CardLink
+							title="Senior UX developer @ Publicis"
+							yearSpan="2021 – Present"
 							href="https://www.publicis.no/"
-							target="_blank"
 						>
-							<h3 class="text-lg px-5 pt-5">Senior UX developer @ Publicis</h3>
 							<h4 class="px-5 text-base main-400">Front-end developer</h4>
 							<p class="text-sm main-400 mt-5 px-5">I have designed, devloped and maintained Cortex – a large data-driven web application
 								meant to help our users (both internal and external) make better ad campaigns.
@@ -85,42 +84,14 @@ const { data: books } = await supabase
 								<code class="tag">Sanity</code>
 								<code class="tag">Figma</code>
 							</div>
-						</a>
-						<div
-							class="flex-col project-item col-span-6 lg:!hidden"
-						>
-							<span class="text-xs pt-5 px-5 main-400">2021 – 2024</span>
-							<h3 class="text-lg px-5">Senior UX developer @ Publicis</h3>
-							<p class="text-sm main-400 mt-5 px-5">I have designed, devloped and maintained Cortex – a large data-driven web application
-								meant to help our users (both internal and external) make better ad campaigns.
-								Cortex provides a way to manage campaigns, budgets, and analytics in real time with ease.
-							</p>
-							<div class="flex flex-wrap gap-x-2 text-base my-5 px-5">
-								<code class="tag">Vue</code>
-								<code class="tag">HTML</code>
-								<code class="tag">SCSS</code>
-								<code class="tag">TypeScript</code>
-								<code class="tag">GraphQL</code>
-								<code class="tag">Sanity</code>
-								<code class="tag">Figma</code>
-							</div>
-							<a
-								href="https://www.publicis.no/"
-								target="_blank"
-								class="link-button mb-5"
-							>
-								VISIT SITE
-							</a>
-						</div>
+						</CardLink>
 					</div>
 					<div class="grid lg:grid-cols-8 lg:gap-4">
-						<span class="text-xs py-5 main-400 lg:col-span-2 hidden lg:grid">2017 – 2020</span>
-						<a
-							class="flex-col project-item col-span-6 !hidden lg:!block"
+						<CardLink
+							title="SEO advisor @ Publicis Starcom"
+							yearSpan="2017 – 2020"
 							href="https://www.publicis.no/"
-							target="_blank"
 						>
-							<h3 class="text-lg px-5 pt-5">SEO advisor @ Publicis Starcom</h3>
 							<p class="text-sm main-400 mt-5 px-5">
 								I worked SEO, both technical and on-page,
 								which resulted in improved organic traffic for many clients.
@@ -135,43 +106,14 @@ const { data: books } = await supabase
 								<code class="tag">Analytics</code>
 								<code class="tag">Data Studio</code>
 							</div>
-						</a>
-						<div
-							class="flex-col project-item col-span-6 lg:!hidden"
-						>
-							<span class="text-xs pt-5 px-5 main-400">2017 – 2020</span>
-							<h3 class="text-lg px-5">SEO advisor @ Publicis Starcom</h3>
-							<p class="text-sm main-400 mt-5 px-5">
-								I worked SEO, both technical and on-page SEO,
-								which resulted in improved organic traffic.
-								I've had the pleasure of working with a wide range of clients,
-								such as Komplett, PSA Groupe (Peugeot, Citroën, DS), Takeda, and many more.
-							</p>
-							<div class="flex flex-wrap gap-x-2 text-base my-5 px-5">
-								<code class="tag">HTML</code>
-								<code class="tag">JavaScript</code>
-								<code class="tag">Search Console</code>
-								<code class="tag">Screaming Frog</code>
-								<code class="tag">Analytics</code>
-								<code class="tag">Data Studio</code>
-							</div>
-							<a
-								href="https://www.publicis.no/"
-								target="_blank"
-								class="link-button mb-5"
-							>
-								VISIT SITE
-							</a>
-						</div>
+						</CardLink>
 					</div>
 					<div class="grid lg:grid-cols-8 lg:gap-4">
-						<span class="text-xs py-5 main-400 lg:col-span-2 hidden lg:grid">2015 – 2017</span>
-						<a
-							class="flex-col project-item col-span-6 !hidden lg:!block"
+						<CardLink
+							title="Creative @ Publicis Starcom"
+							yearSpan="2015 – 2017"
 							href="https://www.publicis.no/"
-							target="_blank"
 						>
-							<h3 class="text-lg px-5 pt-5">Creative @ Publicis Starcom</h3>
 							<p class="text-sm main-400 mt-5 px-5">
 								Made and presented creative ideas for ad campaigns as a copywriter together
 								in team with an art director. Worked with producers and strategists to ensure
@@ -184,74 +126,21 @@ const { data: books } = await supabase
 								<code class="tag">Word</code>
 								<code class="tag">Old school pen and paper</code>
 							</div>
-						</a>
-						<div
-							class="flex-col project-item col-span-6 lg:!hidden"
-						>
-							<span class="text-xs pt-5 px-5 main-400">2017 – 2020</span>
-							<h3 class="text-lg px-5">SEO advisor @ Publicis Starcom</h3>
-							<p class="text-sm main-400 mt-5 px-5">
-								I worked SEO, both technical and on-page SEO,
-								which resulted in improved organic traffic.
-								I've had the pleasure of working with a wide range of clients,
-								such as Komplett, PSA Groupe (Peugeot, Citroën, DS), Takeda, and many more.
-							</p>
-							<div class="flex flex-wrap gap-x-2 text-base my-5 px-5">
-								<code class="tag">HTML</code>
-								<code class="tag">JavaScript</code>
-								<code class="tag">Search Console</code>
-								<code class="tag">Screaming Frog</code>
-								<code class="tag">Analytics</code>
-								<code class="tag">Data Studio</code>
-							</div>
-							<a
-								href="https://www.publicis.no/"
-								target="_blank"
-								class="link-button mb-5"
-							>
-								VISIT SITE
-							</a>
-						</div>
+						</CardLink>
 					</div>
 					<div class="grid lg:grid-cols-8 lg:gap-4">
-						<span class="text-xs py-5 main-400 lg:col-span-2 hidden lg:grid">2012 – 2015</span>
-						<div
-							class="flex-col project-item col-span-6 !hidden lg:!block"
-							onclick="openLink()"
+						<CardLink
+							title="B.A. Creative writing @ Westerdals Oslo ACT"
+							yearSpan="2012 – 2015"
+							href="https://www.kristiania.no/en/schools/school-of-arts-design-and-media/westerdals-department-of-creativity-storytelling-and-design/"
 						>
-							<a
-								class="text-lg"
-								href="https://www.publicis.no/"
-								target="_blank"
-							>
-								<p class="px-5 pt-5">B.A. Creative writing @ Westerdals Oslo ACT</p>
-							</a>
 							<p class="text-sm main-400 mt-5 px-5 pb-5">
 								Studied writing across a range of styles, structured into three main categories:
 								literary, copy, and journalistic writing. Collaborated with other creative students,
 								such as filmmakers, art directors, and graphic designers to exoplore and create cool things.
 								Westerdals is now a part of Kristiania, but back then it was its own school.
 							</p>
-						</a>
-						<div
-							class="flex-col project-item col-span-6 lg:!hidden"
-						>
-							<span class="text-xs pt-5 px-5 main-400">2012 – 2015</span>
-							<h3 class="text-lg px-5">B.A. Creative writing @ Westerdals Oslo ACT</h3>
-							<p class="text-sm main-400 mt-5 px-5 pb-5">
-								Studied writing across a range of styles, structured into three main categories:
-								literary, copy, and journalistic writing. Collaborated with other creative students,
-								such as filmmakers, art directors, and graphic designers to exoplore and create cool things.
-								Westerdals is now a part of Kristiania, but back then it was its own school.
-							</p>
-							<a
-								href="https://www.kristiania.no/en/schools/school-of-arts-design-and-media/westerdals-department-of-creativity-storytelling-and-design/"
-								target="_blank"
-								class="link-button mb-5"
-							>
-								VISIT SITE
-							</a>
-						</div>
+						</CardLink>
 					</div>
 				</div>
 			</section>
@@ -349,7 +238,7 @@ $text-glow: #121615;
 		cursor: pointer;
 		background-color: var(--main-color-85);
 
-		h3 {
+		a {
 			text-shadow:
 			0 0 10px #fff,
 			0 0 20px #ffffff,
@@ -393,15 +282,6 @@ section {
 		margin: 0 10px;
 		border-left: var(--default-border);
 	}
-}
-
-.project-item {
-	@include grid-cell;
-
-	margin-top: -1px;
-	width: 100%;
-	border: var(--default-border);
-	transition: 0.2s ease-in-out;
 }
 
 .book-item {

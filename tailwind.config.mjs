@@ -5,6 +5,9 @@ export default {
 		extend: {
 			gridTemplateColumns: {
 				"20": "repeat(20, minmax(0, 1fr))",
+			},
+			backgroundColor: {
+				"main-850": "#262d2d"
 			}
 		},
 	},

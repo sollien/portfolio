@@ -1,0 +1,37 @@
+---
+const { href, title, yearSpan } = Astro.props
+---
+
+<span class="text-xs py-5 main-400 lg:col-span-2 hidden lg:grid">{ yearSpan }</span>
+<div
+	class="relative flex-col project-item col-span-6 -mt-px lg:hover:bg-main-850"
+>
+	<p class="text-xs pt-5 px-5 main-400 lg:hidden">{ yearSpan }</p>
+	<a class="text-lg text-glow">
+		<p class="px-5 lg:pt-5">{ title }</p>
+	</a>
+	<slot />
+	<a
+		href={href}
+		target="_blank"
+		class="link-button mb-5 lg:!hidden"
+	>
+		VISIT SITE
+	</a>
+	<a
+		href={href}
+		target="_blank"
+		class="absolute top-0 left-0 w-full h-full hidden lg:block"
+	/>
+</div>
+
+<style lang="scss">
+.project-item {
+	border: var(--default-border);
+	transition: 0.2s ease-in-out;
+
+	&:hover {
+		cursor: pointer;
+	}
+}
+</style>

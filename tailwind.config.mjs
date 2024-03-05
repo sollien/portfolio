@@ -8,6 +8,9 @@ export default {
 			},
 			backgroundColor: {
 				"main-850": "#262d2d"
+			},
+			borderColor: {
+				"main-default": "#defcfa"
 			}
 		},
 	},

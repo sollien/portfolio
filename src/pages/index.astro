@@ -3,35 +3,14 @@ import Layout from "@/layouts/Layout.astro"
 import ContentHeader from "@/components/ContentHeader.astro"
 import CardLink from "@/components/CardLink.astro"
 import ImageCardLink from "@/components/ImageCardLink.astro"
-import { Image } from "astro:assets"
-import as_001 from "@/assets/images/generative_art/as_001.png"
-import as_002 from "@/assets/images/generative_art/as_002.png"
-import as_003 from "@/assets/images/generative_art/as_003.png"
 import CampaignTimeline from "@/assets/images/projects/psm_campaign_timeline_shot.jpg"
-import type { ImageRoute } from "@/interfaces"
-
-const generativeArt: ImageRoute[] = [
-	{
-		title: "as_001",
-		params: "/generative-art/as_001",
-		src: as_001,
-		alt: "as_001"
-	},
-	{
-		title: "as_002",
-		params: "/generative-art/as_002",
-		src: as_002,
-		alt: "as_002"
-	},
-	{
-		title: "as_003",
-		params: "/generative-art/as_003",
-		src: as_003,
-		alt: "as_003"
-	}
-]
+import SeoDashboard from "@/assets/images/projects/seo_dashboard.jpg"
+import PwrPhoneShot from "@/assets/images/projects/pwr_phone_mockup.jpg"
 ---
-
+<div>
+	<div class="top-animation" />
+	<div class="bottom-animation" />
+</div>
 <Layout title="Martin Sollien">
 	<div class="flex flex-col lg:flex-row px-7 gap-10 lg:px-20 relative">
 		<header class="flex flex-col w-full lg:w-[40%] py-12 lg:py-40 lg:sticky lg:top-0 max-h-screen">
@@ -112,7 +91,7 @@ const generativeArt: ImageRoute[] = [
 							</div>
 						</CardLink>
 					</div>
-					<div class="grid lg:grid-cols-8 lg:gap-4">
+					<div class="[&_.project-item]:-mb-px grid lg:grid-cols-8 lg:gap-4">
 						<CardLink
 							title="B.A. Creative writing"
 							company="Westerdals"
@@ -145,6 +124,51 @@ const generativeArt: ImageRoute[] = [
 							complexity of digital marketing, and has grown to be an essential part of the day-to-day operations
 							for the agancy's clients and employees.
 						</p>
+						<div class="flex flex-wrap gap-x-2 text-base pt-5 lg:pt-0 px-5">
+							<code class="tag">Vue</code>
+							<code class="tag">SCSS</code>
+							<code class="tag">TypeScript</code>
+							<code class="tag">Naive UI</code>
+							<code class="tag">GraphQL</code>
+							<code class="tag">Sanity</code>
+							<code class="tag">Figma</code>
+						</div>
+					</ImageCardLink>
+					<ImageCardLink
+						title="SEO dashboard"
+						href="https://dribbble.com/shots/6576671-SEO-dashboard-Data-Studio"
+						src={SeoDashboard}
+						alt="Client SEO dashboard shot"
+					>
+						<p class="text-sm main-400 mt-5 px-5 lg:pb-5">
+							Designed and implemented a SEO dashboard that takes in data from
+							Google Search Console and Analytics and presents it in a user-friendly way.
+							Used for multiple clients to gain a deeper understanding of their organic
+							traffic.
+						</p>
+						<div class="flex flex-wrap gap-x-2 text-base pt-5 lg:pt-0 px-5">
+							<code class="tag">Search Console</code>
+							<code class="tag">Analytics</code>
+							<code class="tag">Data Studio</code>
+						</div>
+					</ImageCardLink>
+					<ImageCardLink
+						title="Pwr powerlifting app"
+						href="https://lift-routine.netlify.app/"
+						src={PwrPhoneShot}
+						alt="Client SEO dashboard shot"
+					>
+						<p class="text-sm main-400 mt-5 px-5 lg:pb-5">
+							Sometimes calculating powerlifting routines can be tedious. This is a simple
+							application for personal use that takes in 1RM weight and outputs a progressive monthly routine.
+						</p>
+						<div class="flex flex-wrap gap-x-2 text-base pt-5 lg:pt-0 px-5">
+							<code class="tag">Vue</code>
+							<code class="tag">SCSS</code>
+							<code class="tag">TypeScript</code>
+							<code class="tag">Supabase</code>
+							<code class="tag">Naive UI</code>
+						</div>
 					</ImageCardLink>
 				</div>
 			</section>
@@ -155,6 +179,21 @@ const generativeArt: ImageRoute[] = [
 
 <style lang="scss">
 $text-glow: #121615;
+
+@keyframes television {
+	0% {
+		opacity: 1;
+		transform: scaleX(0)
+	}
+	50% {
+		transform: scaleX(1);
+		transform: scaleY(1);
+	}
+	100% {
+		opacity: 1;
+		transform: scaleY(0);
+	}
+}
 
 @mixin grid-cell {
 	display: flex;
@@ -185,6 +224,31 @@ $text-glow: #121615;
 @mixin border-y-offset {
 	margin-bottom: -1px;
 	margin-top: -1px;
+}
+
+.top-animation {
+	opacity: 0;
+	position: fixed;
+	top: 0;
+	height: 50vh;
+	width: 100%;
+	background-color: var(--main-color-90);
+	border-bottom: var(--default-border);
+	z-index: 10;
+	animation: television 5s linear;
+}
+
+.bottom-animation {
+	opacity: 0;
+	position: fixed;
+	top: 50%;
+	height: 50vh;
+	width: 100%;
+	background-color: var(--main-color-90);
+	border-top: var(--default-border);
+	z-index: 10;
+	transform-origin: 0 100%;
+	animation: television 5s linear;
 }
 
 code {

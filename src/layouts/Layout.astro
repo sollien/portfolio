@@ -24,7 +24,10 @@ const { title } = Astro.props;
 		<link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible&family=Istok+Web&display=swap" rel="stylesheet">
 		<ViewTransitions />
 	</head>
-	<body transition:animate={fade({ duration: '0.4s' })}>
+	<body
+		transition:animate={fade({ duration: '0.4s' })}
+		class="relative"
+	>
 		<slot />
 	</body>
 </html>

@@ -6,6 +6,7 @@ import ImageCardLink from "@/components/ImageCardLink.astro"
 import CampaignTimeline from "@/assets/images/projects/psm_campaign_timeline_shot.jpg"
 import SeoDashboard from "@/assets/images/projects/seo_dashboard.jpg"
 import PwrPhoneShot from "@/assets/images/projects/pwr_phone_mockup.jpg"
+import Footer from "@/components/Footer.astro"
 ---
 <Layout title="Martin Sollien">
 	<div class="w-full">
@@ -18,12 +19,15 @@ import PwrPhoneShot from "@/assets/images/projects/pwr_phone_mockup.jpg"
 		id="main-content"
 		class="flex flex-col lg:flex-row px-7 gap-10 lg:px-20 relative"
 	>
-		<header class="flex flex-col w-full lg:w-[40%] py-12 lg:py-40 lg:sticky lg:top-0 max-h-screen">
-			<h1 class="font-bold text-3xl mb-4 lg:mb-8">Martin Sollien</h1>
-			<h2 class="text-xl mb-4">Senior UX developer</h2>
-			<p class="main-400">I'm a developer in Oslo that like to use my creativity to build cool stuff.</p>
-		</header>
-		<main class="py-12 lg:py-40">
+		<div class="flex flex-col justify-between w-full lg:w-[40%] py-12 lg:py-40 lg:sticky lg:top-0 max-h-screen">
+			<header class="flex flex-col">
+				<h1 class="font-bold text-3xl mb-4 lg:mb-8">Martin Sollien</h1>
+				<h2 class="text-xl mb-4">Senior UX developer</h2>
+				<p class="main-400">I'm a developer in Oslo that like to use my creativity to build cool stuff.</p>
+			</header>
+			<Footer />
+		</div>
+		<main class="pb-12 lg:py-40">
 			<section>
 				<ContentHeader>
 					<h2>Résumé</h2>

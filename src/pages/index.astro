@@ -7,6 +7,7 @@ import CampaignTimeline from "@/assets/images/projects/psm_campaign_timeline_sho
 import SeoDashboard from "@/assets/images/projects/seo_dashboard.jpg"
 import PwrPhoneShot from "@/assets/images/projects/pwr_phone_mockup.jpg"
 import Footer from "@/components/Footer.astro"
+import Skull from "@/components/Skull.astro"
 
 const workingYears: number = new Date().getFullYear() - 2015
 const codingSince: number = new Date().getFullYear() - 2019
@@ -31,6 +32,7 @@ const codingSince: number = new Date().getFullYear() - 2019
 				<h2 class="text-xl mb-4">Senior UX developer</h2>
 				<p class="main-400">I'm a developer in Oslo that like to use my creativity to build cool stuff.</p>
 			</header>
+			<div id="skull-canvas"></div>
 			<Footer />
 		</div>
 		<main class="pb-12 lg:py-24">
@@ -251,6 +253,7 @@ const codingSince: number = new Date().getFullYear() - 2019
 			</section>
 		</main>
 	</div>
+	<Skull />
 </Layout>
 
 
@@ -338,6 +341,10 @@ $text-glow: #121615;
 #main-content {
 	max-width: 1700px;
 	animation: show-content 2s;
+}
+
+#skull-canvas {
+	width: 100%;
 }
 
 .top-start-animation {

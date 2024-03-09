@@ -1,4 +1,5 @@
 import * as THREE from "three"
+import { halo } from "@/lib/graphics/halo"
 
 const scene = new THREE.Scene()
 const camera = new THREE.PerspectiveCamera( 75, 1, 0.1, 1000 )
@@ -17,31 +18,27 @@ if (skullEl) {
 	})
 }
 
-const material = new THREE.LineBasicMaterial({
-    color: "#defcfa"
-});
+function cloneHalo(): THREE.Line {
+	scene.add(halo)
 
-let circle: THREE = new THREE.Line()
-const circleRadius: number = 5
-const segments: number = 100
+	for (let i = 0; i < 6; i++) {	
+		const sizeIterator = (i / 10)
+		const clone = halo.clone()
 
-function createCircle() {
-	const points: THREE[] = []
+		clone.scale.set(1 - sizeIterator, 1 - sizeIterator, 1 - sizeIterator)
 
-	for (let i = 0; i <= segments; i++) {
-		const theta: number = (i / segments) * Math.PI * 2
-		const x: number = circleRadius * Math.cos(theta)
-		const y: number = circleRadius * Math.sin(theta)
-		points.push(new THREE.Vector3(x, y, 0))
+		// If "i" is an even number
+		if (i % 2 === 0) {
+			clone.position.set(sizeIterator, sizeIterator, sizeIterator)
+		} else {
+			clone.position.set(-sizeIterator, -sizeIterator, -sizeIterator)
+		}
+
+		scene.add(clone)
 	}
-
-	const geometry = new THREE.BufferGeometry().setFromPoints(points)
-	circle = new THREE.Line(geometry, material)
 }
 
-createCircle()
-
-scene.add(circle)
+cloneHalo()
 
 camera.position.z = 10
 

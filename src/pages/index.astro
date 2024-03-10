@@ -11,7 +11,10 @@ import Footer from "@/components/Footer.astro"
 const workingYears: number = new Date().getFullYear() - 2015
 const codingSince: number = new Date().getFullYear() - 2019
 ---
-<Layout title="Martin Sollien">
+<Layout
+	title="Martin Sollien | Designer & developer"
+	description="Martin Sollien's portfolio. I'm a developer in Oslo that like to use my creativity to build cool stuff."
+>
 	<div class="w-full">
 		<div class="top-start-animation" />
 		<div class="top-end-animation" />
@@ -22,7 +25,7 @@ const codingSince: number = new Date().getFullYear() - 2019
 		id="main-content"
 		class="flex flex-col lg:flex-row px-7 gap-40 lg:px-20 relative"
 	>
-		<div class="flex flex-col justify-between w-full lg:w-[40%] py-12 lg:py-40 lg:sticky lg:top-0 max-h-screen">
+		<div class="flex flex-col justify-between w-full lg:w-[40%] py-12 lg:py-24 lg:sticky lg:top-0 max-h-screen">
 			<header class="flex flex-col">
 				<h1 class="font-bold text-3xl mb-4 lg:mb-8">Martin Sollien</h1>
 				<h2 class="text-xl mb-4">Senior UX developer</h2>
@@ -30,7 +33,7 @@ const codingSince: number = new Date().getFullYear() - 2019
 			</header>
 			<Footer />
 		</div>
-		<main class="pb-12 lg:py-40">
+		<main class="pb-12 lg:py-24">
 			<section class="text-sm main-400">
 				<p>I have over {workingYears} years experience working with writing,
 					SEO, design and developing, both in-house and with clients.
@@ -201,7 +204,26 @@ const codingSince: number = new Date().getFullYear() - 2019
 				</div>
 			</section>
 			<section class="mt-40 text-sm main-400">
-				<p>This site was made by me from the bottom up with Astro and Tailwind/SCSS.</p>
+				<p>
+					This site was made by me from the bottom up with
+					<a
+						href="https://astro.build/"
+						target="_blank"
+						class="main-default"
+					>Astro</a>
+					and
+					<a
+						href="https://tailwindcss.com/"
+						target="_blank"
+						class="main-default"
+					>Tailwind</a>
+					/
+					<a
+						href="https://sass-lang.com/"
+						target="_blank"
+						class="main-default"
+					>SCSS</a>.
+				</p>
 			</section>
 		</main>
 	</div>

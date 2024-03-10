@@ -7,6 +7,9 @@ import CampaignTimeline from "@/assets/images/projects/psm_campaign_timeline_sho
 import SeoDashboard from "@/assets/images/projects/seo_dashboard.jpg"
 import PwrPhoneShot from "@/assets/images/projects/pwr_phone_mockup.jpg"
 import Footer from "@/components/Footer.astro"
+
+const workingYears: number = new Date().getFullYear() - 2015
+const codingSince: number = new Date().getFullYear() - 2019
 ---
 <Layout title="Martin Sollien">
 	<div class="w-full">
@@ -28,7 +31,22 @@ import Footer from "@/components/Footer.astro"
 			<Footer />
 		</div>
 		<main class="pb-12 lg:py-40">
-			<section>
+			<section class="text-sm main-400">
+				<p>I'm a developer and designer with over {workingYears} years experience working with writing,
+					SEO, design and coding, both in-house and with clients.
+					<br/>
+					<br/>
+					I studied creative writing at Westerdals ACT, then started working at Publicis. While I like
+					to express myself creatively, technology and computers have always interested me. So since I
+					started out as a copywriter, I've gradually transitioned into coding, with a detour within SEO.
+					I've been coding for the past {codingSince} years and can reap the fruits of both
+					creative expression and solving problems with technology – to my great satisfaction.
+					<br/>
+					<br/>
+					When I'm not coding, you can usually find me playing drums, weightlifting, reading books, or gaming.
+				</p>
+			</section>
+			<section class="mt-40">
 				<ContentHeader>
 					<h2>Résumé</h2>
 				</ContentHeader>
@@ -110,7 +128,7 @@ import Footer from "@/components/Footer.astro"
 							<p class="text-sm main-400 mt-5 px-5 pb-5">
 								Studied writing across a range of styles, structured into three main categories:
 								literary, copy, and journalistic writing. Collaborated with other creative students,
-								such as filmmakers, art directors, and graphic designers to exoplore and create cool things.
+								such as filmmakers, art directors, and graphic designers to explore and create cool things.
 								Westerdals is now a part of Kristiania, but back then it was its own school.
 							</p>
 						</CardLink>
@@ -180,6 +198,9 @@ import Footer from "@/components/Footer.astro"
 						</div>
 					</ImageCardLink>
 				</div>
+			</section>
+			<section class="mt-40 text-sm main-400">
+				<p>This site was made by me from the bottom up with Astro and Tailwind/SCSS.</p>
 			</section>
 		</main>
 	</div>

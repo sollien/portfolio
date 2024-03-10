@@ -36,9 +36,9 @@ document.addEventListener('mousemove',function(e){
 
 if (mouseDot) {
 	document.addEventListener('mouseover', function(e: MouseEvent) {
-		const target = e.target as HTMLAnchorElement
+		const target = (e.target as HTMLAnchorElement).closest('a')
 	
-		if (target.nodeName === "A") {
+		if (target && target.nodeName === "A") {
 			mouseDot.style.backgroundColor = "#defcfa"
 		} else {
 			mouseDot.style.backgroundColor = "#899c9b"

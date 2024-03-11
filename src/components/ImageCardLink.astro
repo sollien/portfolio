@@ -1,7 +1,7 @@
 ---
 import { Image } from "astro:assets"
 
-const { href, title, src, alt } = Astro.props
+const { href, title, src, alt, linkText } = Astro.props
 ---
 
 <div
@@ -32,7 +32,7 @@ const { href, title, src, alt } = Astro.props
 		target="_blank"
 		class="link-button mb-5 lg:!hidden"
 	>
-		VISIT SITE
+		{linkText}
 	</a>
 	<a
 		href={href}

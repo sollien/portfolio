@@ -1,5 +1,13 @@
 ---
-const { href, title, yearSpan, company } = Astro.props
+interface props {
+	href: string
+	title: string
+	yearSpan: string
+	company: string
+	buttonText: string
+}
+
+const { href, title, yearSpan, company, linkText } = Astro.props
 ---
 
 <span class="text-xs py-5 main-400 lg:col-span-2 hidden lg:grid">{ yearSpan }</span>
@@ -23,7 +31,7 @@ const { href, title, yearSpan, company } = Astro.props
 		target="_blank"
 		class="link-button mb-5 lg:!hidden"
 	>
-		VISIT SITE
+		{linkText}
 	</a>
 	<a
 		href={href}

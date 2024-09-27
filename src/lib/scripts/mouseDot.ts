@@ -6,10 +6,11 @@ let mouseY: number = 0
 let mouseDotX: number = 0
 let mouseDotY: number = 0
 
-let ballSpeed: number = 0.05
+const ballSpeed: number = 0.05
+let lastMove = 0
 
 if (mouseDot) {
-	mouseDot.style.pointerEvents = 'none'
+	mouseDot.style.pointerEvents = "none"
 }
 
 function animateMove() {
@@ -20,14 +21,21 @@ function animateMove() {
 	mouseDotY = mouseDotY + (distY * ballSpeed)
 
 	if (mouseDot) {
-		mouseDot.style.left = mouseDotX - 5 + 'px'
-		mouseDot.style.top = mouseDotY - 5 + 'px'
+		mouseDot.style.left = mouseDotX - 5 + "px"
+		mouseDot.style.top = mouseDotY - 5 + "px"
 	}
 
 	requestAnimationFrame(animateMove)
 }
 
-animateMove()
+function onMouseMove(e: MouseEvent) {
+	const now = performance.now()
+	if (now - lastMove > 16) {
+		mouseX = e.pageX
+		mouseY = e.pageY
+		lastMove = now
+	}
+}
  
 document.addEventListener('mousemove',function(e){
 	mouseX = e.pageX
@@ -45,3 +53,5 @@ if (mouseDot) {
 		}
 	})
 }
+
+animateMove()

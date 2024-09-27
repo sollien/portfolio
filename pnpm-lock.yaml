@@ -23,6 +23,9 @@ dependencies:
   highlight.js:
     specifier: ^11.9.0
     version: 11.9.0
+  p5:
+    specifier: ^1.10.0
+    version: 1.10.0
   tailwindcss:
     specifier: ^3.4.1
     version: 3.4.1
@@ -31,6 +34,9 @@ dependencies:
     version: 5.3.3
 
 devDependencies:
+  '@types/p5':
+    specifier: ^1.7.6
+    version: 1.7.6
   sass:
     specifier: ^1.70.0
     version: 1.70.0
@@ -949,6 +955,10 @@ packages:
     dependencies:
       undici-types: 5.26.5
     dev: false
+
+  /@types/p5@1.7.6:
+    resolution: {integrity: sha512-6pLTOo0V3N5jZb5nTwjiv3lPHLK3Z/TjbhQUj8CTWXocUk1Z/f6OHTp3Pcwi1BhWnf5gqKUcyEb1gP0KIJuQgw==}
+    dev: true
 
   /@types/phoenix@1.6.4:
     resolution: {integrity: sha512-B34A7uot1Cv0XtaHRYDATltAdKx0BvVKNgYNqE4WjtPUa4VQJM7kxeXcVKaH+KS+kCmZ+6w+QaUdcljiheiBJA==}
@@ -2941,6 +2951,10 @@ packages:
   /p-try@2.2.0:
     resolution: {integrity: sha512-R4nPAVTAU0B9D35/Gk3uJf/7XYbQcyohSKdvAxIRSNghFl4e71hVoGnBNQz9cWaXxO2I10KTC+3jMdvvoKw6dQ==}
     engines: {node: '>=6'}
+    dev: false
+
+  /p5@1.10.0:
+    resolution: {integrity: sha512-6cWYBFhnZz7jNC6p1VWvlt3QReMqrRSmO90bgECQIKB9oko2w/sKrOAVMyei5tjIzSYcSY0JHy+BRtSAWq24jQ==}
     dev: false
 
   /parse-latin@5.0.1:

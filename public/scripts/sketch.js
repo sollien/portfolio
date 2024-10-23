@@ -15,8 +15,8 @@ let mouseXPos = 0
 let mouseYPos = 0
 
 // Repulsor parameters
-const repulsionRadius = 500
-const maxRepulsionStrength = 300
+const repulsionRadius = 300
+const maxRepulsionStrength = 700
 
 const sketchContainer = document.getElementById("p5div")
 let containerWidth = sketchContainer.offsetWidth
@@ -68,11 +68,11 @@ function drawTriangle(x, y, columns) {
 	let triangleY = paddingY + y * relativeYSize + yOffset
 
 	let distToMouse = dist(mouseXPos, mouseYPos, triangleX, triangleY)
-	
+
 	// Apply repulsion if the triangle is close to the mouse
 	if (distToMouse < repulsionRadius) {
 		let normalizedDist = distToMouse / repulsionRadius
-		let repulsionStrength = maxRepulsionStrength * (1 - normalizedDist)
+		let repulsionStrength = maxRepulsionStrength * (1.7 - normalizedDist)
 
 		let forceX = (triangleX - mouseXPos) / distToMouse * repulsionStrength / distToMouse
 		let forceY = (triangleY - mouseYPos) / distToMouse * repulsionStrength / distToMouse

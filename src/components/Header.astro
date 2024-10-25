@@ -3,7 +3,7 @@ import Favicon from "@/../public/favicon.svg"
 import { Image } from "astro:assets"
 ---
 
-<header class="p-4 w-full max-w-screen-lg mb-12">
+<header class="p-4 w-full max-w-screen-lg mb-12 flex justify-between items-center">
 	<a
 		href="/"
 		class="w-10 block"
@@ -14,4 +14,11 @@ import { Image } from "astro:assets"
 			class="w-full"
 		/>
 	</a>
+	<div class="flex gap-x-10">
+		<a
+			href="/"
+			class="border-b-2 border-transparent hover:border-main-default"
+		>Home</a>
+		<a href="">Writing</a>
+	</div>
 </header>

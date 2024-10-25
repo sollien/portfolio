@@ -7,12 +7,12 @@ const { frontmatter } = Astro.props
 
 <Layout
 	title={frontmatter.title}
-	description={frontmatter.description}
+	description={frontmatter.metaDescription}
 >
 	<Header />
 	<article
 		id="article"
-		class="w-full max-w-prose pb-12"
+		class="w-full max-w-prose pb-12 p-4 md:p-0"
 	>
 		<h1 class="font-bold text-3xl mb-12">{frontmatter.title}</h1>
 		<h2 class="text-xl mb-12">{frontmatter.description}</h2>
@@ -35,5 +35,9 @@ const { frontmatter } = Astro.props
 	font-weight: 600;
 	margin-top: 40px;
 	margin-bottom: 20px;
+}
+
+:global(.fact-box) {
+	font-size: 12px;
 }
 </style>

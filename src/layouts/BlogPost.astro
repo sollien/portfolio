@@ -1,0 +1,39 @@
+---
+import Layout from "@/layouts/Layout.astro"
+import Header from "@/components/Header.astro"
+
+const { frontmatter } = Astro.props
+---
+
+<Layout
+	title={frontmatter.title}
+	description={frontmatter.description}
+>
+	<Header />
+	<article
+		id="article"
+		class="w-full max-w-prose pb-12"
+	>
+		<h1 class="font-bold text-3xl mb-12">{frontmatter.title}</h1>
+		<h2 class="text-xl mb-12">{frontmatter.description}</h2>
+		{
+			frontmatter.preface.length > 0 &&
+			<div class="mb-12 border border-cyan-400 bg-cyan-950 p-4">
+				<p class="font-bold before:content-['(!)'] before:font-normal before:pr-2 before:text-cyan-400 before:tracking-tight mb-2">Preface</p>
+				<p>{frontmatter.preface}</p>
+			</div>
+		}
+		<slot
+			class="main-blog-content"
+		/>
+	</article>
+</Layout>
+
+<style lang="scss">
+:global(#article h2:not(h1 + h2)) {
+	font-size: 20px;
+	font-weight: 600;
+	margin-top: 40px;
+	margin-bottom: 20px;
+}
+</style>

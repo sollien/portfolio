@@ -131,7 +131,7 @@ main {
 	height: 100%;
 }
 
-h1:not(header h1, article h1), h2 {
+h1:not(header h1, article h1), h2:not(article h1 + h2) {
 	&::before {
 		content: ">/";
 		color: var(--highlight-color-default);

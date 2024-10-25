@@ -1,11 +1,11 @@
 ---
 import { Image } from "astro:assets"
 
-const { href, title, src, alt, linkText } = Astro.props
+const { href, title, src, alt, linkText, classes, target } = Astro.props
 ---
 
 <div
-	class="relative flex-col project-item -mt-px lg:hover:bg-main-850"
+	class={`relative flex-col project-item -mt-px lg:hover:bg-main-850 ${classes || ''}`}
 >
 	<div class="grid lg:grid-cols-8 gap-4 mb-5">
 		<div class="lg:col-span-2 lg:mt-5 ml-5 order-last lg:order-first">
@@ -29,14 +29,14 @@ const { href, title, src, alt, linkText } = Astro.props
 	</div>
 	<a
 		href={href}
-		target="_blank"
+		target={target}
 		class="link-button mb-5 lg:!hidden"
 	>
 		{linkText}
 	</a>
 	<a
 		href={href}
-		target="_blank"
+		target={target}
 		class="absolute top-0 left-0 w-full h-full hidden lg:block"
 	/>
 </div>

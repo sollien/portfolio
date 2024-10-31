@@ -3,34 +3,78 @@ import Layout from "@/layouts/Layout.astro"
 import Header from "@/components/Header.astro"
 
 const { frontmatter } = Astro.props
+
+
 ---
 
 <Layout
-	title={frontmatter.title}
+	title={frontmatter.title + " – Martin Sollien"}
 	description={frontmatter.metaDescription}
 >
 	<Header />
 	<article
 		id="article"
-		class="w-full max-w-prose pb-12 p-4 md:p-0"
+		class="w-full mb-24 p-4 md:p-0 flex flex-col items-center px-4 lg:px-20 relative"
 	>
-		<h1 class="font-bold text-3xl mb-12">{frontmatter.title}</h1>
-		<h2 class="text-xl mb-12">{frontmatter.description}</h2>
-		{
-			frontmatter.preface.length > 0 &&
-			<div class="mb-12 border border-cyan-400 bg-cyan-950 p-4">
-				<p class="font-bold before:content-['(!)'] before:font-normal before:pr-2 before:text-cyan-400 before:tracking-tight mb-2">Preface</p>
-				<p>{frontmatter.preface}</p>
+		<div class="w-full mb-12 self-start relative">
+			<span class="absolute top-0 right-0 text-lg hidden xl:block">+</span>
+			<span class="absolute bottom-0 right-0 text-lg hidden xl:block">+</span>
+			<h1 class="text-7xl md:text-8xl tracking-tight max-w-screen-lg relative p-6">
+				{frontmatter.title}
+				<span class="absolute top-0 left-0 text-lg">+</span>
+				<span class="absolute bottom-0 left-0 text-lg">+</span>
+				<span class="absolute top-0 right-0 text-lg">+</span>
+				<span class="absolute bottom-0 right-0 text-lg">+</span>
+			</h1>
+		</div>
+		<div class="md:grid md:grid-cols-4 md:gap-10 w-full">
+			<div class="mb-12 md:col-span-1 relative">
+				<div class="w-full border-main-default border p-4 sticky top-10">
+					<p>METADATA</p>
+					<hr class="mt-4 mb-4 border-dashed" />
+					<dl>
+						<div class="flex justify-between mb-4">
+							<dt>AUTHOR</dt>
+							<dd>Martin Sollien</dd>
+						</div>
+						<div class="flex justify-between mb-4">
+							<dt>DATE</dt>
+							<dd>{frontmatter.date}</dd>
+						</div>
+						<div class="flex justify-between">
+							<dt>CATEGORIES</dt>
+							<dd class="flex gap-4">
+								<span class="border border-dashed border-main-default p-1 py-[2px] text-sm">Editors</span>
+							</dd>
+						</div>
+					</dl>
+				</div>
 			</div>
-		}
-		<slot
-			class="main-blog-content"
-		/>
+			<div class="md:col-span-2 flex justify-center">
+				<div class="w-full max-w-prose relative">
+					<h2
+						id="description"
+						class="text-xl mb-12"
+					>{frontmatter.description}</h2>
+					{
+						frontmatter.preface.length > 0 &&
+						<div class="mb-12 border border-cyan-400 bg-cyan-950 p-4">
+							<p class="font-bold before:content-['(!)'] before:font-normal before:pr-2 before:text-cyan-400 before:tracking-tight mb-2">Preface</p>
+							<p>{frontmatter.preface}</p>
+						</div>
+					}
+					<slot
+						class="main-blog-content"
+					/>
+				</div>
+			</div>
+			<div class="md:col-span-1" />
+		</div>
 	</article>
 </Layout>
 
 <style lang="scss">
-:global(#article h2:not(h1 + h2)) {
+:global(#article h2:not(#description, #secondary-title)) {
 	font-size: 20px;
 	font-weight: 600;
 	margin-top: 40px;
@@ -38,6 +82,16 @@ const { frontmatter } = Astro.props
 }
 
 :global(.fact-box) {
-	font-size: 12px;
+	padding: 1rem;
+	border: var(--default-border);
+
+	&::before {
+		display: block;
+		padding-bottom: 8px;
+		margin-bottom: 8px;
+		content: "Facts!";
+		font-weight: bold;
+		border-bottom: 1px solid #defcfa;
+	}
 }
 </style>

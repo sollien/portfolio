@@ -4,6 +4,8 @@ title: "Is Zed the VS Code killer?"
 metaDescription: "Zed editor is made by the renowned team behind the Atom text editor, and stands to be a serious contender to VS Code."
 description: "Zed editor is made by the renowned team behind the Atom text editor, and stands to be a serious contender to VS Code. I've tested it and given it some thought."
 preface: "I'm not in any way endorsed or sponsored by the Zed team. I write this freely and from my own genuine personal experience."
+date: "28 Oct 24"
+alt: "Zed editor"
 ---
 
 I'm a long time VS Code user. When I started coding in Java an age ago I used Eclipse, which back then, somehow, was a state-of-the art tool for Java development.
@@ -11,7 +13,7 @@ Now we have IntelliJ, but that's a whole different story. Later in life I've vis
 However, I felt that VS Code really had something the others were lacking for web development, and that was exstensiveness.
 <br><br>
 The other editors (save for Visual Studio), lacked a comprehensive ecosystem for extensions. This, coupled together with the fact that VS Code was fast and lightweight enough
-(at least compared to advanced IDE's like Visual Studio), made me make the switch to VS Code. And I've stayed here since. Now, however, this editor is threadened to become
+(at least compared to advanced IDE's like Visual Studio), made me make the switch to VS Code. And I've stayed here since. Today VS Code is threatened to become
 dethroned as my go-to editor by a new, Rust-based and even faster text editor. Namely Zed.
 <br><br>
 <p class="fact-box">Zed comes from the team behind the Electron based Atom, an editor that was sunset after

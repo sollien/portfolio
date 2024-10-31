@@ -1,0 +1,28 @@
+---
+import Layout from "@/layouts/Layout.astro"
+import Header from "@/components/Header.astro"
+import ContentHeader from "@/components/ContentHeader.astro"
+import ImageCardLink from "@/components/ImageCardLink.astro"
+
+const pages = await Astro.glob("../pages/posts/*.md")
+const posts = pages.sort((a, b) => new Date(b.frontmatter?.date || 0).getTime() - new Date(a.frontmatter?.date || 0).getTime());
+---
+
+<Layout
+	title="Posts and writing – Martin Sollien"
+	description="Here are my personal posts about this and that. I try to write about what I find interesting."
+>
+	<Header />
+	<ContentHeader>Writing</ContentHeader>
+	<div class="mt-8 grid gap-4 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
+		{posts.map(post => (
+			<ImageCardLink
+				href={`/posts/${post.file.split('/').pop()?.split('.')[0]}`}
+				title={post.frontmatter.title}
+				image={post.frontmatter.image}
+				alt={post.frontmatter.alt}
+				description={post.frontmatter.description}
+			/>
+		))}
+	</div>
+</Layout>

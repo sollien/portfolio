@@ -8,53 +8,27 @@ date: "28 Oct 24"
 alt: "Zed editor"
 ---
 
-I'm a long time VS Code user. When I started coding in Java an age ago I used Eclipse, which back then, somehow, was a state-of-the art tool for Java development.
-Now we have IntelliJ, but that's a whole different story. Later in life I've visited other editors before landing on VS Code. Sublime, Atom, and Visual Studio to mention a few.
-However, I felt that VS Code really had something the others were lacking for web development, and that was exstensiveness.
+Zed. I've never liked that name. For some reason it stands out as kind of edgy in an uncool way. It also reminds me of Dr. Zed from Borderlands and the champion Zed from League of Legends. Not that there's anything wrong with at least one of those.
 <br><br>
-The other editors (save for Visual Studio), lacked a comprehensive ecosystem for extensions. This, coupled together with the fact that VS Code was fast and lightweight enough
-(at least compared to advanced IDE's like Visual Studio), made me make the switch to VS Code. And I've stayed here since. Today VS Code is threatened to become
-dethroned as my go-to editor by a new, Rust-based and even faster text editor. Namely Zed.
+Apart from the name, I think that Zed (the editor) presents itself very well. The name is only one swapped letter from being named Zen. That's 33 % away from tranquility, which is funny because in many ways this editor is 33 % away from being something that could capture a big market of developers. It feels very close to something new and great.
 <br><br>
 <p class="fact-box">Zed comes from the team behind the Electron based Atom, an editor that was sunset after
 Microsoft's acquisition. Zed takes a completely different approach by using Rust for its core architecture.
 Can they garantuee that it won't meet the same fate as Atom?</p>
 
-## First Impressions
+## Second impressions
 
-Opening Zed for the first time, the contrast with VSCode is immediate. The interface is remarkably clean, almost stark in its simplicity. There's no activity bar, no status bar cluttered with extensions, and no command palette flooding you with hundreds of options. It's just you and your code.
+This is actually not my first time testing out the Zed editor. I first tried it a while back when it was extensionless and lacking. It didn't even support download for Linux, which is to say it didn't affect me who uses Mac. Not having extensions however, that was not a fun way to code.
+<br><br>
+As someone who primarily does web development I have grown accustomed to the warm embrace of ESLint and various language servers. Coding without these and Zed might as well just be Notepad++. With time, however, we have been graced by the open source wizards that contribute to Zed, and we now have multiple extensions in place, as well as built-in support for ESLint. For someone that commonly uses Vue, Astro, and TypeScript to mention a few, this is received with a warm welcome.
+<br><br>
 
-The minimalism isn't just aesthetic - it's philosophical. Zed focuses on doing a few things exceptionally well rather than trying to be everything for everyone. The built-in features are thoughtfully chosen and well-implemented:
+## The paradox of Zed's reductive design
 
-- Syntax highlighting that's both beautiful and performant
-- Intelligent code completion that feels natural
-- Split editing that works exactly as you'd expect
-- Built-in terminal that's actually pleasant to use
+The existence of Zed is in itself paradoxical. Its reductive design grants us a simplistic and tranquil developer experience. Its lack of many features is also what is currently holds it back from being great.
+<br><br>
+I've found that I can do most of my job currently on Zed – on my Mac. It still lacks Windows support, but that's right around the corner I feel. It's customizeable, but also far from as customizeable as VS Code. And this is where I find myself in disagreement with myself. Before switching to Zed I customized my VS Code to be as minimal as I wanted. I tried to reduce the amount of unused UI elements as much as possible to remove visual noise. I like a clean and minimal interface. Zed offers this, and it's much better than my VS Code. At the same time, I don't know if I trust the Zed developers to continue in this direction.
 
-## The Rust Factor
+## The talking points of Zed
 
 The decision to build Zed in Rust isn't just a technical detail - it's a game-changer. Where VSCode can sometimes feel sluggish, especially with multiple extensions, Zed maintains its responsiveness regardless of what you throw at it. Opening large files, running multiple terminals, or working with complex projects - the editor remains smooth and stable.
-
-## Is It Really a VSCode Killer?
-
-While Zed is impressive, calling it a "VSCode killer" might be premature. VSCode's ecosystem is vast, and its integration with services like GitHub Copilot and Azure is deeply entrenched in many developers' workflows. What Zed offers instead is a compelling alternative for developers who:
-
-- Value performance over extensive customization
-- Prefer a minimalistic, focused environment
-- Want native performance without the overhead of Electron
-- Miss Atom's philosophy but want modern technology
-
-## Current Limitations
-
-It's important to note that Zed is still in its early stages. Some developers might miss:
-
-- The extensive extension marketplace of VSCode
-- Certain language-specific features
-- Deep integration with cloud services
-- The vast array of themes and customization options
-
-## The Verdict
-
-Zed isn't trying to be VSCode, and that's exactly what makes it interesting. It's a fresh take on what a modern code editor can be - fast, focused, and free from bloat. While it may not "kill" VSCode, it's definitely carving out its own niche in the developer ecosystem.
-
-For those feeling overwhelmed by VSCode's complexity or yearning for the simplicity of Atom with modern performance, Zed presents an exciting alternative. It's not about replacing VSCode - it's about providing a different philosophy of what coding tools can be.

@@ -11,14 +11,17 @@
   },
   "dependencies": {
     "@astrojs/check": "^0.4.1",
+    "@astrojs/mdx": "^3.1.9",
     "@astrojs/netlify": "^5.1.1",
+    "@astrojs/svelte": "^5.7.3",
     "@astrojs/tailwind": "^5.1.0",
     "@supabase/supabase-js": "^2.39.3",
-    "astro": "^4.2.1",
+    "astro": "^4.16.10",
     "highlight.js": "^11.9.0",
     "p5": "^1.10.0",
+    "svelte": "^5.1.12",
     "tailwindcss": "^3.4.1",
-    "typescript": "^5.3.3"
+    "typescript": "^5.6.3"
   },
   "devDependencies": {
     "@types/p5": "^1.7.6",

@@ -10,7 +10,7 @@ import WeddingWebsite from "@/assets/images/projects/wedding_website.jpg"
 import Footer from "@/components/Footer.astro"
 import Planr from "@/assets/images/projects/planr.jpg"
 
-const posts: any = Object.values(import.meta.glob("../pages/posts/*.md", { eager: true }))
+const posts: any = Object.values(import.meta.glob("../pages/posts/*.mdx", { eager: true }))
 
 const workingYears: number = new Date().getFullYear() - 2015
 const codingSince: number = new Date().getFullYear() - 2019

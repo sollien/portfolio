@@ -1,0 +1,60 @@
+---
+import { Image } from "astro:assets"
+import type { ImageMetadata } from "astro"
+
+interface Props {
+	src: ImageMetadata
+	alt: string
+	imageDescription?: string
+}
+
+const { src, alt, imageDescription } = Astro.props
+
+---
+
+<div class="2xl:mx-[-50px] xl:mx-[-40px] lg:mx-[-30px] p-5 my-10 relative flex flex-col items-center">
+	<Image
+		src={src}
+		alt={alt}
+		class="w-auto article-image hover:cursor-pointer"
+	/>
+	<span class="absolute top-[-14px] left-[-5px] text-lg">+</span>
+	<span class="absolute bottom-[-14px] left-[-5px] text-lg">+</span>
+	<span class="absolute top-[-14px] right-[-5px] text-lg">+</span>
+	<span class="absolute bottom-[-14px] right-[-5px] text-lg">+</span>
+	{imageDescription &&
+		<p class="mt-2 max-w-prose text-center text-xs">{imageDescription}</p>
+	}
+</div>
+
+<script>
+	const articleImages = document.getElementsByClassName("article-image")
+
+	for (let i = 0; i < articleImages.length; i++) {
+		articleImages[i].addEventListener('click', () => {
+			const modal = document.createElement('div')
+			modal.style.position = 'fixed'
+			modal.style.top = '0'
+			modal.style.left = '0'
+			modal.style.width = '100%'
+			modal.style.height = '100%'
+			modal.style.backgroundColor = 'rgba(0, 0, 0, 0.8)'
+			modal.style.display = 'flex'
+			modal.style.justifyContent = 'center'
+			modal.style.alignItems = 'center'
+			modal.style.zIndex = '1000'
+
+			const img = articleImages[i].cloneNode(true) as HTMLImageElement
+			img.style.maxWidth = '90%'
+			img.style.maxHeight = '90vh'
+			img.style.objectFit = 'contain'
+			modal.appendChild(img)
+
+			modal.addEventListener('click', () => {
+				document.body.removeChild(modal)
+			})
+
+			document.body.appendChild(modal)
+		})
+	}
+</script>

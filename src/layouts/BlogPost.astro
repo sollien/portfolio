@@ -1,10 +1,9 @@
 ---
 import Layout from "@/layouts/Layout.astro"
 import Header from "@/components/Header.astro"
+import ArticleHeader from "@/components/ArticleHeader.astro"
 
 const { frontmatter } = Astro.props
-
-
 ---
 
 <Layout
@@ -16,17 +15,11 @@ const { frontmatter } = Astro.props
 		id="article"
 		class="w-full mb-24 p-4 md:p-0 flex flex-col items-center px-4 lg:px-20 relative"
 	>
-		<div class="w-full mb-12 self-start relative">
-			<span class="absolute top-0 right-0 text-lg hidden xl:block">+</span>
-			<span class="absolute bottom-0 right-0 text-lg hidden xl:block">+</span>
-			<h1 class="text-7xl md:text-8xl tracking-tight max-w-screen-lg relative p-6">
-				{frontmatter.title}
-				<span class="absolute top-0 left-0 text-lg">+</span>
-				<span class="absolute bottom-0 left-0 text-lg">+</span>
-				<span class="absolute top-0 right-0 text-lg">+</span>
-				<span class="absolute bottom-0 right-0 text-lg">+</span>
-			</h1>
-		</div>
+		<ArticleHeader
+			headerEffect={frontmatter.headerEffect}
+		>
+			{frontmatter.title}
+		</ArticleHeader>
 		<div class="md:grid md:grid-cols-4 md:gap-10 w-full">
 			<div class="mb-12 md:col-span-1 relative">
 				<div class="w-full border-main-default border p-4 sticky top-10">
@@ -44,7 +37,7 @@ const { frontmatter } = Astro.props
 						<div class="flex justify-between">
 							<dt>CATEGORIES</dt>
 							<dd class="flex gap-4">
-								<span class="border border-dashed border-main-default p-1 py-[2px] text-sm">Editors</span>
+								<span class="border border-dashed border-main-default p-1 py-[2px] text-sm">{frontmatter.categories}</span>
 							</dd>
 						</div>
 					</dl>

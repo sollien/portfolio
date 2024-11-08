@@ -6,25 +6,34 @@ description: "Zed editor is made by the renowned team behind the Atom text edito
 preface: "I'm not in any way endorsed or sponsored by the Zed team. I write this freely and from my own genuine personal experience."
 date: "28 Oct 24"
 alt: "Zed editor"
+categories: "Tools"
+headerEffect: "killer"
 ---
 
-import Stats from "@/components/stats.svelte"
+import Stats from "@/components/charts/stats.svelte"
+import ArticleImage from "@/components/ArticleImage.astro"
+import Article from "@/assets/images/articles/behind_the_scenes.png"
+import { Image } from "astro:assets"
 
 Zed. I've never really liked that name. For some reason it stands out as kind of edgy in an uncool way. It also reminds me of Dr. Zed from Borderlands and the champion Zed from League of Legends. Not that there's anything wrong with at least one of those.
 <br /><br />
-Apart from the name, I think that Zed (the editor) presents itself very well. The name is only one swapped letter from being named Zen. That's 33 % away from tranquility, which is funny because in many ways this editor is 33 % away from being something that could capture a big market of developers. It feels very close to something new and great.
+Apart from the name, I think that Zed (the editor) presents itself very well. The name is only one letter from being named Zen. That's 33 % away from tranquility, which is funny because in many ways this editor is 33 % away from being something that could capture a big market of developers. It feels very close to something new and great.
 <br /><br />
 <p class="fact-box">Zed comes from the team behind the Electron based Atom, an editor that was sunset after
 Microsoft's acquisition. Zed takes a completely different approach by using Rust for its core architecture.
 Can they garantuee that it won't meet the same fate as Atom?</p>
 <br /><br />
 
-<Stats client:idle />
-
 ## Second impressions
 
 This is actually not my first time testing out the Zed editor. I first tried it a while back when it was extensionless and lacking. It didn't even support download for Linux, which is to say it didn't affect me who uses Mac. Not having extensions however, that was not a fun way to code.
-<br /><br />
+
+<ArticleImage
+	src={Article}
+	alt="Screenshot of Zed's editor"
+	imageDescription="A behind-the-scenes screenshot of the making of this article in Zed."
+/>
+
 As someone who primarily does web development I have grown accustomed to the warm embrace of ESLint and various language servers. Coding without these and Zed might as well just be Notepad++. With time, however, we have been graced by the open source wizards that contribute to Zed, and we now have multiple extensions in place, as well as built-in support for ESLint. For someone that commonly uses Vue, Astro, and TypeScript to mention a few, this is received with a warm welcome.
 <br /><br />
 
@@ -34,6 +43,10 @@ The existence of Zed is in itself paradoxical. Its reductive design grants us a 
 <br /><br />
 I've found that I can do most of my job currently on Zed – on my Mac. It still lacks Windows support, but that's right around the corner I feel. It's customizeable, but also far from as customizeable as VS Code. And this is where I find myself in disagreement with myself. Before switching to Zed I customized my VS Code to be as minimal as I wanted. I tried to reduce the amount of unused UI elements as much as possible to remove visual noise. I like a clean and minimal interface. Zed offers this, and it's much better than my VS Code. At the same time, I don't know if I trust the Zed developers to continue in this direction.
 
-## The talking points of Zed
+## The speed of Rust
 
-The decision to build Zed in Rust isn't just a technical detail - it's a game-changer. Where VSCode can sometimes feel sluggish, especially with multiple extensions, Zed maintains its responsiveness regardless of what you throw at it. Opening large files, running multiple terminals, or working with complex projects - the editor remains smooth and stable.
+Simplicity encourages a lightweight user experience. Imagine if Zed had a minimal and quiet interface, only to by bogged down by lag, slow launch time, and high memory footprint. Luckily, that isn't the case. The vision of minimalism carries over from the UI to the back-end.
+
+<Stats client:idle />
+
+While launch speed isn't a critical aspect for development (who really cares if you save half a second every time you open a program), it's the implied general speed behind this that remains interesting. Zed feels very quick during usage, and it never seems to slow down or lag during tasks. It conveys a very smooth user experience. That is something which I can't say about VS Code, which frequently has small, glitchy interactions, even on a modern computer.

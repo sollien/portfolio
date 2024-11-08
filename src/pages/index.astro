@@ -280,27 +280,30 @@ const codingSince: number = new Date().getFullYear() - 2019
 					</ImageCardLink>
 				</div>
 			</section>
-			<section>
-				<ContentHeader>
-					<h2>Writing</h2>
-				</ContentHeader>
-				<div class="items-container lg:mx-3">
-					{posts.map((post: any) =>
-						<ImageCardLink
-							title={post.frontmatter.title}
-							href={post.url}
-							src={PwrPhoneShot}
-							alt="Client SEO dashboard shot"
-							linkText="READ"
-							classes="-mb-px"
-						>
-							<p class="text-sm main-400 mt-5 px-5 lg:pb-5">
-								{post.frontmatter.description}
-							</p>
-						</ImageCardLink>
-					)}
-				</div>
-			</section>
+			{
+				posts.length > 0 &&
+				<section>
+					<ContentHeader>
+						<h2>Writing</h2>
+					</ContentHeader>
+					<div class="items-container lg:mx-3">
+						{posts.map((post: any) =>
+							<ImageCardLink
+								title={post.frontmatter.title}
+								href={post.url}
+								src={PwrPhoneShot}
+								alt="Client SEO dashboard shot"
+								linkText="READ"
+								classes="-mb-px"
+							>
+								<p class="text-sm main-400 mt-5 px-5 lg:pb-5">
+									{post.frontmatter.description}
+								</p>
+							</ImageCardLink>
+						)}
+					</div>
+				</section>
+			}
 			<section class="mt-40 text-sm main-400">
 				<p>
 					This site was made by me from the bottom up with

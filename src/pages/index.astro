@@ -9,8 +9,9 @@ import PwrPhoneShot from "@/assets/images/projects/pwr_phone_mockup.jpg"
 import WeddingWebsite from "@/assets/images/projects/wedding_website.jpg"
 import Footer from "@/components/Footer.astro"
 import Planr from "@/assets/images/projects/planr.jpg"
+import Zed from "@/assets/images/articles/zed_logo.jpeg"
 
-const posts: any = Object.values(import.meta.glob("../pages/posts/*.mdx", { eager: true }))
+const posts: any = Object.values(import.meta.glob("../pages/writing/*.mdx", { eager: true }))
 
 const workingYears: number = new Date().getFullYear() - 2015
 const codingSince: number = new Date().getFullYear() - 2019
@@ -290,8 +291,8 @@ const codingSince: number = new Date().getFullYear() - 2019
 							<ImageCardLink
 								title={post.frontmatter.title}
 								href={post.url}
-								src={PwrPhoneShot}
-								alt="Client SEO dashboard shot"
+								src={Zed}
+								alt="Zed editor logo"
 								linkText="READ"
 								classes="-mb-px"
 							>

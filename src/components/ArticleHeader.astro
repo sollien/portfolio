@@ -50,7 +50,8 @@ header?.addEventListener("click", (e) => {
                     @keyframes bleed {
                         0% { text-shadow: 0 0 0 #ef4444; }
                         50% { text-shadow: 0 10px 15px #ef4444; }
-                        100% { text-shadow: 0 20px 30px #ef4444; opacity: 0; }
+                        99% { text-shadow: 0 20px 30px #ef444400; opacity: 0.2; }
+                        100% { text-shadow: none; opacity: 0.2; }
                     }
                 `
                 document.head.appendChild(style)

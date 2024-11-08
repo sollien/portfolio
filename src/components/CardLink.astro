@@ -1,10 +1,10 @@
 ---
-interface props {
+interface Props {
 	href: string
 	title: string
-	yearSpan: string
+	yearSpan?: string
 	company: string
-	buttonText: string
+	linkText: string
 }
 
 const { href, title, yearSpan, company, linkText } = Astro.props

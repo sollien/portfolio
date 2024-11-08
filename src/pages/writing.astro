@@ -1,0 +1,51 @@
+---
+import Layout from "@/layouts/Layout.astro"
+import Header from "@/components/Header.astro"
+import ImageCardLink from "@/components/ImageCardLink.astro"
+import Test from "@/assets/images/projects/cortex_spending.jpg"
+
+const pages = await Astro.glob("../pages/posts/*[.mdx, .md]")
+const posts = pages.sort((a, b) => new Date(b.frontmatter?.date || 0).getTime() - new Date(a.frontmatter?.date || 0).getTime());
+---
+
+<Layout
+	title="Posts and writing – Martin Sollien"
+	description="Here are my personal posts about this and that. I try to write about what I find interesting."
+>
+	<Header />
+	<main class="w-full mb-24 p-4 md:p-0 flex flex-col items-center px-4 lg:px-20 relative">
+		<div class="w-full mb-12 self-start relative">
+			<span class="absolute top-0 right-0 text-lg hidden xl:block">+</span>
+			<span class="absolute bottom-0 right-0 text-lg hidden xl:block">+</span>
+			<h1
+				id="page-title"
+				class="text-7xl md:text-8xl tracking-tight max-w-screen-lg relative p-6"
+			>
+				Writing
+				<span class="absolute top-0 left-0 text-lg">+</span>
+				<span class="absolute bottom-0 left-0 text-lg">+</span>
+				<span class="absolute top-0 right-0 text-lg">+</span>
+				<span class="absolute bottom-0 right-0 text-lg">+</span>
+			</h1>
+		</div>
+		<div class="mt-8">
+			<div class="max-w-screen-md">
+				{posts.map(post => (
+					<ImageCardLink
+						href={`/posts/${post.file.split('/').pop()?.split('.')[0]}`}
+						title={post.frontmatter.title}
+						description={post.frontmatter.description}
+						src={Test}
+						alt="Test"
+						company="Company"
+						linkText="Read"
+					>
+						<p class="text-sm main-400 mt-5 px-5 lg:pb-5">
+							{post.frontmatter.description}
+						</p>
+					</ImageCardLink>
+				))}
+			</div>
+		</div>
+	</main>
+</Layout>

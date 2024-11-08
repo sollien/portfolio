@@ -1,0 +1,24 @@
+---
+import Favicon from "@/../public/favicon.svg"
+import { Image } from "astro:assets"
+---
+
+<header class="p-4 lg:px-20 w-full mb-12 flex justify-between items-center">
+	<a
+		href="/"
+		class="w-10 block"
+	>
+		<Image
+			src={Favicon}
+			alt="Logo of Martin Sollien's portfolio"
+			class="w-full"
+		/>
+	</a>
+	<div class="flex gap-x-10">
+		<a
+			href="/"
+			class="border-b-2 border-transparent hover:border-main-default"
+		>Home</a>
+		<a href="/writing">Writing</a>
+	</div>
+</header>

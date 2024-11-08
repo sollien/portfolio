@@ -10,6 +10,8 @@ import WeddingWebsite from "@/assets/images/projects/wedding_website.jpg"
 import Footer from "@/components/Footer.astro"
 import Planr from "@/assets/images/projects/planr.jpg"
 
+const posts: any = Object.values(import.meta.glob("../pages/posts/*.mdx", { eager: true }))
+
 const workingYears: number = new Date().getFullYear() - 2015
 const codingSince: number = new Date().getFullYear() - 2019
 ---
@@ -25,7 +27,7 @@ const codingSince: number = new Date().getFullYear() - 2019
 	</div>
 	<div
 		id="main-content"
-		class="flex flex-col lg:flex-row px-7 gap-40 lg:px-20 relative"
+		class="flex flex-col lg:flex-row px-4 gap-40 lg:px-20 relative"
 	>
 		<div class="flex flex-col justify-between w-full lg:w-[40%] py-12 lg:py-24 lg:sticky lg:top-0 max-h-screen">
 			<header class="flex flex-col">
@@ -178,6 +180,7 @@ const codingSince: number = new Date().getFullYear() - 2019
 						src={WeddingWebsite}
 						alt="Website shot of a personal wedding website"
 						linkText="VISIT DEMO SITE"
+						target="_blank"
 					>
 						<p class="text-sm main-400 mt-5 px-5 lg:pb-5">
 							A personal wedding website I made for my own wedding. We needed a place to share information
@@ -196,6 +199,7 @@ const codingSince: number = new Date().getFullYear() - 2019
 						src={CampaignTimeline}
 						alt="Campaign timeline in the Cortex application"
 						linkText="READ ABOUT CORTEX"
+						target="_blank"
 					>
 						<p class="text-sm main-400 mt-5 px-5 lg:pb-5">
 							Web application management tool built in-house for the media agency Starcom. It aims to solve the ever growing
@@ -218,6 +222,7 @@ const codingSince: number = new Date().getFullYear() - 2019
 						src={Planr}
 						alt="Website shot of PLANR – a LAN party planning web app"
 						linkText="VISIT DEMO"
+						target="_blank"
 					>
 						<p class="text-sm main-400 mt-5 px-5 lg:pb-5">
 							I like to play video games and made PLANR as a fun little way to organize, prepare
@@ -238,6 +243,7 @@ const codingSince: number = new Date().getFullYear() - 2019
 						src={SeoDashboard}
 						alt="Client SEO dashboard shot"
 						linkText="SEE DESIGN"
+						target="_blank"
 					>
 						<p class="text-sm main-400 mt-5 px-5 lg:pb-5">
 							Designed and implemented a SEO dashboard that takes in data from
@@ -255,8 +261,10 @@ const codingSince: number = new Date().getFullYear() - 2019
 						title="Pwr powerlifting app"
 						href="https://lift-routine.netlify.app/"
 						src={PwrPhoneShot}
-						alt="Client SEO dashboard shot"
+						alt="Snapshot of the Pwr app on a phone"
 						linkText="SEE DEMO"
+						classes="-mb-px"
+						target="_blank"
 					>
 						<p class="text-sm main-400 mt-5 px-5 lg:pb-5">
 							Sometimes calculating powerlifting routines can be tedious. This is a simple
@@ -272,6 +280,29 @@ const codingSince: number = new Date().getFullYear() - 2019
 					</ImageCardLink>
 				</div>
 			</section>
+			{posts.length > 0 &&
+				<section>
+					<ContentHeader>
+						<h2>Writing</h2>
+					</ContentHeader>
+					<div class="items-container lg:mx-3">
+						{posts.map((post: any) =>
+							<ImageCardLink
+								title={post.frontmatter.title}
+								href={post.url}
+								src={PwrPhoneShot}
+								alt="Client SEO dashboard shot"
+								linkText="READ"
+								classes="-mb-px"
+							>
+								<p class="text-sm main-400 mt-5 px-5 lg:pb-5">
+									{post.frontmatter.description}
+								</p>
+							</ImageCardLink>
+						)}
+					</div>
+				</section>
+			}
 			<section class="mt-40 text-sm main-400">
 				<p>
 					This site was made by me from the bottom up with

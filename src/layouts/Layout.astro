@@ -1,7 +1,4 @@
 ---
-import { ViewTransitions } from "astro:transitions"
-import { fade } from "astro:transitions"
-
 interface Props {
 	title: string
 	description: string
@@ -23,11 +20,9 @@ const { title, description } = Astro.props
 		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 		<link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
 		<link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible&family=Istok+Web&display=swap" rel="stylesheet">
-		<ViewTransitions />
 	</head>
 	<body
-		transition:animate={fade({ duration: '0.4s' })}
-		class="relative"
+		class="relative scroll-smooth"
 	>
 		<slot />
 	</body>
@@ -99,12 +94,6 @@ $opacity-2: 0.08;
 html {
 	display: flex;
 	justify-content: center;
-	font-family: "Space Mono", monospace;
-	font-size: 14px;
-	letter-spacing: 1px;
-	color: var(--main-color-default);
-	background: var(--main-color-90);
-	background-size: 224px;
 }
 
 body {
@@ -114,6 +103,12 @@ body {
 	align-items: center;
 	min-height: 100vh;
 	width: 100%;
+	font-family: "Space Mono", monospace;
+	font-size: 14px;
+	letter-spacing: 1px;
+	color: var(--main-color-default);
+	background: var(--main-color-90);
+	background-size: 224px;
 
 	#mouseDot {
 		position: absolute;
@@ -131,7 +126,7 @@ main {
 	height: 100%;
 }
 
-h1:not(header h1, article h1), h2 {
+h1:not(header h1, article h1, #page-title), h2:not(article h2) {
 	&::before {
 		content: ">/";
 		color: var(--highlight-color-default);
@@ -146,6 +141,11 @@ h1:not(header h1, article h1), h2 {
 
 p {
 	max-width: 600px;
+}
+
+hr {
+	color: #defcfa;
+	border-color: var(--main-default);
 }
 
 .link-button {

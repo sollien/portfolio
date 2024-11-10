@@ -7,12 +7,12 @@ const { headerEffect } = Astro.props
 ---
 
 <div
-	class={`w-full mb-12 self-start relative ${headerEffect}`}
+	class="w-full mb-12 self-start relative"
 >
 	<span class="absolute top-0 right-0 text-lg hidden xl:block">+</span>
 	<span class="absolute bottom-0 right-0 text-lg hidden xl:block">+</span>
 	<h1 class="text-7xl md:text-8xl tracking-tight max-w-screen-lg relative p-6">
-		<slot />
+		<span class={headerEffect}><slot /></span>
 		<span class="absolute top-0 left-0 text-lg">+</span>
 		<span class="absolute bottom-0 left-0 text-lg">+</span>
 		<span class="absolute top-0 right-0 text-lg">+</span>

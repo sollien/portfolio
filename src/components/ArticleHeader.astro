@@ -28,35 +28,80 @@ const { headerEffect } = Astro.props
 
 <script>
 const header = document.querySelector("h1")
+const ANIMATION_KEYFRAMES = `
+    @keyframes bleed {
+        0% { text-shadow: 0 0 0 #ef4444; }
+        50% { text-shadow: 0 10px 15px #ef4444; }
+        99% { text-shadow: 0 20px 30px #ef444400; opacity: 0.2; }
+        100% { text-shadow: none; opacity: 0.2; }
+    }
+`
 
-header?.addEventListener("click", (e) => {
-    const range = document.caretRangeFromPoint(e.clientX - 30, e.clientY - 30)
-    if (range) {
-        const textNode = range.startContainer
-        if (textNode.nodeType === Node.TEXT_NODE) {
-            const text = textNode.textContent || ""
-            const offset = range.startOffset
-            if (offset < text.length) {
-                const span = document.createElement("span")
-                span.style.color = "#ef4444"
-                span.style.animation = "bleed 2s forwards"
-                span.textContent = text[offset]
-                textNode.textContent = text.slice(0, offset) + text.slice(offset + 1)
-                const textParts = (textNode as Text).splitText(offset)
-                textNode.parentNode?.insertBefore(span, textParts)
+function getTextNodesFromSpan(span: Element) {
+    const textNodes = []
+    const walker = document.createTreeWalker(span, NodeFilter.SHOW_TEXT, null)
+    let node
+    while (node = walker.nextNode()) {
+        textNodes.push(node)
+    }
+    return textNodes
+}
 
-                const style = document.createElement("style")
-                style.textContent = `
-                    @keyframes bleed {
-                        0% { text-shadow: 0 0 0 #ef4444; }
-                        50% { text-shadow: 0 10px 15px #ef4444; }
-                        99% { text-shadow: 0 20px 30px #ef444400; opacity: 0.2; }
-                        100% { text-shadow: none; opacity: 0.2; }
-                    }
-                `
-                document.head.appendChild(style)
+function isCharacterAlreadyAnimated(range: Range) {
+    const existingSpan = range.commonAncestorContainer.parentElement
+    return existingSpan && existingSpan.tagName === 'SPAN' && existingSpan.style.animation
+}
+
+function createBleedingEffect(targetNode: Node, targetOffset: number) {
+    const text = targetNode.textContent || ""
+    const effectSpan = document.createElement("span")
+    effectSpan.style.color = "#ef4444"
+    effectSpan.style.animation = "bleed 2s forwards"
+    effectSpan.textContent = text[targetOffset]
+
+    targetNode.textContent = text.slice(0, targetOffset) + text.slice(targetOffset + 1)
+    const textParts = (targetNode as Text).splitText(targetOffset)
+    targetNode.parentNode?.insertBefore(effectSpan, textParts)
+
+    const style = document.createElement("style")
+    style.textContent = ANIMATION_KEYFRAMES
+    document.head.appendChild(style)
+}
+
+header!.addEventListener("click", (e) => {
+    const span = header!.querySelector("span")
+    if (!span) return
+
+    const textNodes = getTextNodesFromSpan(span)
+    const range = document.createRange()
+    let found = false
+    let targetNode, targetOffset
+
+    for (const textNode of textNodes) {
+        const text = textNode.textContent || ""
+
+        for (let i = 0; i < text.length; i++) {
+            range.setStart(textNode, i)
+            range.setEnd(textNode, i + 1)
+            const rect = range.getBoundingClientRect()
+
+            const isClickInBounds = e.clientX >= rect.left && e.clientX <= rect.right &&
+                                  e.clientY >= rect.top && e.clientY <= rect.bottom
+
+            if (isClickInBounds) {
+                if (isCharacterAlreadyAnimated(range)) return
+
+                targetNode = textNode
+                targetOffset = i
+                found = true
+                break
             }
         }
+        if (found) break
+    }
+
+    if (targetNode && typeof targetOffset === 'number') {
+        createBleedingEffect(targetNode, targetOffset)
     }
 })
 </script>

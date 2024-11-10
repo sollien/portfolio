@@ -12,6 +12,7 @@ headerEffect: "killer"
 ---
 
 import Stats from "@/components/charts/stats.svelte"
+import AiPerformance from "@/components/charts/AiPerformance.svelte"
 import ArticleImage from "@/components/ArticleImage.astro"
 import Speed from "@/components/text-effects/Speed.astro"
 import SecondShadow from "@/components/text-effects/SecondShadow.astro"
@@ -57,7 +58,7 @@ While launch speed isn't a critical for development (who really cares about savi
 ## Unparalleled AI integration
 
 Zed has full AI integration, including Anthropic's Claude 3.5 Sonnet on the free plan. I've used a fair share of AI's for coding these last years, including ChatGPT, Codeium, and GitHub Copilot. For coding Claude 3.5 Sonnet is by far the most impressive.
-<br /><br />
+<AiPerformance client:idle />
 Not only does it provide impressive answers, it also has a fluid integration into Zed. I can easily select a block of code, or even a whole tab, and it offers suggestions that makes me believe it has a deeper understanding of code and errors than other models.
 <br /><br />
 Zed also have multiple other features I haven't tried. It supposedly have extensive collaboration tooling. To be frank, I don't think I will ever touch those features. But I might see the value if you do pair-programming.

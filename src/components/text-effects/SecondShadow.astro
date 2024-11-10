@@ -1,0 +1,51 @@
+<span class="relative shadow-text">
+    <span class="relative z-10"><slot /></span>
+    <span class="absolute left-0 top-0 text-main-default opacity-40 shadow-duplicate"><slot /></span>
+</span>
+
+<style>
+.shadow-text {
+    display: inline-block;
+}
+
+.shadow-duplicate {
+    transform: translate(0, 0);
+    pointer-events: none;
+}
+</style>
+
+<script>
+// Calculate scroll progress for an element
+const calculateScrollProgress = (element: HTMLElement) => {
+    const rect = element.getBoundingClientRect()
+    const elementTop = rect.top
+    const elementHeight = rect.height
+    const windowHeight = window.innerHeight
+
+    const scrollProgress = (windowHeight - elementTop) / (windowHeight + elementHeight);
+    return Math.min(Math.max(scrollProgress, 0), 1)
+}
+
+const updateShadowPosition = (shadowEl: HTMLElement, progress: number) => {
+    const offsetX = progress * 50
+    const offsetY = progress * -50
+    shadowEl.style.transform = `translate(${offsetX}px, ${offsetY}px)`
+}
+
+const handleScrollShadow = () => {
+    const elements = document.querySelectorAll('.shadow-text')
+
+    elements.forEach((element: Element) => {
+        if (element instanceof HTMLElement) {
+            const shadowEl = element.querySelector('.shadow-duplicate') as HTMLElement
+            if (!shadowEl) return
+
+            const progress = calculateScrollProgress(element)
+            updateShadowPosition(shadowEl, progress)
+        }
+    })
+}
+
+document.addEventListener('scroll', handleScrollShadow)
+document.addEventListener('DOMContentLoaded', handleScrollShadow)
+</script>

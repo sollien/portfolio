@@ -12,6 +12,9 @@ export default {
 			},
 			borderColor: {
 				"main-default": "#defcfa"
+			},
+			textColor: {
+				"main-default": "#defcfa"
 			}
 		},
 	},

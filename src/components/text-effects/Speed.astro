@@ -1,0 +1,49 @@
+<span class="bouncy-text">
+    <slot />
+    <span class="trail trail-1"></span>
+    <span class="trail trail-2"></span>
+    <span class="trail trail-3"></span>
+</span>
+
+<style>
+.bouncy-text {
+    position: relative;
+    display: inline-block;
+    animation: bounce 1s infinite ease-in-out;
+}
+
+.trail {
+    position: absolute;
+    height: 2px;
+    background: linear-gradient(to left, currentColor, transparent);
+    top: 50%;
+    transform: translateY(-50%);
+    opacity: 0.3;
+}
+
+.trail-1 {
+	top: 10px;
+    left: -20px;
+    right: 100%;
+}
+
+.trail-2 {
+    left: -35px;
+    right: 100%;
+    top: 20px;
+}
+
+.trail-3 {
+    left: -50px;
+    right: 100%;
+}
+
+@keyframes bounce {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-2px);
+    }
+}
+</style>

@@ -8,13 +8,15 @@ export default {
 			},
 			backgroundColor: {
 				"main-default": "#121615",
-				"main-850": "#262d2d"
+				"main-850": "#262d2d",
+				"bright-default": "#defcfa"
 			},
 			borderColor: {
 				"main-default": "#defcfa"
 			},
 			textColor: {
-				"main-default": "#defcfa"
+				"main-default": "#defcfa",
+				"dark-default": "#121615",
 			}
 		},
 	},

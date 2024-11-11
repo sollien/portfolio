@@ -18,6 +18,9 @@ const { headerEffect } = Astro.props
 		<span class="absolute top-0 right-0 text-lg">+</span>
 		<span class="absolute bottom-0 right-0 text-lg">+</span>
 	</h1>
+	{headerEffect === "killer" &&
+		<p class="p-1 bg-bright-default text-dark-default font-bold mt-2 md:hidden">Click title to shoot</p>
+	}
 </div>
 
 <style>

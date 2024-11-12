@@ -32,7 +32,7 @@ const posts = pages.sort((a, b) => new Date(b.frontmatter?.date || 0).getTime() 
 			<div class="max-w-screen-md">
 				{posts.map(post => (
 					<ImageCardLink
-						href={`/posts/${post.file.split('/').pop()?.split('.')[0]}`}
+						href={`/writing/${post.file.split('/').pop()?.split('.')[0]}`}
 						title={post.frontmatter.title}
 						description={post.frontmatter.description}
 						src={Zed}

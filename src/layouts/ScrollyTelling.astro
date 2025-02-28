@@ -1,0 +1,43 @@
+---
+import Layout from "@/layouts/Layout.astro"
+
+const { frontmatter } = Astro.props
+---
+
+<Layout
+	title={frontmatter.title + " – Martin Sollien"}
+	description={frontmatter.metaDescription}
+>
+	<div class="fixed top-4 z-10">
+		<a href="/writing">Back to writing</a>
+	</div>
+	<article
+		id="article"
+		class="w-full mb-24 md:p-0 flex flex-col items-center px-4 lg:px-20 relative"
+	>
+		<slot />
+	</article>
+</Layout>
+
+<style lang="scss">
+:global(#article h2:not(#description, #secondary-title)) {
+	font-size: 20px;
+	font-weight: 600;
+	margin-top: 40px;
+	margin-bottom: 10px;
+}
+
+:global(.fact-box) {
+	padding: 1rem;
+	border: var(--default-border);
+
+	&::before {
+		display: block;
+		padding-bottom: 8px;
+		margin-bottom: 8px;
+		content: "Facts!";
+		font-weight: bold;
+		border-bottom: 1px solid #defcfa;
+	}
+}
+</style>

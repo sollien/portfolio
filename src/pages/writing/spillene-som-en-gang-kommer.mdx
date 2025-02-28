@@ -1,14 +1,13 @@
 ---
-layout: "../../layouts/BlogPost.astro"
-title: "Is Zed the VS Code killer?"
+layout: "../../layouts/ScrollyTelling.astro"
+title: "Spillene som en gang kommer"
 heroImage: "../../assets/images/articles/zed_logo.jpeg"
-metaDescription: "Zed editor is made by the renowned team behind the Atom text editor, and stands to be a serious contender to VS Code."
-description: "Zed editor is made by the renowned team behind the Atom text editor, and stands to be a serious contender to VS Code. I've tested it and given it some thought."
+metaDescription: "Utviklere gir ut dataspill stadig tidligere før det er ferdig, og spillere betaler store summer for å spille uferdige spill. Motivet er økonomisk, mens konsekvensene kan være dårligere kvalitet."
+description: "Utviklere gir ut dataspill stadig tidligere før det er ferdig, og spillere betaler store summer for å spille uferdige spill. Motivet er økonomisk, mens konsekvensene kan være dårligere kvalitet."
 preface: "I'm not in any way endorsed or sponsored by the Zed team. I write this freely and from my own genuine personal experience."
 date: "11 Nov 24"
 alt: "Zed editor"
 categories: "Tools"
-headerEffect: "killer"
 ---
 
 import Stats from "@/components/charts/stats.svelte"
@@ -18,6 +17,9 @@ import Speed from "@/components/text-effects/Speed.astro"
 import SecondShadow from "@/components/text-effects/SecondShadow.astro"
 import Article from "@/assets/images/articles/behind_the_scenes.png"
 import { Image } from "astro:assets"
+import Header from "@/components/article/SpillSomKommerHeader.svelte"
+
+<Header client:load />
 
 <div class="lang-en">
 Zed. I've never really liked that name. Somehow, it sounds kind of edgy in an uncool way. It also reminds me of Dr. Zed from *Borderlands* and the champion Zed from *League of Legends*. Not that there's anything wrong with at least one of those.

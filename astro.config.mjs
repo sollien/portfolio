@@ -10,4 +10,9 @@ export default defineConfig({
 	output: "server",
 	adapter: netlify(),
 	prefetch: true,
+	vite: {
+		optimizeDeps: {
+			include: ['gsap']
+		}
+	}
 });

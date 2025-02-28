@@ -22,25 +22,33 @@ const { frontmatter } = Astro.props
 		</ArticleHeader>
 		<div class="md:grid md:grid-cols-4 md:gap-10 w-full">
 			<div class="mb-12 md:col-span-1 relative">
-				<div class="w-full border-main-default border p-4 sticky top-10">
-					<p>METADATA</p>
-					<hr class="mt-4 mb-4 border-dashed" />
-					<dl>
-						<div class="flex justify-between mb-4">
-							<dt>AUTHOR</dt>
-							<dd>Martin Sollien</dd>
-						</div>
-						<div class="flex justify-between mb-4">
-							<dt>DATE</dt>
-							<dd>{frontmatter.date}</dd>
-						</div>
-						<div class="flex justify-between">
-							<dt>CATEGORIES</dt>
-							<dd class="flex gap-4">
-								<span class="border border-dashed border-main-default p-1 py-[2px] text-sm">{frontmatter.categories}</span>
-							</dd>
-						</div>
-					</dl>
+				<div class="sticky top-10">
+					<div class="w-full border-main-default border p-4">
+						<p>METADATA</p>
+						<hr class="mt-4 mb-4 border-dashed" />
+						<dl>
+							<div class="flex justify-between mb-4">
+								<dt>AUTHOR</dt>
+								<dd>Martin Sollien</dd>
+							</div>
+							<div class="flex justify-between mb-4">
+								<dt>DATE</dt>
+								<dd>{frontmatter.date}</dd>
+							</div>
+							<div class="flex justify-between">
+								<dt>CATEGORIES</dt>
+								<dd class="flex gap-4">
+									<span class="border border-dashed border-main-default p-1 py-[2px] text-sm">{frontmatter.categories}</span>
+								</dd>
+							</div>
+						</dl>
+					</div>
+					<div class="mt-4 w-full relative inline-flex">
+						<input type="radio" id="no" name="language" value="no" class="peer/no absolute opacity-0">
+						<input type="radio" id="en" name="language" value="en" class="peer/en absolute opacity-0">
+						<label for="no" class="w-1/2 text-center py-1 peer-checked/no:text-dark-default peer-checked/no:bg-primary-default cursor-pointer border peer-checked/en:border-main-default border-primary-default transition-colors">NO</label>
+						<label for="en" class="w-1/2 text-center py-1 peer-checked/en:text-dark-default border peer-checked/no:border-main-default border-primary-default peer-checked/en:bg-primary-default cursor-pointer transition-colors">EN</label>
+					</div>
 				</div>
 			</div>
 			<div class="md:col-span-2 flex justify-center">
@@ -64,6 +72,39 @@ const { frontmatter } = Astro.props
 			<div class="md:col-span-1" />
 		</div>
 	</article>
+	<script>
+		const radios = document.querySelectorAll('input[name="language"]');
+		const savedLanguage: string = localStorage.getItem('selectedLanguage') || 'no';
+		const el = document.getElementById(savedLanguage) as HTMLInputElement;
+		const norwegianContent = document.querySelectorAll('.lang-no');
+		const englishContent = document.querySelectorAll('.lang-en');
+
+		el.checked = true;
+
+		// Set initial content visibility
+		if (savedLanguage === 'en') {
+			norwegianContent.forEach(element => element.classList.add('hidden'));
+			englishContent.forEach(element => element.classList.remove('hidden'));
+		} else {
+			norwegianContent.forEach(element => element.classList.remove('hidden'));
+			englishContent.forEach(element => element.classList.add('hidden'));
+		}
+
+		radios.forEach(radio => {
+			radio.addEventListener('change', (e) => {
+				const target = e.target as HTMLInputElement;
+				localStorage.setItem('selectedLanguage', target.value);
+
+				if (target.value === 'en') {
+					norwegianContent.forEach(element => element.classList.add('hidden'));
+					englishContent.forEach(element => element.classList.remove('hidden'));
+				} else {
+					norwegianContent.forEach(element => element.classList.remove('hidden'));
+					englishContent.forEach(element => element.classList.add('hidden'));
+				}
+			});
+		});
+	</script>
 </Layout>
 
 <style lang="scss">

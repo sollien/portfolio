@@ -19,18 +19,12 @@ const {
 	class={`relative flex-col project-item -mt-px lg:hover:bg-main-850 ${classes || ""}`}
 >
 	<div class="grid lg:grid-cols-8 gap-4 mb-5">
-		<div
-			class="lg:col-span-2 lg:mt-5 ml-5 order-last lg:order-first image-outer-container"
-		>
-			<div class="image-container">
-				<Image
-					src={src}
-					alt={alt}
-					width={250}
-					height={250}
-					class="image-content"
-				/>
-			</div>
+		<div class="lg:col-span-2 lg:mt-5 ml-5 order-last lg:order-first">
+			<Image
+				src={src}
+				alt={alt}
+				class="border border-main-default rounded-lg max-h-44 w-auto"
+			/>
 		</div>
 		<div class="lg:col-span-6 mt-5">
 			<div class="pl-5 mb-1 flex gap-4 items-center">
@@ -106,34 +100,6 @@ const {
 			height: 15px;
 			transition: 0.2s ease-in-out;
 		}
-	}
-
-	.image-outer-container {
-		display: flex;
-		align-items: center;
-		justify-content: center;
-	}
-
-	.image-container {
-		position: relative;
-		width: 100%;
-		padding-bottom: 100%; /* Creates a perfect square */
-		overflow: hidden;
-		border: var(--default-border);
-		border-radius: 0.5rem;
-		display: flex;
-		align-items: center;
-		justify-content: center;
-	}
-
-	.image-content {
-		position: absolute;
-		top: 0;
-		left: 0;
-		width: 100%;
-		height: 100%;
-		object-fit: cover; /* Fills the container and crops as needed, maintaining aspect ratio */
-		object-position: center; /* Ensures the image is centered */
 	}
 
 	.dice-container {

@@ -10,9 +10,9 @@ const { headerEffect } = Astro.props;
     <span class="absolute top-0 right-0 text-lg hidden xl:block">+</span>
     <span class="absolute bottom-0 right-0 text-lg hidden xl:block">+</span>
     <h1
-        class="text-7xl md:text-8xl tracking-tight max-w-screen-lg relative p-6"
+        class="text-5xl md:text-8xl tracking-tight max-w-screen-lg relative p-6"
     >
-        <span class={headerEffect}><slot /></span>
+        <span class={headerEffect} style="hyphens: auto;"><slot /></span>
         <span class="absolute top-0 left-0 text-lg">+</span>
         <span class="absolute bottom-0 left-0 text-lg">+</span>
         <span class="absolute top-0 right-0 text-lg">+</span>

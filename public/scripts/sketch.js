@@ -74,8 +74,12 @@ function drawTriangle(x, y, columns) {
 		let normalizedDist = distToMouse / repulsionRadius
 		let repulsionStrength = maxRepulsionStrength * (1.7 - normalizedDist)
 
-		let forceX = (triangleX - mouseXPos) / distToMouse * repulsionStrength / distToMouse
-		let forceY = (triangleY - mouseYPos) / distToMouse * repulsionStrength / distToMouse
+		// Create a protection zone near the center - minimum distance enforced only when very close
+		const minDistance = 20  // Minimum distance to protect against extreme forces
+		let effectiveDist = distToMouse < minDistance ? minDistance : distToMouse
+
+		let forceX = (triangleX - mouseXPos) / effectiveDist * repulsionStrength / effectiveDist
+		let forceY = (triangleY - mouseYPos) / effectiveDist * repulsionStrength / effectiveDist
 
 		triangleX += forceX
 		triangleY += forceY

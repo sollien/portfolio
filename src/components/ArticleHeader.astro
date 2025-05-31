@@ -1,36 +1,43 @@
 ---
 interface Props {
-	headerEffect?: string
+    headerEffect?: string;
 }
 
-const { headerEffect } = Astro.props
+const { headerEffect } = Astro.props;
 ---
 
-<div
-	class="w-full mb-12 self-start relative"
->
-	<span class="absolute top-0 right-0 text-lg hidden xl:block">+</span>
-	<span class="absolute bottom-0 right-0 text-lg hidden xl:block">+</span>
-	<h1 class="text-7xl md:text-8xl tracking-tight max-w-screen-lg relative p-6">
-		<span class={headerEffect}><slot /></span>
-		<span class="absolute top-0 left-0 text-lg">+</span>
-		<span class="absolute bottom-0 left-0 text-lg">+</span>
-		<span class="absolute top-0 right-0 text-lg">+</span>
-		<span class="absolute bottom-0 right-0 text-lg">+</span>
-	</h1>
-	{headerEffect === "killer" &&
-		<p class="p-1 bg-bright-default text-dark-default font-bold mt-2 md:hidden">Click title to shoot</p>
-	}
+<div class="w-full mb-12 self-start relative">
+    <span class="absolute top-0 right-0 text-lg hidden xl:block">+</span>
+    <span class="absolute bottom-0 right-0 text-lg hidden xl:block">+</span>
+    <h1
+        class="text-7xl md:text-8xl tracking-tight max-w-screen-lg relative p-6"
+    >
+        <span class={headerEffect}><slot /></span>
+        <span class="absolute top-0 left-0 text-lg">+</span>
+        <span class="absolute bottom-0 left-0 text-lg">+</span>
+        <span class="absolute top-0 right-0 text-lg">+</span>
+        <span class="absolute bottom-0 right-0 text-lg">+</span>
+    </h1>
+    {
+        headerEffect === "killer" && (
+            <p class="p-1 bg-bright-default text-dark-default font-bold mt-2 md:hidden">
+                Click title to shoot
+            </p>
+        )
+    }
 </div>
 
 <style>
-.killer:hover {
-	cursor: url("data:image/svg+xml,%3Csvg fill='%23ef4444' xmlns='http://www.w3.org/2000/svg' width='32' height='32' viewBox='0 0 97 97'%3E%3Cpath d='M95,44.312h-7.518C85.54,26.094,70.906,11.46,52.688,9.517V2c0-1.104-0.896-2-2-2h-4.376c-1.104,0-2,0.896-2,2v7.517l0,0 C26.094,11.46,11.46,26.094,9.517,44.312H2c-1.104,0-2,0.896-2,2v4.377c0,1.104,0.896,2,2,2h7.517 C11.46,70.906,26.094,85.54,44.312,87.482V95c0,1.104,0.896,2,2,2h4.377c1.104,0,2-0.896,2-2v-7.518l0,0 C70.906,85.54,85.54,70.906,87.482,52.688H95c1.104,0,2-0.896,2-2v-4.376C97,45.207,96.104,44.312,95,44.312z M24.896,52.688 c1.104,0,2-0.896,2-2v-4.376c0-1.104-0.896-2-2-2h-6.492c1.856-13.397,12.51-24.052,25.907-25.908v6.492c0,1.104,0.896,2,2,2h4.376 c1.104,0,2-0.896,2-2v-6.492C66.086,20.26,76.74,30.914,78.596,44.312h-6.492c-1.104,0-2,0.896-2,2v4.377c0,1.104,0.896,2,2,2 h6.492C76.74,66.086,66.086,76.74,52.689,78.598v-6.492c0-1.104-0.896-2-2-2h-4.377c-1.104,0-2,0.896-2,2v6.492 C30.914,76.74,20.26,66.086,18.404,52.688H24.896z'/%3E%3C/svg%3E") 16 16, pointer;
-}
+    .killer:hover {
+        cursor:
+            url("data:image/svg+xml,%3Csvg fill='%23ef4444' xmlns='http://www.w3.org/2000/svg' width='32' height='32' viewBox='0 0 97 97'%3E%3Cpath d='M95,44.312h-7.518C85.54,26.094,70.906,11.46,52.688,9.517V2c0-1.104-0.896-2-2-2h-4.376c-1.104,0-2,0.896-2,2v7.517l0,0 C26.094,11.46,11.46,26.094,9.517,44.312H2c-1.104,0-2,0.896-2,2v4.377c0,1.104,0.896,2,2,2h7.517 C11.46,70.906,26.094,85.54,44.312,87.482V95c0,1.104,0.896,2,2,2h4.377c1.104,0,2-0.896,2-2v-7.518l0,0 C70.906,85.54,85.54,70.906,87.482,52.688H95c1.104,0,2-0.896,2-2v-4.376C97,45.207,96.104,44.312,95,44.312z M24.896,52.688 c1.104,0,2-0.896,2-2v-4.376c0-1.104-0.896-2-2-2h-6.492c1.856-13.397,12.51-24.052,25.907-25.908v6.492c0,1.104,0.896,2,2,2h4.376 c1.104,0,2-0.896,2-2v-6.492C66.086,20.26,76.74,30.914,78.596,44.312h-6.492c-1.104,0-2,0.896-2,2v4.377c0,1.104,0.896,2,2,2 h6.492C76.74,66.086,66.086,76.74,52.689,78.598v-6.492c0-1.104-0.896-2-2-2h-4.377c-1.104,0-2,0.896-2,2v6.492 C30.914,76.74,20.26,66.086,18.404,52.688H24.896z'/%3E%3C/svg%3E")
+                16 16,
+            pointer;
+    }
 </style>
 
 <script>
-const header = document.querySelector("h1")
+    /* const header = document.querySelector("h1")
 const ANIMATION_KEYFRAMES = `
     @keyframes bleed {
         0% { text-shadow: 0 0 0 #ef4444; }
@@ -106,5 +113,5 @@ header!.addEventListener("click", (e) => {
     if (targetNode && typeof targetOffset === 'number') {
         createBleedingEffect(targetNode, targetOffset)
     }
-})
+}) */
 </script>

@@ -1,63 +1,239 @@
 ---
-import { Image } from "astro:assets"
+import { Image } from "astro:assets";
 
-const { href, title, src, alt, linkText, classes, target } = Astro.props
+const {
+	href,
+	title,
+	src,
+	alt,
+	linkText,
+	classes,
+	target,
+	score,
+	category,
+	reviewTitle,
+} = Astro.props;
 ---
 
 <div
-	class={`relative flex-col project-item -mt-px lg:hover:bg-main-850 ${classes || ''}`}
+	class={`relative flex-col project-item -mt-px lg:hover:bg-main-850 ${classes || ""}`}
 >
 	<div class="grid lg:grid-cols-8 gap-4 mb-5">
-		<div class="lg:col-span-2 lg:mt-5 ml-5 order-last lg:order-first">
-			<Image
-				src={src}
-				alt={alt}
-				class="border border-main-default rounded-lg max-h-44 w-auto"
-			/>
+		<div
+			class="lg:col-span-2 lg:mt-5 ml-5 order-last lg:order-first image-outer-container"
+		>
+			<div class="image-container">
+				<Image
+					src={src}
+					alt={alt}
+					width={250}
+					height={250}
+					class="image-content"
+				/>
+			</div>
 		</div>
 		<div class="lg:col-span-6 mt-5">
+			<div class="pl-5 mb-1 flex gap-4 items-center">
+				{
+					category === "Anmeldelse" && (
+						<span class="border border-dashed border-main-default p-1 py-[2px] text-sm inline-block">
+							Anmeldelse
+						</span>
+					)
+				}
+				{reviewTitle && <span class="text-xs">{reviewTitle}</span>}
+			</div>
 			<a class="text-lg text-glow">
 				<p class="flex gap-x-2 flex-wrap items-center px-5">
 					<span class="flex gap-x-2 items-center">
-						{ title }
-						<svg class="hidden lg:block" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"></path><path d="M13 18l6-6"></path><path d="M13 6l6 6"></path></g></svg>
+						{title}
+						<svg
+							class="hidden lg:block"
+							xmlns="http://www.w3.org/2000/svg"
+							xmlns:xlink="http://www.w3.org/1999/xlink"
+							viewBox="0 0 24 24"
+							><g
+								fill="none"
+								stroke="currentColor"
+								stroke-width="2"
+								stroke-linecap="round"
+								stroke-linejoin="round"
+								><path d="M5 12h14"></path><path d="M13 18l6-6"
+								></path><path d="M13 6l6 6"></path></g
+							></svg
+						>
 					</span>
 				</p>
 			</a>
+			{
+				score && (
+					<div class="ml-5 mt-1 dice-container">
+						<div class={`dice dice-${score}`}>
+							{Array.from({ length: score }).map((_, i) => (
+								<div class="dot" />
+							))}
+						</div>
+					</div>
+				)
+			}
 			<slot />
 		</div>
 	</div>
-	<a
-		href={href}
-		target={target}
-		class="link-button mb-5 lg:!hidden"
-	>
+	<a href={href} target={target} class="link-button mb-5 lg:!hidden">
 		{linkText}
 	</a>
 	<a
 		href={href}
 		target={target}
-		class="absolute top-0 left-0 w-full h-full hidden lg:block"
-	/>
+		class="absolute top-0 left-0 w-full h-full hidden lg:block"></a>
 </div>
 
 <style lang="scss">
-.project-item {
-	border: var(--default-border);
-	transition: 0.2s ease-in-out;
+	.project-item {
+		border: var(--default-border);
+		transition: 0.2s ease-in-out;
 
-	&:hover {
-		cursor: pointer;
+		&:hover {
+			cursor: pointer;
+
+			svg {
+				margin-left: 10px;
+			}
+		}
 
 		svg {
-			margin-left: 10px;
+			width: 15px;
+			height: 15px;
+			transition: 0.2s ease-in-out;
 		}
 	}
 
-	svg {
-		width: 15px;
-		height: 15px;
-		transition: 0.2s ease-in-out;
+	.image-outer-container {
+		display: flex;
+		align-items: center;
+		justify-content: center;
 	}
-}
+
+	.image-container {
+		position: relative;
+		width: 100%;
+		padding-bottom: 100%; /* Creates a perfect square */
+		overflow: hidden;
+		border: var(--default-border);
+		border-radius: 0.5rem;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+	}
+
+	.image-content {
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+		object-fit: cover; /* Fills the container and crops as needed, maintaining aspect ratio */
+		object-position: center; /* Ensures the image is centered */
+	}
+
+	.dice-container {
+		display: inline-block;
+	}
+
+	.dice {
+		display: grid;
+		grid-template-columns: repeat(3, 1fr);
+		grid-template-rows: repeat(3, 1fr);
+		width: 2.1rem;
+		height: 2.1rem;
+		background-color: #98ff5c;
+		padding: 4px;
+		gap: 1px;
+		position: relative;
+	}
+
+	.dot {
+		width: 0.5rem;
+		height: 0.5rem;
+		background-color: black;
+		border-radius: 50%;
+		justify-self: center;
+		align-self: center;
+	}
+
+	/* Dice patterns based on standard dice configuration */
+	/* For dice-1, show only the middle dot */
+	.dice-1 .dot:nth-child(1) {
+		grid-area: 2 / 2; /* Center dot in the middle of the grid */
+	}
+
+	/* For dice-2, show top-left and bottom-right */
+	.dice-2 .dot:nth-child(1) {
+		grid-area: 1 / 1;
+	}
+	.dice-2 .dot:nth-child(2) {
+		grid-area: 3 / 3;
+	}
+
+	/* For dice-3, add the middle dot */
+	.dice-3 .dot:nth-child(1) {
+		grid-area: 1 / 1;
+	}
+	.dice-3 .dot:nth-child(2) {
+		grid-area: 2 / 2;
+	}
+	.dice-3 .dot:nth-child(3) {
+		grid-area: 3 / 3;
+	}
+
+	/* For dice-4, show all four corners */
+	.dice-4 .dot:nth-child(1) {
+		grid-area: 1 / 1;
+	}
+	.dice-4 .dot:nth-child(2) {
+		grid-area: 1 / 3;
+	}
+	.dice-4 .dot:nth-child(3) {
+		grid-area: 3 / 1;
+	}
+	.dice-4 .dot:nth-child(4) {
+		grid-area: 3 / 3;
+	}
+
+	/* For dice-5, add the middle dot */
+	.dice-5 .dot:nth-child(1) {
+		grid-area: 1 / 1;
+	}
+	.dice-5 .dot:nth-child(2) {
+		grid-area: 1 / 3;
+	}
+	.dice-5 .dot:nth-child(3) {
+		grid-area: 2 / 2;
+	}
+	.dice-5 .dot:nth-child(4) {
+		grid-area: 3 / 1;
+	}
+	.dice-5 .dot:nth-child(5) {
+		grid-area: 3 / 3;
+	}
+
+	/* For dice-6, show 3 dots on each side */
+	.dice-6 .dot:nth-child(1) {
+		grid-area: 1 / 1;
+	}
+	.dice-6 .dot:nth-child(2) {
+		grid-area: 1 / 3;
+	}
+	.dice-6 .dot:nth-child(3) {
+		grid-area: 2 / 1;
+	}
+	.dice-6 .dot:nth-child(4) {
+		grid-area: 2 / 3;
+	}
+	.dice-6 .dot:nth-child(5) {
+		grid-area: 3 / 1;
+	}
+	.dice-6 .dot:nth-child(6) {
+		grid-area: 3 / 3;
+	}
 </style>

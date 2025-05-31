@@ -1,45 +1,54 @@
 ---
-const { subtitle } = Astro.props
+const { subtitle, link } = Astro.props;
 ---
 
-<div class="content-header">
-	<slot/>
-	{subtitle && <span>{subtitle}</span>}
-</div>
+{
+	link ? (
+		<a class="content-header lg:hover:bg-main-850" href={link}>
+			<slot />
+			{subtitle && <span>{subtitle}</span>}
+		</a>
+	) : (
+		<div class="content-header">
+			<slot />
+			{subtitle && <span>{subtitle}</span>}
+		</div>
+	)
+}
 
 <style lang="scss" scoped>
-@keyframes arrows {
-	25% {
-		content: ">\00a0\00a0\00a0";
-	}
-	50% {
-		content: ">>\00a0\00a0";
-	}
-	75% {
-		content: ">>>\00a0";
-	}
-}
-
-.content-header {
-	display: flex;
-	flex-direction: column;
-	padding: 100px 30px 10px 30px;
-	border: var(--default-border);
-
-	span {
-		color: var(--main-color-40);
-
-		&::before {
-			content: "\00a0\00a0\00a0\00a0";
-			animation: arrows 2s infinite;
+	@keyframes arrows {
+		25% {
+			content: ">\00a0\00a0\00a0";
+		}
+		50% {
+			content: ">>\00a0\00a0";
+		}
+		75% {
+			content: ">>>\00a0";
 		}
 	}
-}
 
-@media (min-width: 768px) {
 	.content-header {
-		flex-direction: row;
-		justify-content: space-between;
+		display: flex;
+		flex-direction: column;
+		padding: 100px 30px 10px 30px;
+		border: var(--default-border);
+
+		span {
+			color: var(--main-color-40);
+
+			&::before {
+				content: "\00a0\00a0\00a0\00a0";
+				animation: arrows 2s infinite;
+			}
+		}
 	}
-}
+
+	@media (min-width: 768px) {
+		.content-header {
+			flex-direction: row;
+			justify-content: space-between;
+		}
+	}
 </style>

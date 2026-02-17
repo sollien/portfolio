@@ -3,6 +3,7 @@ import Layout from "@/layouts/Layout.astro";
 import ContentHeader from "@/components/ContentHeader.astro";
 import CardLink from "@/components/CardLink.astro";
 import ImageCardLink from "@/components/ImageCardLink.astro";
+import Header from "@/components/Header.astro";
 import CampaignTimeline from "@/assets/images/projects/psm_campaign_timeline_shot.jpg";
 import SeoDashboard from "@/assets/images/projects/seo_dashboard.jpg";
 import PwrPhoneShot from "@/assets/images/projects/pwr_phone_mockup.jpg";
@@ -33,6 +34,9 @@ const codingSince: number = new Date().getFullYear() - 2019;
 		<div class="top-end-animation"></div>
 		<div class="bottom-start-animation"></div>
 		<div class="bottom-end-animation"></div>
+	</div>
+	<div class="mm-header-animation">
+		<Header />
 	</div>
 	<div
 		id="main-content"
@@ -70,8 +74,8 @@ const codingSince: number = new Date().getFullYear() - 2019;
 					with technology – to my great satisfaction.
 					<br />
 					<br />
-					When I'm not coding, you can usually find me gaming, playing
-					drums or reading books.
+					When I'm not coding, you can usually find me gaming, playing drums
+					or reading books.
 				</p>
 			</section>
 			<section class="mt-40">
@@ -540,6 +544,11 @@ const codingSince: number = new Date().getFullYear() - 2019;
 
 	#main-content {
 		max-width: 1700px;
+		animation: show-content 2s;
+	}
+
+	.mm-header-animation {
+		width: 100%;
 		animation: show-content 2s;
 	}
 

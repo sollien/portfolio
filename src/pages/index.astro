@@ -1,620 +1,90 @@
 ---
 import Layout from "@/layouts/Layout.astro";
-import ContentHeader from "@/components/ContentHeader.astro";
-import CardLink from "@/components/CardLink.astro";
-import ImageCardLink from "@/components/ImageCardLink.astro";
 import Header from "@/components/Header.astro";
-import CampaignTimeline from "@/assets/images/projects/psm_campaign_timeline_shot.jpg";
-import SeoDashboard from "@/assets/images/projects/seo_dashboard.jpg";
-import PwrPhoneShot from "@/assets/images/projects/pwr_phone_mockup.jpg";
-import WeddingWebsite from "@/assets/images/projects/wedding_website.jpg";
-import Footer from "@/components/Footer.astro";
-import Planr from "@/assets/images/projects/planr.jpg";
+import ImageCardLink from "@/components/ImageCardLink.astro";
 import type { ImageMetadata } from "astro";
-
-const posts: any = Object.values(
-	import.meta.glob("../pages/writing/*.mdx", { eager: true }),
-);
 
 const images = import.meta.glob<{ default: ImageMetadata }>(
 	"/src/assets/images/**/*.{jpeg,jpg,png,gif}",
 	{ eager: true },
 );
 
-const workingYears: number = new Date().getFullYear() - 2015;
-const codingSince: number = new Date().getFullYear() - 2019;
+const pages = await Astro.glob("../pages/writing/*[.mdx, .md]");
+const posts = pages.sort(
+	(a, b) =>
+		new Date(b.frontmatter?.date || 0).getTime() -
+		new Date(a.frontmatter?.date || 0).getTime(),
+);
 ---
 
 <Layout
-	title="Martin Sollien | Designer & developer"
-	description="Martin Sollien's portfolio. I'm a developer in Oslo that like to use my creativity to build cool stuff."
+	title="Posts and writing – Martin Sollien"
+	description="Here are my personal posts about this and that. I try to write about what I find interesting."
 >
-	<div class="w-full">
-		<div class="top-start-animation"></div>
-		<div class="top-end-animation"></div>
-		<div class="bottom-start-animation"></div>
-		<div class="bottom-end-animation"></div>
-	</div>
-	<div class="mm-header-animation">
-		<Header />
-	</div>
-	<div
-		id="main-content"
-		class="flex flex-col lg:flex-row px-4 gap-40 lg:px-20 relative"
+	<Header />
+	<main
+		class="w-full mb-24 p-4 md:p-0 flex flex-col items-center px-4 lg:px-20 relative"
 	>
-		<div
-			class="flex flex-col justify-between w-full lg:w-[40%] py-12 lg:py-24 lg:sticky lg:top-0 max-h-screen"
-		>
-			<header class="flex flex-col">
-				<h1 class="font-bold text-3xl mb-4 lg:mb-8">Martin Sollien</h1>
-				<h2 class="text-xl mb-4">Visual journalist</h2>
-				<p class="main-400">
-					I'm a visual journalist in Oslo that like to use my
-					creativity to build cool stuff. I currently work at
-					Aftenposten.
-				</p>
-			</header>
-			<div id="p5div" class="max-w-full mt-12 sm:mt-0 mb-10"></div>
-			<Footer />
+		<div class="w-full mb-12 self-start relative">
+			<span class="absolute top-0 right-0 text-lg hidden xl:block">+</span
+			>
+			<span class="absolute bottom-0 right-0 text-lg hidden xl:block"
+				>+</span
+			>
+			<h1
+				id="page-title"
+				class="text-7xl md:text-8xl tracking-tight max-w-screen-lg relative p-6"
+			>
+				Writing
+				<span class="absolute top-0 left-0 text-lg">+</span>
+				<span class="absolute bottom-0 left-0 text-lg">+</span>
+				<span class="absolute top-0 right-0 text-lg">+</span>
+				<span class="absolute bottom-0 right-0 text-lg">+</span>
+			</h1>
 		</div>
-		<main class="pb-12 lg:py-24">
-			<section class="text-sm main-400">
-				<p>
-					I have over {workingYears} years experience working with writing,
-					SEO, design and developing, both in-house and with clients.
-					<br />
-					<br />
-					My path started with creative writing at Westerdals ACT, which
-					then led to me working at Publicis Starcom as a copywriter. While
-					I like to express myself creatively, technology and computers
-					have always interested me. So since I started out as a copywriter,
-					I've gradually transitioned into coding, with a detour within
-					SEO. I've been coding for the past {codingSince} years and can
-					reap the fruits of both creative expression and solving problems
-					with technology – to my great satisfaction.
-					<br />
-					<br />
-					When I'm not coding, you can usually find me gaming, playing drums
-					or reading books.
-				</p>
-			</section>
-			<section class="mt-40">
-				<ContentHeader>
-					<h2>Résumé</h2>
-				</ContentHeader>
-				<div class="items-container lg:mr-3">
-					<div class="grid lg:grid-cols-8 lg:gap-4">
-						<CardLink
-							title="Visual journalist"
-							company="Aftenposten"
-							yearSpan="2025 – Present"
-							href="https://www.aftenposten.no/"
-							linkText="COMPANY WEBSITE"
-						>
-							<p class="text-sm main-400 mt-5 px-5">
-								Creating visually appealing articles and
-								graphics for Aftenposten's news and stories, as
-								well as doing journalistic research for the
-								things that move around this great globe.
-							</p>
-							<div
-								class="flex flex-wrap gap-x-2 text-base my-5 px-5"
-							>
-								<code class="tag">Svelte</code>
-								<code class="tag">HTML</code>
-								<code class="tag">SCSS</code>
-								<code class="tag">TypeScript</code>
-								<code class="tag">GSAP</code>
-								<code class="tag">D3.js</code>
-								<code class="tag">Figma</code>
-							</div>
-						</CardLink>
-					</div>
-					<div class="grid lg:grid-cols-8 lg:gap-4">
-						<CardLink
-							title="Senior UX developer"
-							company="Publicis"
-							yearSpan="2021 – 2025"
-							href="https://www.publicis.no/"
-							linkText="COMPANY WEBSITE"
-						>
-							<h3 class="px-5 text-base main-400">
-								21–24 Front-end developer
-							</h3>
-							<p class="text-sm main-400 mt-5 px-5">
-								I have designed, devloped and maintained Cortex
-								– a large data-driven web application meant to
-								help our users (both internal and external) make
-								better ad campaigns. My work also included
-								collaborating with other teams to discuss and
-								refine requirements and UX.
-							</p>
-							<div
-								class="flex flex-wrap gap-x-2 text-base my-5 px-5"
-							>
-								<code class="tag">Vue</code>
-								<code class="tag">HTML</code>
-								<code class="tag">SCSS</code>
-								<code class="tag">TypeScript</code>
-								<code class="tag">GraphQL</code>
-								<code class="tag">Sanity</code>
-								<code class="tag">Figma</code>
-							</div>
-						</CardLink>
-					</div>
-					<div class="grid lg:grid-cols-8 lg:gap-4">
-						<CardLink
-							title="SEO advisor & front-end developer"
-							company="Publicis Starcom"
-							yearSpan="2017 – 2020"
-							href="https://www.publicis.no/"
-							linkText="COMPANY WEBSITE"
-						>
-							<h3 class="px-5 text-base main-400">
-								17–19 SEO advisor
-							</h3>
-							<p class="text-sm main-400 mt-5 px-5">
-								I worked SEO, both technical and on-page, which
-								resulted in improved organic traffic for many
-								clients. I've had the pleasure of working with a
-								wide range of clients, such as Komplett, PSA
-								Groupe (Peugeot, Citroën, DS), Takeda, and many
-								more.
-							</p>
-							<div
-								class="flex flex-wrap gap-x-2 text-base my-5 px-5"
-							>
-								<code class="tag">HTML</code>
-								<code class="tag">JavaScript</code>
-								<code class="tag">Search Console</code>
-								<code class="tag">Screaming Frog</code>
-								<code class="tag">Analytics</code>
-								<code class="tag">Data Studio</code>
-							</div>
-						</CardLink>
-					</div>
-					<div class="grid lg:grid-cols-8 lg:gap-4">
-						<CardLink
-							title="Creative"
-							company="Publicis Starcom"
-							yearSpan="2015 – 2017"
-							href="https://www.publicis.no/"
-							linkText="COMPANY WEBSITE"
-						>
-							<p class="text-sm main-400 mt-5 px-5">
-								Made and presented creative ideas for ad
-								campaigns as a copywriter together in team with
-								an art director. Worked with producers and
-								strategists to ensure coherence and quality in
-								the final product.
-							</p>
-							<div
-								class="flex flex-wrap gap-x-2 text-base my-5 px-5"
-							>
-								<code class="tag">Photoshop</code>
-								<code class="tag">InDesign</code>
-								<code class="tag">Powerpoint</code>
-								<code class="tag">Word</code>
-								<code class="tag">Old school pen and paper</code
-								>
-							</div>
-						</CardLink>
-					</div>
-					<div class="grid lg:grid-cols-8 lg:gap-4">
-						<CardLink
-							title="B.A. Creative writing"
-							company="Westerdals"
-							yearSpan="2012 – 2015"
-							href="https://www.kristiania.no/en/schools/school-of-arts-design-and-media/westerdals-department-of-creativity-storytelling-and-design/"
-							linkText="SCHOOL INFORMATION"
-						>
-							<p class="text-sm main-400 mt-5 px-5 pb-5">
-								Studied writing across a range of styles,
-								structured into three main categories: literary,
-								copy, and journalistic writing. Collaborated
-								with other creative students, such as
-								filmmakers, art directors, and graphic designers
-								to explore and create cool things. Westerdals is
-								now a part of Kristiania, but back then it was
-								its own school.
-							</p>
-						</CardLink>
-					</div>
-					<div
-						class="[&_.project-item]:-mb-px grid lg:grid-cols-8 lg:gap-4"
-					>
-						<CardLink
-							title="Freelance journalist"
-							company="Gamereactor"
-							yearSpan="2011 – 2018"
-							href="https://www.gamereactor.no/"
-							linkText="VISIT GAMEREACTOR"
-						>
-							<p class="text-sm main-400 mt-5 px-5 pb-5">
-								Wrote reviews and articles for the Norwegian
-								version of the European gaming magazine
-								Gamereactor, focused on both hardware and games.
-								Included some travelling to conduct interviews
-								and play previews of games. Participated in
-								editorial meetings to discuss the magazine's
-								future and current zeitgeist.
-							</p>
-						</CardLink>
-					</div>
-				</div>
-			</section>
-			<section>
-				<ContentHeader>
-					<h2>Projects</h2>
-				</ContentHeader>
-				<div class="items-container lg:mx-3">
-					<ImageCardLink
-						title="Personal wedding website"
-						href="https://kristinogmartin.netlify.app/"
-						src={WeddingWebsite}
-						alt="Website shot of a personal wedding website"
-						linkText="VISIT DEMO SITE"
-						target="_blank"
-					>
-						<p class="text-sm main-400 mt-5 px-5 lg:pb-5">
-							A personal wedding website I made for my own
-							wedding. We needed a place to share information
-							about the wedding, and we wanted to have a clean and
-							consistent theme for it. I decided to built it
-							myself from scratch, using Astro for a simple and
-							fast static experience.
-						</p>
-						<div
-							class="flex flex-wrap gap-x-2 text-base pt-5 lg:pt-0 px-5"
-						>
-							<code class="tag">Astro</code>
-							<code class="tag">Tailwind</code>
-							<code class="tag">TypeScript</code>
-						</div>
-					</ImageCardLink>
-					<ImageCardLink
-						title="Cortex"
-						href="https://kampanje.com/byraguiden/byraer/starcom/cases/losningen-pa-den-komplekse-annonsorhverdagen/"
-						src={CampaignTimeline}
-						alt="Campaign timeline in the Cortex application"
-						linkText="READ ABOUT CORTEX"
-						target="_blank"
-					>
-						<p class="text-sm main-400 mt-5 px-5 lg:pb-5">
-							Web application management tool built in-house for
-							the media agency Starcom. It aims to solve the ever
-							growing complexity of digital marketing, and has
-							grown to be an essential part of the day-to-day
-							operations for the agancy's clients and employees.
-							Not a public application.
-						</p>
-						<div
-							class="flex flex-wrap gap-x-2 text-base pt-5 lg:pt-0 px-5"
-						>
-							<code class="tag">Vue</code>
-							<code class="tag">SCSS</code>
-							<code class="tag">TypeScript</code>
-							<code class="tag">Naive UI</code>
-							<code class="tag">GraphQL</code>
-							<code class="tag">Sanity</code>
-							<code class="tag">Figma</code>
-						</div>
-					</ImageCardLink>
-					<ImageCardLink
-						title="PLANR"
-						href="https://lan-planr.netlify.app/"
-						src={Planr}
-						alt="Website shot of PLANR – a LAN party planning web app"
-						linkText="VISIT DEMO"
-						target="_blank"
-					>
-						<p class="text-sm main-400 mt-5 px-5 lg:pb-5">
-							I like to play video games and made PLANR as a fun
-							little way to organize, prepare and carry out LAN
-							parties with my friends. It has user specific list
-							of LAN parties, game library system, voting
-							functionality and more. Hosted on Netlify and
-							Render.
-						</p>
-						<div
-							class="flex flex-wrap gap-x-2 text-base pt-5 lg:pt-0 px-5"
-						>
-							<code class="tag">Vue</code>
-							<code class="tag">Tailwind</code>
-							<code class="tag">TypeScript</code>
-							<code class="tag">Supabase</code>
-							<code class="tag">Express</code>
-						</div>
-					</ImageCardLink>
-					<ImageCardLink
-						title="SEO dashboard"
-						href="https://dribbble.com/shots/6576671-SEO-dashboard-Data-Studio"
-						src={SeoDashboard}
-						alt="Client SEO dashboard shot"
-						linkText="SEE DESIGN"
-						target="_blank"
-					>
-						<p class="text-sm main-400 mt-5 px-5 lg:pb-5">
-							Designed and implemented a SEO dashboard that takes
-							in data from Google Search Console and Analytics and
-							presents it in a user-friendly way. Used for
-							multiple clients to gain a deeper understanding of
-							their organic traffic.
-						</p>
-						<div
-							class="flex flex-wrap gap-x-2 text-base pt-5 lg:pt-0 px-5"
-						>
-							<code class="tag">Search Console</code>
-							<code class="tag">Analytics</code>
-							<code class="tag">Data Studio</code>
-						</div>
-					</ImageCardLink>
-					<ImageCardLink
-						title="Pwr powerlifting app"
-						href="https://lift-routine.netlify.app/"
-						src={PwrPhoneShot}
-						alt="Snapshot of the Pwr app on a phone"
-						linkText="SEE DEMO"
-						classes="-mb-px"
-						target="_blank"
-					>
-						<p class="text-sm main-400 mt-5 px-5 lg:pb-5">
-							Sometimes calculating powerlifting routines can be
-							tedious. This is a simple application for personal
-							use that takes in 1RM weight and outputs a
-							progressive monthly routine.
-						</p>
-						<div
-							class="flex flex-wrap gap-x-2 text-base pt-5 lg:pt-0 px-5"
-						>
-							<code class="tag">Vue</code>
-							<code class="tag">SCSS</code>
-							<code class="tag">TypeScript</code>
-							<code class="tag">Supabase</code>
-							<code class="tag">Naive UI</code>
-						</div>
-					</ImageCardLink>
-				</div>
-			</section>
-			{
-				posts.length > 0 && (
-					<section>
-						<ContentHeader link="/writing" subtitle="See all">
-							<h2>Writing</h2>
-						</ContentHeader>
-						<div class="items-container lg:mx-3">
-							{posts.map((post: any) => {
-								// Get the full path from frontmatter
-								const heroImagePath =
-									post.frontmatter.heroImage || "";
+		<div class="mt-8">
+			<div class="max-w-screen-md">
+				{
+					posts.map((post) => {
+						// Get the full path from frontmatter
+						const heroImagePath = post.frontmatter.heroImage || "";
 
-								// Convert the relative path to the path that matches our import.meta.glob pattern
-								// For example, '../../assets/images/articles/zed_logo.jpeg' becomes '/src/assets/images/articles/zed_logo.jpeg'
-								const normalizedPath = heroImagePath.replace(
-									"../../",
-									"/src/",
-								);
+						// Convert the relative path to the path that matches our import.meta.glob pattern
+						// For example, '../../assets/images/articles/zed_logo.jpeg' becomes '/src/assets/images/articles/zed_logo.jpeg'
+						const normalizedPath = heroImagePath.replace(
+							"../../",
+							"/src/",
+						);
 
-								// Get the image from our dynamically imported images
-								const image =
-									images[normalizedPath]?.default ||
-									// Fallback to zed logo if image not found
-									images[
-										"/src/assets/images/articles/zed_logo.jpeg"
-									]?.default;
+						// Get the image from our dynamically imported images
+						const image =
+							images[normalizedPath]?.default ||
+							// Fallback to zed logo if image not found
+							images["/src/assets/images/articles/zed_logo.jpeg"]
+								?.default;
 
-								return (
-									<ImageCardLink
-										href={`/writing/${post.file.split("/").pop()?.split(".")[0]}`}
-										title={post.frontmatter.title}
-										description={
-											post.frontmatter.description
-										}
-										score={post.frontmatter.score}
-										category={post.frontmatter.categories}
-										reviewTitle={
-											post.frontmatter.reviewTitle
-										}
-										src={image}
-										alt={
-											post.frontmatter.title ||
-											"Article image"
-										}
-										company="Company"
-										linkText="Read"
-									>
-										<p class="text-sm main-400 mt-5 px-5 lg:pb-5">
-											{post.frontmatter.description}
-										</p>
-									</ImageCardLink>
-								);
-							})}
-						</div>
-					</section>
-				)
-			}
-			<section class="mt-40 text-sm main-400">
-				<p>
-					This site was made by me from the bottom up with
-					<a
-						href="https://astro.build/"
-						target="_blank"
-						class="main-default">Astro</a
-					>
-					and
-					<a
-						href="https://tailwindcss.com/"
-						target="_blank"
-						class="main-default">Tailwind</a
-					>
-					/
-					<a
-						href="https://sass-lang.com/"
-						target="_blank"
-						class="main-default">SCSS</a
-					>.
-				</p>
-			</section>
-		</main>
-	</div>
-	<script src="./../scripts/p5.min.js"></script>
-	<script is:inline src="/scripts/sketch.js"></script>
+						return (
+							<ImageCardLink
+								href={`/writing/${post.file.split("/").pop()?.split(".")[0]}`}
+								title={post.frontmatter.title}
+								description={post.frontmatter.description}
+								score={post.frontmatter.score}
+								category={post.frontmatter.categories}
+								reviewTitle={post.frontmatter.reviewTitle}
+								src={image}
+								alt={post.frontmatter.title || "Article image"}
+								company="Company"
+								linkText="Read"
+							>
+								<p class="text-sm main-400 mt-5 px-5 lg:pb-5">
+									{post.frontmatter.description}
+								</p>
+							</ImageCardLink>
+							<div class="h-12 border-x border-b border-main-default"></div>
+						);
+					})
+				}
+			</div>
+		</div>
+	</main>
 </Layout>
-
-<style lang="scss">
-	$text-glow: #121615;
-
-	@keyframes show-content {
-		0% {
-			opacity: 0;
-		}
-		51% {
-			opacity: 0;
-		}
-		52% {
-			opacity: 1;
-		}
-	}
-
-	@keyframes television-top-start {
-		0% {
-			opacity: 1;
-			transform: scaleX(0);
-		}
-		100% {
-			opacity: 1;
-			transform: scaleX(1);
-		}
-	}
-
-	@keyframes television-top-end {
-		0% {
-			opacity: 1;
-			height: 50vh;
-			transform: scaleY(1);
-		}
-		100% {
-			opacity: 1;
-			height: 0;
-			transform: scaleY(1);
-		}
-	}
-
-	@keyframes television-bottom-end {
-		0% {
-			opacity: 1;
-			transform: scaleY(1);
-		}
-		100% {
-			opacity: 1;
-			transform: scaleY(0);
-		}
-	}
-
-	@mixin grid-cell {
-		display: flex;
-		text-overflow: ellipsis;
-		overflow: hidden;
-
-		&:hover {
-			cursor: pointer;
-			background-color: var(--main-color-85);
-
-			a {
-				text-shadow:
-					0 0 10px #fff,
-					0 0 20px #ffffff,
-					0 0 30px $text-glow,
-					0 0 40px $text-glow,
-					0 0 50px $text-glow,
-					0 0 60px $text-glow,
-					0 0 70px $text-glow;
-			}
-		}
-	}
-
-	@mixin border-offset {
-		margin: -1px;
-	}
-
-	@mixin border-y-offset {
-		margin-bottom: -1px;
-		margin-top: -1px;
-	}
-
-	#main-content {
-		max-width: 1700px;
-		animation: show-content 2s;
-	}
-
-	.mm-header-animation {
-		width: 100%;
-		animation: show-content 2s;
-	}
-
-	.top-start-animation {
-		opacity: 0;
-		position: fixed;
-		top: 0;
-		height: 50vh;
-		width: 100%;
-		background-color: var(--main-color-90);
-		border-bottom: var(--default-border);
-		z-index: 10;
-		animation: television-top-start 1s cubic-bezier(0.56, 0.13, 0.08, 0.99);
-		transform: scale(0);
-	}
-
-	.top-end-animation {
-		opacity: 0;
-		position: fixed;
-		top: 0;
-		height: 50vh;
-		width: 100%;
-		background-color: var(--main-color-90);
-		border-bottom: var(--default-border);
-		z-index: 10;
-		animation: television-top-end 1s cubic-bezier(0.92, 0.1, 0.47, 0.94);
-		animation-delay: 0.98s;
-		transform: scale(0);
-	}
-
-	.bottom-end-animation {
-		opacity: 0;
-		position: fixed;
-		top: calc(50% - 1px);
-		height: 50vh;
-		width: 100%;
-		background-color: var(--main-color-90);
-		border-top: var(--default-border);
-		z-index: 10;
-		transform-origin: 50% 100%;
-		animation: television-bottom-end 1s cubic-bezier(0.92, 0.1, 0.47, 0.94);
-		animation-delay: 0.98s;
-		transform: scale(0);
-	}
-
-	code {
-		font-family: "Istok Web";
-
-		&:nth-of-type(2n) {
-			color: var(--main-color-40);
-		}
-	}
-
-	section {
-		.items-container {
-			display: flex;
-			flex-direction: column;
-		}
-
-		.books-container {
-			display: flex;
-			flex-direction: row;
-			flex-wrap: wrap-reverse;
-			gap: 1px;
-			margin: 0 10px;
-			border-left: var(--default-border);
-		}
-	}
-</style>

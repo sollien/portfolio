@@ -12,8 +12,21 @@ import Footer from "@/components/Footer.astro";
 import Planr from "@/assets/images/projects/planr.jpg";
 import type { ImageMetadata } from "astro";
 
+const toTimestamp = (value: unknown): number => {
+    if (!value) return 0;
+    if (value instanceof Date) return value.getTime();
+
+    const raw = String(value).trim();
+    const normalized = raw.replace(/(\d+)(st|nd|rd|th)/gi, "$1");
+    const timestamp = Date.parse(normalized);
+    return Number.isFinite(timestamp) ? timestamp : 0;
+};
+
 const posts: any = Object.values(
     import.meta.glob("../pages/writing/*.mdx", { eager: true }),
+).sort(
+    (a: any, b: any) =>
+        toTimestamp(b?.frontmatter?.date) - toTimestamp(a?.frontmatter?.date),
 );
 
 const images = import.meta.glob<{ default: ImageMetadata }>(
@@ -379,7 +392,7 @@ const codingSince: number = new Date().getFullYear() - 2019;
             {
                 posts.length > 0 && (
                     <section>
-                        <ContentHeader link="/writing" subtitle="See all">
+                        <ContentHeader link="/" subtitle="See all">
                             <h2>Writing</h2>
                         </ContentHeader>
                         <div class="items-container lg:mx-3">
@@ -406,6 +419,7 @@ const codingSince: number = new Date().getFullYear() - 2019;
                                 return (
                                     <ImageCardLink
                                         href={`/writing/${post.file.split("/").pop()?.split(".")[0]}`}
+                                        date={post.frontmatter.date}
                                         title={post.frontmatter.title}
                                         description={
                                             post.frontmatter.description

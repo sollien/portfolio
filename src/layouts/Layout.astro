@@ -29,6 +29,7 @@ const { title, description } = Astro.props;
 		<!-- 100% privacy-first analytics -->
 		<script async src="https://scripts.simpleanalyticscdn.com/latest.js"
 		></script>
+		<script defer src="/scripts/hide-embed-blocks.js"></script>
 	</head>
 	<body class="relative scroll-smooth">
 		<slot />
@@ -224,6 +225,18 @@ const { title, description } = Astro.props;
 		padding: 10px 30px;
 		border-left: var(--default-border);
 		border-right: var(--default-border);
+	}
+
+	.block-getTheData,
+	.block-attribution,
+	.separator {
+		display: none !important;
+	}
+
+	.block-headline,
+	.block-description {
+		color: inherit !important;
+		font-family: inherit !important;
 	}
 
 	@media (min-width: 1024px) {

@@ -4,6 +4,7 @@ import { Image } from "astro:assets";
 const {
 	href,
 	title,
+	date,
 	src,
 	alt,
 	linkText,
@@ -28,14 +29,7 @@ const {
 		</div>
 		<div class="lg:col-span-6 mt-5">
 			<div class="pl-5 mb-1 flex gap-4 items-center">
-				{
-					category === "Anmeldelse" && (
-						<span class="border border-dashed border-main-default p-1 py-[2px] text-sm inline-block">
-							Anmeldelse
-						</span>
-					)
-				}
-				{reviewTitle && <span class="text-xs">{reviewTitle}</span>}
+				{date && <div class="text-xs main-400">{date}</div>}
 			</div>
 			<a class="text-lg text-glow">
 				<div

@@ -10,10 +10,19 @@ const images = import.meta.glob<{ default: ImageMetadata }>(
 );
 
 const pages = await Astro.glob("../pages/writing/*[.mdx, .md]");
+const toTimestamp = (value: unknown): number => {
+	if (!value) return 0;
+	if (value instanceof Date) return value.getTime();
+
+	const raw = String(value).trim();
+	const normalized = raw.replace(/(\d+)(st|nd|rd|th)/gi, "$1");
+	const timestamp = Date.parse(normalized);
+	return Number.isFinite(timestamp) ? timestamp : 0;
+};
+
 const posts = pages.sort(
 	(a, b) =>
-		new Date(b.frontmatter?.date || 0).getTime() -
-		new Date(a.frontmatter?.date || 0).getTime(),
+		toTimestamp(b.frontmatter?.date) - toTimestamp(a.frontmatter?.date),
 );
 ---
 
@@ -69,6 +78,7 @@ const posts = pages.sort(
 						return (
 							<ImageCardLink
 								href={`/writing/${post.file.split("/").pop()?.split(".")[0]}`}
+								date={post.frontmatter.date}
 								title={post.frontmatter.title}
 								description={post.frontmatter.description}
 								score={post.frontmatter.score}

@@ -21,11 +21,15 @@ const {
 >
 	<div class="grid lg:grid-cols-8 gap-4 mb-5">
 		<div class="lg:col-span-2 lg:mt-5 ml-5 order-last lg:order-first">
-			<Image
-				src={src}
-				alt={alt}
-				class="border border-main-default rounded-lg max-h-44 w-auto"
-			/>
+			<div
+				class="aspect-[4/3] w-full max-w-44 border border-main-default rounded-lg overflow-hidden flex items-center justify-center"
+			>
+				<Image
+					src={src}
+					alt={alt}
+					class="w-full h-full object-cover object-center"
+				/>
+			</div>
 		</div>
 		<div class="lg:col-span-6 mt-5">
 			<div class="pl-5 mb-1 flex gap-4 items-center">

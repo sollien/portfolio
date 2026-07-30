@@ -1,4 +1,4 @@
-import { defineConfig } from 'astro/config'
+import { defineConfig, passthroughImageService } from 'astro/config'
 import tailwind from "@astrojs/tailwind"
 import svelte from "@astrojs/svelte"
 import mdx from "@astrojs/mdx"
@@ -7,5 +7,8 @@ import mdx from "@astrojs/mdx"
 export default defineConfig({
 	integrations: [tailwind(), svelte(), mdx()],
 	output: "static",
+	image: {
+		service: passthroughImageService(),
+	},
 	prefetch: true,
 });

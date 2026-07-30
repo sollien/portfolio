@@ -30,6 +30,7 @@ const { title, description } = Astro.props;
 		<script async src="https://scripts.simpleanalyticscdn.com/latest.js"
 		></script>
 		<script defer src="/scripts/hide-embed-blocks.js"></script>
+		<script defer src="/scripts/datawrapper-skeleton.js"></script>
 	</head>
 	<body class="relative scroll-smooth">
 		<slot />
@@ -70,6 +71,54 @@ const { title, description } = Astro.props;
 		}
 		100% {
 			opacity: 1;
+		}
+	}
+
+	@keyframes mm-ascii-flicker {
+		0% {
+			opacity: 0.9;
+		}
+		30% {
+			opacity: 1;
+		}
+		31% {
+			opacity: 0.75;
+		}
+		32% {
+			opacity: 1;
+		}
+		100% {
+			opacity: 0.9;
+		}
+	}
+
+	@keyframes mm-ascii-glitch {
+		0% {
+			transform: translate(0, 0);
+		}
+		20% {
+			transform: translate(0, 0);
+		}
+		21% {
+			transform: translate(1px, 0);
+		}
+		22% {
+			transform: translate(-1px, 0);
+		}
+		23% {
+			transform: translate(0, 0);
+		}
+		100% {
+			transform: translate(0, 0);
+		}
+	}
+
+	@keyframes mm-ascii-scan {
+		0% {
+			background-position: 0 0;
+		}
+		100% {
+			background-position: 0 14px;
 		}
 	}
 
@@ -176,6 +225,110 @@ const { title, description } = Astro.props;
 		}
 	}
 
+	.mm-inline-badge-link {
+		display: inline-block;
+		padding: 2px 8px;
+		border: 1px solid var(--highlight-color-default);
+		background: var(--highlight-color-default);
+		color: var(--main-color-90);
+		font-style: normal;
+		font-weight: 700;
+		text-decoration: none;
+		transition:
+			transform 120ms ease,
+			box-shadow 120ms ease,
+			filter 120ms ease;
+
+		&:hover {
+			transform: translateY(-2px);
+			filter: brightness(1.05);
+			box-shadow:
+				inset 0px 0px 14px rgba(255, 255, 255, 0.25),
+				0px 0px 14px rgba(152, 255, 92, 0.45);
+		}
+	}
+
+	.mm-dw-shell {
+		position: relative;
+		overflow: hidden;
+		height: var(--mm-dw-skeleton-height, 250px);
+		min-height: var(--mm-dw-skeleton-height, 250px);
+		border: 1px solid var(--main-color-70);
+		background: rgba(18, 22, 21, 0.3);
+		transition:
+			background 220ms ease,
+			border-color 220ms ease,
+			height 220ms ease,
+			min-height 220ms ease;
+	}
+
+	.mm-dw-skeleton {
+		position: absolute;
+		inset: 0;
+		z-index: 1;
+		pointer-events: none;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		font-family: "Space Mono", monospace;
+		background:
+			repeating-linear-gradient(
+				to bottom,
+				rgba(152, 255, 92, 0.07) 0px,
+				rgba(152, 255, 92, 0.07) 1px,
+				rgba(18, 22, 21, 0.95) 1px,
+				rgba(18, 22, 21, 0.95) 7px
+			),
+			var(--main-color-90);
+		animation: mm-ascii-scan 260ms linear infinite;
+		transition: opacity 220ms ease;
+
+		&::before {
+			content: "+--------------------------------------+\A| GRAPHIC LOADING                     |\A|                                      |\A| [||||||||||||||||||...............] |\A| syncing tiles..... 72%              |\A|                                      |\A+--------------------------------------+";
+			white-space: pre;
+			padding: 10px 14px;
+			border: 1px solid var(--main-color-default);
+			color: var(--main-color-default);
+			font-size: 12px;
+			line-height: 1.25;
+			letter-spacing: 0.4px;
+			text-shadow:
+				0 0 6px rgba(222, 252, 250, 0.2),
+				0 0 1px rgba(222, 252, 250, 0.6);
+			animation:
+				mm-ascii-flicker 1200ms steps(2, end) infinite,
+				mm-ascii-glitch 2600ms steps(1, end) infinite;
+		}
+
+		&::after {
+			content: "> GRAPHIC LOADING_";
+			position: absolute;
+			right: 16px;
+			bottom: 12px;
+			color: var(--main-color-default);
+			font-size: 12px;
+			letter-spacing: 1px;
+			animation: blink 800ms steps(1, end) infinite;
+		}
+	}
+
+	.mm-dw-shell.mm-is-loaded .mm-dw-skeleton {
+		opacity: 0;
+		visibility: hidden;
+	}
+
+	.mm-dw-shell.mm-is-loaded {
+		background: transparent;
+		border-color: transparent;
+		height: auto;
+		min-height: var(--mm-dw-skeleton-height, 250px);
+	}
+
+	.mm-dw-shell.mm-is-loaded > [id^="datawrapper-vis-"] {
+		height: auto !important;
+		min-height: var(--mm-dw-skeleton-height, 250px) !important;
+	}
+
 	code {
 		font-family:
 			Menlo,
@@ -237,6 +390,11 @@ const { title, description } = Astro.props;
 	.block-description {
 		color: inherit !important;
 		font-family: inherit !important;
+	}
+
+	.container.container-body {
+		background: transparent !important;
+		background-color: transparent !important;
 	}
 
 	@media (min-width: 1024px) {

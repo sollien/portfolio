@@ -5,6 +5,7 @@
         ".block-headline span, .title-content, .axis-label, .text .export-text, .labels .label { color: #defcfa !important; font-family: 'Space Mono', monospace !important; }",
         ".y-tick-label tspan, .block-description, .x-tick-label tspan, .block-source .caption { color: #AFB1B6 !important; font-family: 'Space Mono', monospace !important; }",
         ".regression-line { stroke: #AFB1B6 !important; }",
+        ".container.container-body, .container-body, .container { background: transparent !important; background-color: transparent !important; }",
     ].join("\n");
 
     const injectStyle = (shadowRoot) => {

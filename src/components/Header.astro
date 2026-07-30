@@ -1,6 +1,8 @@
 ---
 import Favicon from "@/../public/favicon.svg";
 import { Image } from "astro:assets";
+
+const pathname = Astro.url.pathname;
 ---
 
 <header class="p-4 lg:px-20 w-full md:mb-12 flex justify-between items-center">
@@ -14,9 +16,18 @@ import { Image } from "astro:assets";
 	<div class="flex gap-x-10">
 		<a
 			href="/"
-			class="border-b-2 border-transparent hover:border-main-default"
+			class={`border-b-2 border-transparent hover:border-main-default ${pathname === "/" ? "font-bold" : ""}`}
 			>Writing</a
 		>
-		<a href="/about">About</a>
+		<a
+			href="/maps-and-charts"
+			class={`border-b-2 border-transparent hover:border-main-default ${pathname === "/maps-and-charts" ? "font-bold" : ""}`}
+			>Maps & charts</a
+		>
+		<a
+			href="/about"
+			class={`border-b-2 border-transparent hover:border-main-default ${pathname === "/about" ? "font-bold" : ""}`}
+			>About</a
+		>
 	</div>
 </header>

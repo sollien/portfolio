@@ -19,9 +19,9 @@ const { frontmatter } = Astro.props;
 			{frontmatter.title}
 		</ArticleHeader>
 		<div class="md:grid md:grid-cols-4 md:gap-10 w-full">
-			<div class="mb-12 md:col-span-1 relative">
+			<div class="mb-12 md:col-span-1 relative mm-metadata-column" data-mm-metadata-column>
 				<div
-					class="w-full border-main-default border p-4 sticky top-10"
+					class="w-full border-main-default border p-4 sticky top-0"
 				>
 					<p>METADATA</p>
 					<hr class="mt-4 mb-4 border-dashed" />
@@ -70,7 +70,7 @@ const { frontmatter } = Astro.props;
 				</div>
 			</div>
 			<div class="md:col-span-2 flex justify-center">
-				<div class="w-full max-w-prose relative">
+				<div class="w-full max-w-prose relative" data-mm-article-content>
 					<h2 id="description" class="text-xl mb-12">
 						{frontmatter.description}
 					</h2>
@@ -93,12 +93,135 @@ const { frontmatter } = Astro.props;
 	</article>
 </Layout>
 
+<script is:inline>
+	(() => {
+		const firstTextLineTopFromNode = (node) => {
+			if (!node) return null;
+
+			if (node.nodeType === Node.TEXT_NODE) {
+				const value = node.textContent?.trim();
+				if (!value) return null;
+				const range = document.createRange();
+				range.selectNodeContents(node);
+				const rects = range.getClientRects();
+				if (!rects.length) return null;
+				return rects[0].top;
+			}
+
+			if (node.nodeType !== Node.ELEMENT_NODE) return null;
+
+			const element = node;
+			const tagName = element.tagName?.toUpperCase();
+			if (tagName === "BR" || tagName === "SCRIPT" || tagName === "STYLE") {
+				return null;
+			}
+
+			const walker = document.createTreeWalker(element, NodeFilter.SHOW_TEXT, {
+				acceptNode: (textNode) =>
+					textNode.textContent?.trim()
+						? NodeFilter.FILTER_ACCEPT
+						: NodeFilter.FILTER_SKIP,
+			});
+
+			const textNode = walker.nextNode();
+			if (!textNode) return null;
+
+			const range = document.createRange();
+			range.selectNodeContents(textNode);
+			const rects = range.getClientRects();
+			if (!rects.length) return null;
+			return rects[0].top;
+		};
+
+		const firstBodyLineTop = (content, leadGraphic) => {
+			let node = leadGraphic.nextSibling;
+			while (node) {
+				const top = firstTextLineTopFromNode(node);
+				if (top !== null) return top;
+				node = node.nextSibling;
+			}
+
+			const fallback = content.querySelector("p");
+			if (!fallback) return null;
+			const rect = fallback.getBoundingClientRect();
+			return rect.top;
+		};
+
+		const updateMetadataOffset = () => {
+			const article = document.getElementById("article");
+			const metadataColumn = article?.querySelector("[data-mm-metadata-column]");
+			const content = article?.querySelector("[data-mm-article-content]");
+			if (!article || !metadataColumn || !content) return;
+
+			if (window.innerWidth < 768) {
+				metadataColumn.style.setProperty("--mm-metadata-offset", "0px");
+				return;
+			}
+
+			const leadGraphic = content.querySelector(".mm-article-graphic--lead");
+			if (!leadGraphic) {
+				metadataColumn.style.setProperty("--mm-metadata-offset", "0px");
+				return;
+			}
+
+			const lineTop = firstBodyLineTop(content, leadGraphic);
+			if (lineTop === null) {
+				metadataColumn.style.setProperty("--mm-metadata-offset", "0px");
+				return;
+			}
+
+			const metadataTop = metadataColumn.getBoundingClientRect().top;
+			const offset = Math.max(0, Math.round(lineTop - metadataTop));
+			metadataColumn.style.setProperty("--mm-metadata-offset", `${offset}px`);
+		};
+
+		if (document.readyState === "loading") {
+			document.addEventListener("DOMContentLoaded", updateMetadataOffset, { once: true });
+		} else {
+			updateMetadataOffset();
+		}
+
+		window.addEventListener("resize", updateMetadataOffset);
+		window.addEventListener("load", updateMetadataOffset);
+	})();
+</script>
+
 <style lang="scss">
+	.mm-metadata-column {
+		--mm-metadata-offset: 0px;
+	}
+
+	@media (min-width: 768px) {
+		.mm-metadata-column {
+			padding-top: var(--mm-metadata-offset);
+		}
+	}
+
 	:global(#article h2:not(#description, #secondary-title)) {
 		font-size: 20px;
 		font-weight: 600;
 		margin-top: 40px;
 		margin-bottom: 10px;
+	}
+
+	:global(.mm-article-graphic) {
+		width: 100%;
+		margin-bottom: 2rem;
+	}
+
+	:global(.mm-article-graphic--wide-desktop) {
+		position: relative;
+		left: 50%;
+		transform: translateX(-50%);
+		width: 100vw;
+		max-width: none;
+	}
+
+	@media (min-width: 1024px) {
+		:global(.mm-article-graphic--wide-desktop) {
+			width: min(980px, calc(100vw - 3rem));
+			max-width: 980px;
+		}
 	}
 
 	:global(.fact-box) {

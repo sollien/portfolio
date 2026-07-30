@@ -1,0 +1,30 @@
+---
+layout: "../../layouts/BlogPost.astro"
+title: "Shipping chokepoints in the mercantile sea"
+heroImage: "../../assets/images/articles/chokepoints-small.jpg"
+alt: "Map of shipping chokepoints in the mercantile sea"
+date: "May 8, 2026"
+categories: "Map"
+---
+
+import Chokepoints from "@/assets/images/articles/chokepoints-small.jpg";
+import ArticleImage from "@/components/ArticleImage.astro"
+import ShippingChokepointsGraphic from "@/components/ShippingChokepointsGraphic.astro"
+
+<div class="mm-article-graphic mm-article-graphic--wide-desktop mm-article-graphic--lead">
+	<ShippingChokepointsGraphic />
+</div>
+<br/>
+<br/>
+After the Iran war, the Strait of Hormuz became a major chokepoint for shipping of brent crude out of the Persian Gulf.
+<br/>
+The worldwide sea is dotted with similar chokepoints. These are narrow passages or capes where shipping traffic is forced through in order to avoid long rerouting.
+<br/>
+This map uses data from the Humanitarian Data Exchange, an UN initiative, to show where these crucial chokepoints are. Circles are sized based on monthly average capacity through these straits.
+<br/>
+<ArticleImage
+	src={Chokepoints}
+	alt="Map of shipping chokepoints"
+	imageDescription="A stylized 3D render of the shipping chokepoints."
+/>
+<i>The map was published in <a href="https://www.aftenposten.no/verden/i/d4JKmw" target="_blank" class="mm-inline-badge-link">Aftenposten</a> on May 8, 2026.</i>

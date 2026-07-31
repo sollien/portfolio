@@ -1,0 +1,34 @@
+---
+layout: "../../layouts/BlogPost.astro"
+title: "Soil moisture level in European wine districts, June 2026"
+heroImage: "../../assets/images/articles/hRJdK.png"
+metaDescription: ""
+date: "July 31, 2026"
+alt: "Moisture level map of Portugal, Spain, France and Italy"
+categories: "Map"
+---
+
+import WineDistricts from "@/assets/images/articles/wine-districts.png";
+import ArticleImage from "@/components/ArticleImage.astro"
+
+<div class="mm-dw-shell" data-dw-target="datawrapper-vis-hRJdK">
+	<div class="mm-dw-skeleton"></div>
+	<div style="min-height:507px" id="datawrapper-vis-hRJdK"><script type="text/javascript" defer src="https://datawrapper.dwcdn.net/hRJdK/embed.js" charset="utf-8" data-target="#datawrapper-vis-hRJdK"></script><noscript><img src="https://datawrapper.dwcdn.net/hRJdK/full.png" alt="Choropleth map" /></noscript></div>
+</div>
+<br/>
+<br/>
+Soil moisture have seldom been lower in Europe than in June 2026. This could greatly affect the output and quality of grapes in wine districts across Europe.
+<br/>
+Portugal, Spain, France and Italy are especially affected by the drought that has been ongoing for several months. The map shows the deviation from normal levels in June. It compares June 2026 against the average between 1991–2020.
+<br/>
+I tested multiple version, but ended up with a jigsaw-puzzle map that shows the territorial unit NUTS 3. This isn't perfect, as the politically drawn borders don't overlap perfectly with the wine districts. A wine district might cross multiple areas. It does however provide some clarity within the constraints of Datawrapper and small, editorial maps.
+<br/>
+A different idea I toyed with, was a map that extracted the wine districts as a difference from a regular polygon of Europe. This would display the same heatmap, but only for the wine districts while the rest of Europe would be white. In theory I think this would be a better map, it would show the moisture levels at the exact position of the wine districts, removing any constructed political borders. However, the fidelity of the wine district proved to be too small and spattered for any small editorial map. It needed some generalisation, especially for a mobile screen.
+<br/>
+You can see the result of that below.
+<ArticleImage
+	src={WineDistricts}
+	alt="Map of soil moisture levels in European wine districts"
+	imageDescription="The first version of the map, showing moisture levels in only the wine districts."
+/>
+<i>The map was published in <a href="https://www.aftenposten.no/verden/i/Oklexk" target="_blank" class="mm-inline-badge-link">Aftenposten</a> on July 31, 2026.</i>

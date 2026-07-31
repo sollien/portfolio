@@ -9,7 +9,7 @@ const images = import.meta.glob<{ default: ImageMetadata }>(
     { eager: true },
 );
 
-const pages = await Astro.glob("../pages/maps-and-charts/*[.mdx, .md]");
+const pages = await Astro.glob("../pages/maps/*[.mdx, .md]");
 const toTimestamp = (value: unknown): number => {
     if (!value) return 0;
     if (value instanceof Date) return value.getTime();
@@ -27,7 +27,7 @@ const posts = pages.sort(
 ---
 
 <Layout
-    title="Maps & charts – Martin Sollien"
+    title="Maps – Martin Sollien"
     description="A collection of maps, charts, and visual storytelling projects."
 >
     <Header />
@@ -44,7 +44,7 @@ const posts = pages.sort(
                 id="page-title"
                 class="text-7xl md:text-8xl tracking-tight max-w-screen-lg relative p-6"
             >
-                Maps & charts
+                Maps
                 <span class="absolute top-0 left-0 text-lg">+</span>
                 <span class="absolute bottom-0 left-0 text-lg">+</span>
                 <span class="absolute top-0 right-0 text-lg">+</span>
@@ -69,7 +69,7 @@ const posts = pages.sort(
 
                         return (
                             <ImageCardLink
-                                href={`/maps-and-charts/${post.file.split("/").pop()?.split(".")[0]}`}
+                                href={`/maps/${post.file.split("/").pop()?.split(".")[0]}`}
                                 date={post.frontmatter.date}
                                 title={post.frontmatter.title}
                                 description={post.frontmatter.description}

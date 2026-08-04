@@ -6,8 +6,13 @@
       "@/*": [
         "src/*"
       ],
+      "$lib/*": [
+        "src/lib/*"
+      ],
     },
-	  "allowSyntheticDefaultImports": true,
-		"types": ["@unovis/ts"],
+    "allowSyntheticDefaultImports": true,
+    "types": [
+      "@unovis/ts"
+    ],
   }
 }

@@ -75,13 +75,14 @@ const {
 			<slot />
 		</div>
 	</div>
-	<a href={href} target={target} class="link-button mt-5 lg:!hidden">
+	<span class="link-button mt-5 mb-5 lg:!hidden pointer-events-none">
 		{linkText}
-	</a>
+	</span>
 	<a
 		href={href}
 		target={target}
-		class="absolute top-0 left-0 w-full h-full hidden lg:block"></a>
+		aria-label={title}
+		class="absolute top-0 left-0 w-full h-full block"></a>
 </div>
 
 <style lang="scss">

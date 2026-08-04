@@ -71,9 +71,11 @@ const { frontmatter } = Astro.props;
 			</div>
 			<div class="md:col-span-2 flex justify-center">
 				<div class="w-full max-w-prose relative" data-mm-article-content>
-					<h2 id="description" class="text-xl mb-12">
-						{frontmatter.description}
-					</h2>
+					{frontmatter.description?.trim() && (
+						<h2 id="description" class="text-xl mb-12">
+							{frontmatter.description}
+						</h2>
+					)}
 					{
 						frontmatter.preface &&
 							frontmatter.preface.length > 0 && (

@@ -1,0 +1,251 @@
+---
+import Layout from "@/layouts/Layout.astro";
+import Header from "@/components/Header.astro";
+import ImageCardLink from "@/components/ImageCardLink.astro";
+import type { MapCategory, MapPost } from "@/lib/mapArchive";
+import { getMapPostImage, getMapPostSlug } from "@/lib/mapArchive";
+
+interface Props {
+    pageTitle: string;
+    metaDescription: string;
+    intro: string;
+    posts: MapPost[];
+    categories: MapCategory[];
+    allPostsCount?: number;
+    activeCategorySlug?: string;
+    activeCategoryLabel?: string;
+}
+
+const {
+    pageTitle,
+    metaDescription,
+    intro,
+    posts,
+    categories,
+    allPostsCount,
+    activeCategorySlug,
+    activeCategoryLabel,
+} = Astro.props;
+
+const allMapsActive = !activeCategorySlug;
+const totalPostsCount = allPostsCount ?? posts.length;
+---
+
+<Layout title={`${pageTitle} – Martin Sollien`} description={metaDescription}>
+    <Header />
+    <main
+        class="w-full mb-24 p-4 md:p-0 flex flex-col items-center px-4 lg:px-20 relative"
+    >
+        <div class="w-full mb-12 self-start relative">
+            <span class="absolute top-0 right-0 text-lg hidden xl:block">+</span
+            >
+            <span class="absolute bottom-0 right-0 text-lg hidden xl:block"
+                >+</span
+            >
+            <h1
+                id="page-title"
+                class="text-7xl md:text-8xl tracking-tight max-w-screen-lg relative p-6"
+            >
+                Maps
+                <span class="absolute top-0 left-0 text-lg">+</span>
+                <span class="absolute bottom-0 left-0 text-lg">+</span>
+                <span class="absolute top-0 right-0 text-lg">+</span>
+                <span class="absolute bottom-0 right-0 text-lg">+</span>
+            </h1>
+        </div>
+        <div class="mm-maps-intro">
+            <p class="main-400 max-w-screen-md">{intro}</p>
+        </div>
+        <div class="mm-maps-archive mt-8 w-full">
+            <div class="mm-maps-archive__inner">
+                <aside class="mm-maps-categories" aria-label="Map categories">
+                    <p class="mm-maps-categories__label">Categories</p>
+                    <ul class="mm-maps-categories__list">
+                        <li>
+                            <a
+                                href="/maps"
+                                class:list={[
+                                    "mm-maps-categories__link",
+                                    allMapsActive && "is-active",
+                                ]}
+                                aria-current={allMapsActive
+                                    ? "page"
+                                    : undefined}
+                            >
+                                <span>All maps</span>
+                                <span class="mm-maps-categories__count"
+                                    >{totalPostsCount}</span
+                                >
+                            </a>
+                        </li>
+                        {
+                            categories.map((category) => (
+                                <li>
+                                    <a
+                                        href={category.href}
+                                        class:list={[
+                                            "mm-maps-categories__link",
+                                            activeCategorySlug ===
+                                                category.slug && "is-active",
+                                        ]}
+                                        aria-current={
+                                            activeCategorySlug === category.slug
+                                                ? "page"
+                                                : undefined
+                                        }
+                                    >
+                                        <span>{category.label}</span>
+                                        <span class="mm-maps-categories__count">
+                                            {category.count}
+                                        </span>
+                                    </a>
+                                </li>
+                            ))
+                        }
+                    </ul>
+                </aside>
+                <section class="mm-maps-list">
+                    <div class="max-w-screen-md">
+                        {
+                            posts.map((post) => {
+                                const heroImagePath = String(
+                                    post.frontmatter.heroImage || "",
+                                );
+                                const image = getMapPostImage(heroImagePath);
+
+                                return (
+                                    <ImageCardLink
+                                        href={`/maps/${getMapPostSlug(post.file)}`}
+                                        date={post.frontmatter.date}
+                                        title={post.frontmatter.title}
+                                        description={
+                                            post.frontmatter.description
+                                        }
+                                        score={post.frontmatter.score}
+                                        category={post.frontmatter.categories}
+                                        reviewTitle={
+                                            post.frontmatter.reviewTitle
+                                        }
+                                        src={image}
+                                        alt={
+                                            post.frontmatter.title ||
+                                            "Article image"
+                                        }
+                                        company="Company"
+                                        linkText="Read"
+                                    >
+                                        <p class="text-sm main-400 mt-5 px-5 lg:pb-5">
+                                            {post.frontmatter.description}
+                                        </p>
+                                    </ImageCardLink>
+                                );
+                            })
+                        }
+                    </div>
+                </section>
+            </div>
+        </div>
+    </main>
+</Layout>
+
+<style lang="scss">
+    .mm-maps-active-category {
+        margin-top: 1rem;
+        display: inline-flex;
+        gap: 0.5rem;
+        align-items: center;
+        border: 1px dashed currentColor;
+        padding: 0.25rem 0.5rem;
+        font-size: 0.875rem;
+    }
+
+    .mm-maps-intro {
+        width: 100%;
+        max-width: 48rem;
+        margin-inline: auto;
+    }
+
+    .mm-maps-archive {
+        width: 100%;
+    }
+
+    .mm-maps-archive__inner {
+        display: grid;
+        gap: 1.5rem;
+        width: 100%;
+        max-width: 48rem;
+        margin-inline: auto;
+    }
+
+    .mm-maps-categories {
+        display: grid;
+        gap: 0.75rem;
+
+        &__label {
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        &__list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            padding: 0;
+            margin: 0;
+            list-style: none;
+        }
+
+        &__link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.75rem;
+            border: 1px dashed currentColor;
+            padding: 0.45rem 0.7rem;
+            font-size: 0.9rem;
+            line-height: 1;
+            text-decoration: none;
+            transition:
+                background-color 0.2s ease-in-out,
+                color 0.2s ease-in-out;
+
+            &:hover,
+            &:focus-visible,
+            &.is-active {
+                background: #defcfa;
+                color: #000724;
+            }
+        }
+
+        &__count {
+            font-size: 0.75rem;
+            opacity: 0.75;
+        }
+    }
+
+    .mm-maps-list {
+        min-width: 0;
+    }
+
+    @media (min-width: 1024px) {
+        .mm-maps-archive__inner {
+            position: relative;
+        }
+
+        .mm-maps-categories {
+            position: absolute;
+            top: 0;
+            right: calc(100% + 2.5rem);
+            width: 220px;
+
+            &__list {
+                display: grid;
+                gap: 0.75rem;
+            }
+
+            &__link {
+                width: 100%;
+                justify-content: space-between;
+            }
+        }
+    }
+</style>

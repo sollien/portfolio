@@ -2,8 +2,14 @@
 import Layout from "@/layouts/Layout.astro";
 import Header from "@/components/Header.astro";
 import ArticleHeader from "@/components/ArticleHeader.astro";
+import { slugifyCategory } from "@/lib/mapArchive";
 
 const { frontmatter } = Astro.props;
+const isMapPost = Astro.url.pathname.startsWith("/maps/");
+const categoryLabel = String(frontmatter.categories || "").trim();
+const categoryHref = isMapPost && categoryLabel
+	? `/maps/category/${slugifyCategory(categoryLabel)}`
+	: null;
 ---
 
 <Layout
@@ -37,10 +43,20 @@ const { frontmatter } = Astro.props;
 						<div class="flex justify-between mb-4">
 							<dt>CATEGORY</dt>
 							<dd class="flex gap-4">
-								<span
-									class="border border-dashed border-main-default p-1 py-[2px] text-sm"
-									>{frontmatter.categories}</span
-								>
+								{categoryHref ? (
+									<a
+										href={categoryHref}
+										class="border border-dashed border-main-default p-1 py-[2px] text-sm"
+									>
+										{frontmatter.categories}
+									</a>
+								) : (
+									<span
+										class="border border-dashed border-main-default p-1 py-[2px] text-sm"
+									>
+										{frontmatter.categories}
+									</span>
+								)}
 							</dd>
 						</div>
 						{frontmatter.score && (

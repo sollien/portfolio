@@ -1,0 +1,35 @@
+---
+import MapsArchivePage from "@/components/MapsArchivePage.astro";
+import type { MapCategory } from "@/lib/mapArchive";
+import {
+    filterMapPostsByCategory,
+    getMapCategories,
+    loadMapPosts,
+} from "@/lib/mapArchive";
+
+export async function getStaticPaths() {
+    const posts = loadMapPosts();
+    const categories = getMapCategories(posts);
+
+    return categories.map((category) => ({
+        params: { category: category.slug },
+        props: { activeCategory: category },
+    }));
+}
+
+const posts = loadMapPosts();
+const categories = getMapCategories(posts);
+const { activeCategory } = Astro.props as { activeCategory: MapCategory };
+const filteredPosts = filterMapPostsByCategory(posts, activeCategory.slug);
+---
+
+<MapsArchivePage
+    pageTitle={`${activeCategory.label} maps`}
+    metaDescription={`Maps and visual stories in the ${activeCategory.label} category.`}
+    intro={`A collection of maps filed under ${activeCategory.label}.`}
+    posts={filteredPosts}
+    {categories}
+    allPostsCount={posts.length}
+    activeCategorySlug={activeCategory.slug}
+    activeCategoryLabel={activeCategory.label}
+/>
